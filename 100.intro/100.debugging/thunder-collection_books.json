@@ -1,0 +1,74 @@
+{
+    "clientName": "Thunder Client",
+    "collectionName": "books",
+    "collectionId": "b8c16d25-99bb-4e30-90d9-7f40c0b29115",
+    "dateExported": "2024-11-01T08:59:11.651Z",
+    "version": "1.2",
+    "folders": [],
+    "requests": [
+        {
+            "_id": "1b96e54c-9e93-4a99-986c-1487bd7eea6a",
+            "colId": "b8c16d25-99bb-4e30-90d9-7f40c0b29115",
+            "containerId": "",
+            "name": "GET: /books",
+            "url": "http://localhost:3000/books",
+            "method": "GET",
+            "sortNum": 10000,
+            "created": "2024-11-01T08:40:51.441Z",
+            "modified": "2024-11-01T08:40:55.650Z",
+            "headers": []
+        },
+        {
+            "_id": "a413082b-0f01-4cba-a45e-e7bf94cd2232",
+            "colId": "b8c16d25-99bb-4e30-90d9-7f40c0b29115",
+            "containerId": "",
+            "name": "POST: /books",
+            "url": "http://localhost:3000/books",
+            "method": "POST",
+            "sortNum": 20000,
+            "created": "2024-11-01T08:41:40.083Z",
+            "modified": "2024-11-01T08:42:17.169Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Hello, Book\",\n  \"author\": \"John Doe\",\n  \"quantity\": 10\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "6a67b94d-595f-4af3-8976-d0ed3d195ce2",
+            "colId": "b8c16d25-99bb-4e30-90d9-7f40c0b29115",
+            "containerId": "",
+            "name": "POST: /books/restock",
+            "url": "http://localhost:3000/books/restock",
+            "method": "POST",
+            "sortNum": 30000,
+            "created": "2024-11-01T08:47:50.096Z",
+            "modified": "2024-11-01T08:55:45.108Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Hello, Book\",\n  \"quantity\": 2\n}",
+                "form": []
+            }
+        },
+        {
+            "_id": "584b6a97-7095-43f5-afc1-d081dfc152de",
+            "colId": "b8c16d25-99bb-4e30-90d9-7f40c0b29115",
+            "containerId": "",
+            "name": "POST: /books/sell",
+            "url": "http://localhost:3000/books/sell",
+            "method": "POST",
+            "sortNum": 40000,
+            "created": "2024-11-01T08:56:21.915Z",
+            "modified": "2024-11-01T08:56:47.194Z",
+            "headers": [],
+            "body": {
+                "type": "json",
+                "raw": "{\n  \"title\": \"Hello, Book\",\n  \"quantity\": 2\n}",
+                "form": []
+            }
+        }
+    ],
+    "ref": "BM1KlfykyJknjym3ZlQKVTHZECJpy4B76PdmtJxRk7urotP1mvVtHQt_-fj7gShiiYXs2t2GvcTrG1gJSBGT0Q"
+}
