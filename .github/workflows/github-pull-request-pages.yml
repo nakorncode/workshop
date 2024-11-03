@@ -1,13 +1,16 @@
 name: Deploy GitHub Pull Request Pages
 
 on:
-  pull_request_target:
-    types:
-      - closed
+  push:
+    branches:
+      - main
+  # pull_request_target:
+  #   types:
+  #     - closed
 
 jobs:
   build:
-    if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'pull-request-tutorial')
+    # if: github.event.pull_request.merged == true && contains(github.event.pull_request.labels.*.name, 'pull-request-tutorial')
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
