@@ -8,6 +8,11 @@ import sarabunThai700Url from '@fontsource/sarabun/files/sarabun-thai-700-normal
 import { getCollection } from 'astro:content';
 import { orderBy } from 'lodash-es'
 import dayjs from 'dayjs'
+import utc from 'dayjs/plugin/utc'
+import timezone from 'dayjs/plugin/timezone'
+
+dayjs.extend(utc)
+dayjs.extend(timezone)
 
 const programmers = await getCollection('programmers')
 ---
@@ -62,7 +67,7 @@ const programmers = await getCollection('programmers')
       <ul class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
         {orderBy(programmers, 'data.created', 'desc').map((programmer) => {
           const { githubUrl, displayName, message, created } = programmer.data
-          const createdTimestamp = dayjs.unix(created).format('DD/MM/YYYY HH:mm')
+          const createdTimestamp = dayjs.unix(created).tz('Asia/Bangkok').format('DD/MM/YYYY HH:mm')
           return (
             <li class="bg-gray-800 p-3 rounded-lg shadow-lg flex flex-col">
               <div class="flex-1">
