@@ -1,5 +1,6 @@
 import { serve } from '@hono/node-server'
 import { serveStatic } from '@hono/node-server/serve-static'
+import { swaggerUI } from '@hono/swagger-ui'
 import { writeFile } from 'fs/promises'
 import { Hono } from 'hono'
 import { orderBy } from 'lodash-es'
@@ -50,6 +51,8 @@ app.post('/books', async (c) => {
   c.status(201)
   return c.json({ message: 'Book created', data: book })
 })
+
+app.get('/swagger', swaggerUI({ url: '/swagger.json' }))
 
 const port = 3000
 console.log(`Server is running on http://localhost:${port}`)

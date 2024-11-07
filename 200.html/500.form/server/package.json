@@ -6,6 +6,7 @@
   },
   "dependencies": {
     "@hono/node-server": "^1.13.5",
+    "@hono/swagger-ui": "^0.4.1",
     "@types/lodash-es": "^4.17.12",
     "hono": "^4.6.9",
     "lodash-es": "^4.17.21",
