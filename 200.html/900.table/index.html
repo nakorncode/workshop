@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .table-cell-name {
+      background-color: bisque;
+    }
+    .table-cell-email {
+      background-color: darkgray;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Table -->
+  <table border="1">
+    <caption>Name of table</caption> <!-- (Optional) -->
+
+    <!-- Head (Optional) -->
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>First name</th> <!-- Table Cell Head -->
+        <th>Last name</th>
+        <th>Email</th>
+      </tr>
+    </thead>
+
+    <!-- Body -->
+    <tbody>
+      <tr> <!-- Table Row -->
+        <td>001</td>
+        <td>John</td> <!-- Table Cell -->
+        <td>Doe</td>
+        <td>Y7nTJ@example.com</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>9L7H3@example.com</td>
+      </tr>
+      <tr>
+        <td>003</td>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>Y7nTJ@example.com</td>
+      </tr>
+    </tbody>
+
+    <!-- Foot (Optional) -->
+    <tfoot>
+      <tr>
+        <td colspan="3">Total</td>
+        <td>3</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <table border="1">
+    <caption>Sample Table with Colspan and Rowspan</caption>
+
+    <colgroup>
+      <col>
+      <col span="2" class="table-cell-name">
+      <!-- col -->
+      <col class="table-cell-email">
+    </colgroup>
+
+    <!-- Head -->
+    <thead>
+      <tr>
+        <th rowspan="2">ID</th>
+        <th colspan="2">Name</th>
+        <!-- th name -->
+        <th rowspan="2">Email</th>
+      </tr>
+      <tr>
+        <!-- th id -->
+        <th>First Name</th>
+        <th>Last Name</th>
+        <!-- th email -->
+      </tr>
+    </thead>
+
+    <!-- Body -->
+    <tbody>
+      <tr>
+        <td>001</td>
+        <td>John</td>
+        <td>Doe</td>
+        <td>john.doe@example.com</td>
+      </tr>
+      <tr>
+        <td>002</td>
+        <td>Mary</td>
+        <td>Moe</td>
+        <td>mary.moe@example.com</td>
+      </tr>
+      <tr>
+        <td>003</td>
+        <td>July</td>
+        <td>Dooley</td>
+        <td>july.dooley@example.com</td>
+      </tr>
+    </tbody>
+
+    <!-- Foot -->
+    <tfoot>
+      <tr>
+        <td colspan="3">Total</td>
+        <td>3</td>
+      </tr>
+    </tfoot>
+  </table>
+
+</body>
+
+</html>
