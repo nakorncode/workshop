@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <details>
+    <summary>Summary</summary>
+    <p>Details</p>
+  </details>
+  <details>
+    <summary>Summary</summary>
+    <p>Details</p>
+  </details>
+
+  <button type="button" onclick="document.getElementById('dialog').showModal()">Open</button>
+  <dialog id="dialog">
+    <p>Hello</p>
+    <button type="button" onclick="document.getElementById('dialog').close()">Close</button>
+  </dialog>
+</body>
+</html>
