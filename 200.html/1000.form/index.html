@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <form method="POST">
+    <div>
+      <label for="input-name">Name</label>
+      <input autocomplete="new-password" type="text" id="input-name" name="full_name" placeholder="Enter your name"
+        required>
+    </div>
+    <div>
+      <label for="email">Email</label>
+      <input type="email" id="email" name="user_email" placeholder="Enter your email" required>
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="user_password" placeholder="Enter your password" required>
+    </div>
+    <!-- <button type="submit">Submit</button> -->
+    <button>Submit</button>
+    <button type="reset">Reset</button>
+    <button type="button">Button (No action)</button>
+  </form>
+
+  <hr>
+
+  <form>
+    <div><input type="text" placeholder="tab3" tabindex="3" autofocus></div>
+    <div><input type="text" placeholder="tab2" tabindex="2"></div>
+    <div><input type="text" placeholder="tab1" tabindex="1"></div>
+    <div><input type="text" placeholder="tab-1" tabindex="-1"></div>
+    <div><input name="password" type="password" pattern="^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}$"
+        placeholder="Need strong password"></div>
+    <div><input type="text" minlength="3" maxlength="6" placeholder="min: 3; max: 6"></div>
+    <div><input type="number" min="3" max="6" placeholder="min: 3; max: 6"></div>
+    <div><input type="number" step="5"></div>
+    <div><input type="date" min="2023-01-01" max="2023-11-30"></div>
+    <div><input name="email1" type="email" value="nakorncode@example.com" readonly></div>
+    <div><input name="email2" type="email" value="nakorncode@example.com" disabled></div>
+    <button>Submit</button>
+  </form>
+
+  <hr>
+
+  <form>
+    <textarea name="body" required rows="10" style="width: 100%;"></textarea>
+    <button>Submit</button>
+  </form>
+
+  <hr>
+
+  <form>
+    <div>
+      <input type="checkbox" id="check-accept" required>
+      <label for="check-accept">ยอมรับเงื่อนไขการบริการ</label>
+    </div>
+    <div>
+      <input type="checkbox" id="check-email" checked>
+      <label for="check-email">สมัครสมาชิกอีเมล ติดตามรายเดือน</label>
+    </div>
+    <div>
+      <input type="radio" name="gender" id="gender-male" value="male">
+      <label for="gender-male">ชาย</label>
+      <input type="radio" name="gender" id="gender-female" value="female">
+      <label for="gender-female">หญิง</label>
+      <input type="radio" name="gender" id="gender-other" value="other" checked>
+      <label for="gender-other">อื่นๆ</label>
+    </div>
+    <button>Submit</button>
+  </form>
+
+  <hr>
+
+  <form>
+    <label for="province">เลือกจังหวัด:</label>
+    <select id="province" name="province" size="10" multiple>
+      <!-- ภูมิภาคกลาง -->
+      <optgroup label="ภาคกลาง">
+        <option value="bangkok">กรุงเทพมหานคร</option>
+        <option value="nonthaburi">นนทบุรี</option>
+        <option value="pathumthani">ปทุมธานี</option>
+        <option value="samutsprakarn">สมุทรปราการ</option>
+        <option value="samutsakhon">สมุทรสาคร</option>
+        <option value="samutsongkhram">สมุทรสงคราม</option>
+        <option value="saraburi">สระบุรี</option>
+        <option value="singburi">สิงห์บุรี</option>
+        <option value="ayutthaya">พระนครศรีอยุธยา</option>
+        <option value="prachinburi">ปราจีนบุรี</option>
+        <option value="prachuapkhirikhan">ประจวบคีรีขันธ์</option>
+      </optgroup>
+
+      <!-- ภูมิภาคเหนือ -->
+      <optgroup label="ภาคเหนือ">
+        <option value="chiangmai">เชียงใหม่</option>
+        <option value="chiangrai">เชียงราย</option>
+        <option value="lamphun">ลำพูน</option>
+        <option value="lampang">ลำปาง</option>
+        <option value="leoi">เลย</option>
+        <option value="nan">น่าน</option>
+        <option value="phayao">พะเยา</option>
+        <option value="phichit">พิษณุโลก</option>
+        <option value="phitsanulok">พิจิตร</option>
+        <option value="uttaradit">อุตรดิตถ์</option>
+      </optgroup>
+
+      <!-- ภูมิภาคอีสาน -->
+      <optgroup label="ภาคอีสาน">
+        <option value="kalasin">กาฬสินธุ์</option>
+        <option value="kamphaengphet">กำแพงเพชร</option>
+        <option value="khonkean">ขอนแก่น</option>
+        <option value="nakhonratchasima">นครราชสีมา</option>
+        <option value="nakhonphanom">นครพนม</option>
+        <option value="roiet">ร้อยเอ็ด</option>
+        <option value="sakon">สกลนคร</option>
+        <option value="sukothai">สุโขทัย</option>
+        <option value="surin">สุรินทร์</option>
+        <option value="yasothon">ยโสธร</option>
+      </optgroup>
+
+      <!-- ภูมิภาคใต้ -->
+      <optgroup label="ภาคใต้">
+        <option value="krabi">กระบี่</option>
+        <option value="phuket">ภูเก็ต</option>
+        <option value="pattani">ปัตตานี</option>
+        <option value="ranong">ระนอง</option>
+        <option value="songkhla">สงขลา</option>
+        <option value="sungai">สุราษฎร์ธานี</option>
+        <option value="suratthani">สุราษฎร์ธานี</option>
+        <option value="yala">ยะลา</option>
+        <option value="satun">สตูล</option>
+      </optgroup>
+
+      <!-- ภูมิภาคตะวันออก -->
+      <optgroup label="ภาคตะวันออก">
+        <option value="chanthaburi">จันทบุรี</option>
+        <option value="chachoengsao">ฉะเชิงเทรา</option>
+        <option value="chumphon">ชุมพร</option>
+        <option value="rayong">ระยอง</option>
+        <option value="trat">ตราด</option>
+      </optgroup>
+
+      <!-- ภูมิภาคตะวันตก -->
+      <optgroup label="ภาคตะวันตก">
+        <option value="tak">ตาก</option>
+        <option value="phetchaburi">เพชรบุรี</option>
+        <option value="kanchanaburi">กาญจนบุรี</option>
+      </optgroup>
+
+      <!-- ภูมิภาคภาคตะวันออก -->
+      <optgroup label="ภาคตะวันออกเฉียงเหนือ">
+        <option value="mahasarakham">มหาสารคาม</option>
+      </optgroup>
+    </select>
+
+
+    <button>Submit</button>
+  </form>
+
+  <hr>
+
+  <form>
+    <input type="file" accept="image/*" multiple>
+  </form>
+
+  <hr>
+
+  <form>
+    <input type="text" list="fruit-list">
+    <datalist id="fruit-list">
+      <option value="apple"></option>
+      <option value="banana"></option>
+      <option value="cherry"></option>
+    </datalist>
+  </form>
+
+  <hr>
+
+  <form>
+    <fieldset disabled>
+      <legend>User Profile</legend>
+      <input type="text" name="name" placeholder="Name" value="Nakorn Sinpadung">
+      <input type="email" name="email" placeholder="Email" value="a@ex.com">
+      <button type="submit">Submit</button>
+    </fieldset>
+
+    <fieldset>
+      <legend>Message</legend>
+      <textarea name="message" placeholder="Message"></textarea>
+      <button type="submit">Submit</button>
+    </fieldset>
+  </form>
+</body>
+
+</html>
