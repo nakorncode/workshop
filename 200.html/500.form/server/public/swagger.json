@@ -1,0 +1,173 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Book API",
+    "version": "1.0.0",
+    "description": "A simple API to manage books"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000",
+      "description": "Local server"
+    }
+  ],
+  "paths": {
+    "/": {
+      "get": {
+        "summary": "Get a sorted list of books",
+        "description": "Retrieves a list of books, optionally sorted by price, title, or quantity in ascending or descending order.",
+        "parameters": [
+          {
+            "name": "sort",
+            "in": "query",
+            "required": false,
+            "description": "The field to sort by (e.g., 'price', 'title', or 'quantity')",
+            "schema": {
+              "type": "string",
+              "enum": ["price", "title", "quantity"]
+            }
+          },
+          {
+            "name": "order",
+            "in": "query",
+            "required": false,
+            "description": "The sorting order ('asc' for ascending or 'desc' for descending)",
+            "schema": {
+              "type": "string",
+              "enum": ["asc", "desc"]
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A list of books",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Book"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/books": {
+      "post": {
+        "summary": "Create a new book",
+        "description": "Adds a new book to the list with an optional cover image.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "The title of the book",
+                    "example": "Book A"
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "The price of the book",
+                    "example": 100
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "description": "The quantity of the book",
+                    "example": 30
+                  }
+                },
+                "required": ["title", "price", "quantity"]
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "title": {
+                    "type": "string",
+                    "description": "The title of the book",
+                    "example": "Book A"
+                  },
+                  "price": {
+                    "type": "number",
+                    "description": "The price of the book",
+                    "example": 100
+                  },
+                  "quantity": {
+                    "type": "number",
+                    "description": "The quantity of the book",
+                    "example": 30
+                  },
+                  "cover": {
+                    "type": "string",
+                    "format": "binary",
+                    "description": "The cover image file for the book"
+                  }
+                },
+                "required": ["title", "price", "quantity"]
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Book created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "message": {
+                      "type": "string",
+                      "example": "Book created"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Book"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Book": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "example": "Book A"
+          },
+          "price": {
+            "type": "number",
+            "example": 100
+          },
+          "quantity": {
+            "type": "number",
+            "example": 30
+          },
+          "cover": {
+            "type": "string",
+            "format": "uri",
+            "example": "http://localhost:3000/some-cover.jpg"
+          }
+        }
+      }
+    }
+  }
+}
