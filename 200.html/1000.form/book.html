@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- Form GET -->
+  <form action="http://localhost:3000">
+    <div>
+      <label for="sort">Sort by:</label>
+      <select name="sort" id="sort">
+        <option value="price">Price</option>
+        <option value="title">Title</option>
+        <option value="quantity">Quantity</option>
+      </select>
+    </div>
+    <div>
+      <input type="radio" name="order" id="order-asc" value="asc"> <label for="order-asc">Ascending</label>
+      <input type="radio" name="order" id="order-desc" value="desc"> <label for="order-desc">Descending</label>
+    </div>
+    <button>Search</button>
+  </form>
+
+  <hr>
+
+  <!-- Form POST -->
+  <form action="http://localhost:3000/books" method="POST">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title">
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" name="price" id="price">
+    </div>
+    <div>
+      <label for="quantity">Quantity:</label>
+      <input type="number" name="count" id="quantity">
+    </div>
+    <button>Submit</button>
+  </form>
+
+  <hr>
+
+  <!-- Form POST with upload cover -->
+  <form action="http://localhost:3000/books" method="POST" enctype="multipart/form-data">
+    <div>
+      <label for="title">Title:</label>
+      <input type="text" name="title" id="title">
+    </div>
+    <div>
+      <label for="price">Price:</label>
+      <input type="number" name="price" id="price">
+    </div>
+    <div>
+      <label for="quantity">Quantity:</label>
+      <input type="number" name="count" id="quantity">
+    </div>
+    <div>
+      <label for="cover">Cover:</label>
+      <input type="file" name="cover" id="cover" accept=".jpg">
+    </div>
+    <button>Submit</button>
+  </form>
+</body>
+</html>
