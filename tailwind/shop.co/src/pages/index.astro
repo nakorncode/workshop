@@ -1,0 +1,236 @@
+---
+import ProductItem from '../components/ProductItem.astro'
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Astro</title>
+	</head>
+	<body>
+    <section class="text-white bg-black py-1">
+      <div class="container text-center relative">
+        <p class="text-sm sm:text-base">Sign up and get 20% off to your first order. Sign Up Now</p>
+        <button type="button" class="absolute top-0 right-0 z-10 hidden sm:block">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect width="24" height="24" fill="none"/><path fill="currentColor" d="M6.4 19L5 17.6l5.6-5.6L5 6.4L6.4 5l5.6 5.6L17.6 5L19 6.4L13.4 12l5.6 5.6l-1.4 1.4l-5.6-5.6z"/></svg>
+        </button>
+      </div>
+    </section>
+
+    <nav class="py-3">
+      <div class="container flex items-center gap-4">
+        <div class="flex items-center gap-2 md:gap-4">
+
+          <div class="drawer md:hidden">
+            <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+            <div class="drawer-content">
+              <!-- Page content here -->
+              <label for="my-drawer" class="drawer-button"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M3 18v-2h18v2zm0-5v-2h18v2zm0-5V6h18v2z"/></svg></label>
+            </div>
+            <div class="drawer-side">
+              <label for="my-drawer" aria-label="close sidebar" class="drawer-overlay"></label>
+              <ul class="menu bg-base-200 text-base-content min-h-full w-80 p-4">
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">On Sale</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Brands</a></li>
+              </ul>
+            </div>
+          </div>
+
+          <img src="https://placehold.co/100x40" alt="logo" />
+          <ul class="hidden md:flex items-center gap-4">
+            <li><a href="#">Shop</a></li>
+            <li><a href="#">On Sale</a></li>
+            <li><a href="#">New Arrivals</a></li>
+            <li><a href="#">Brands</a></li>
+          </ul>
+        </div>
+        <div class="flex-1">
+          <input type="search" placeholder="Search for products..." class="bg-gray-100 w-full rounded-full py-2 px-4" />
+        </div>
+        <div>
+          <a href="">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 4c1.93 0 3.5 1.57 3.5 3.5S13.93 13 12 13s-3.5-1.57-3.5-3.5S10.07 6 12 6m0 14c-2.03 0-4.43-.82-6.14-2.88a9.95 9.95 0 0 1 12.28 0C16.43 19.18 14.03 20 12 20"/></svg>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <header class="bg-neutral-100">
+      <div class="container">
+        <div class="flex flex-col md:flex-row gap-4 pt-12">
+          <section class="self-center">
+            <section>
+              <h1 class="text-4xl md:text-5xl font-bold">FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+              <p class="mt-5 text-gray-500">Browse through our diverse range of meticulously crafted garments, designed to bring out your individuality and cater to your sense of style.</p>
+              <div class="mt-3">
+                <a href="#" class="w-full md:w-auto text-center bg-black hover:bg-zinc-700
+                transition text-white py-3 px-16 mt-5 inline-block rounded-full">Shop Now</a>
+              </div>
+            </section>
+            <section class="mt-10">
+              <ul class="grid grid-cols-2 sm:grid-cols-3">
+                <li class="stats-item border-r-2">
+                  <strong>200+</strong>
+                  <small>International Brands</small>
+                </li>
+                <li class="stats-item">
+                  <strong>2,000+</strong>
+                  <small>High-Quality Products</small>
+                </li>
+                <li class="stats-item sm:border-l-2 col-span-2 sm:col-span-1 items-center mt-4 sm:mt-0">
+                  <strong>30,000+</strong>
+                  <small>Happy Customers</small>
+                </li>
+              </ul>
+            </section>
+          </section>
+          <section class="self-end">
+            <img src="https://placehold.co/800x800" alt="">
+          </section>
+        </div>
+      </div>
+    </header>
+
+    <section class="bg-black py-6">
+      <div class="container">
+        <div class="flex flex-wrap gap-4 justify-center">
+          <img src="https://placehold.co/150x50" alt="">
+          <img src="https://placehold.co/150x50" alt="">
+          <img src="https://placehold.co/150x50" alt="">
+          <img src="https://placehold.co/150x50" alt="">
+          <img src="https://placehold.co/150x50" alt="">
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 mt-6">
+      <div class="container">
+        <h2 class="text-4xl sm:text-5xl font-bold text-center">NEW ARRIVALS</h2>
+        <ul class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-14">
+          <ProductItem name="Product Name" price="99.99" star="4.8" img="https://placehold.co/200x200"></ProductItem>
+          <ProductItem name="Product Name" price="99.99" star="5" sale={{percentage: 20, price: 79.99}} img="https://placehold.co/200x200"></ProductItem>
+          <ProductItem name="Product Name" price="99.99" star="3.8" img="https://placehold.co/200x200"></ProductItem>
+          <ProductItem name="Product Name" price="99.99" star="3.4" img="https://placehold.co/200x200"></ProductItem>
+        </ul>
+        <div class="mt-10 text-center">
+          <a href="#" class="border border-gray-300 px-24 py-4 inline-block rounded-full">View All</a>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="container">
+        <div class="rounded-3xl bg-neutral-100 py-8 md:py-16 px-6 md:px-10">
+          <h2 class="text-3xl sm:text-4xl font-bold text-center mb-10">BROWSE BY DRESS STYLE</h2>
+          <ul class="grid gap-4 grid-cols-1 md:grid-cols-8">
+            <li class="md:col-span-3">
+              <a class="dress-style-item" href="#" style="background-image: url('https://placehold.co/400x400/white/black');">Casual</a>
+            </li>
+            <li class="md:col-span-5">
+              <a class="dress-style-item" href="#" style="background-image: url('https://placehold.co/400x400/white/black');">Formal</a>
+            </li>
+            <li class="md:col-span-5">
+              <a class="dress-style-item" href="#" style="background-image: url('https://placehold.co/400x400/white/black');">Party</a>
+            </li>
+            <li class="md:col-span-3">
+              <a class="dress-style-item" href="#" style="background-image: url('https://placehold.co/400x400/white/black');">Gym</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="pt-12">
+      <div class="container">
+        <h2 class="text-4xl font-bold">OUR HAPPY CUSTOMERS</h2>
+        <ul class="mt-10 grid grid-cols-1 md:grid-cols-3 gap-4">
+          <li class="border border-gray-300 rounded-2xl py-6 px-8 space-y-2">
+            <span class="flex text-yellow-400">
+              {Array.from({ length: 5 }, () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>)}
+            </span>
+            <h3 class="flex items-center gap-2">
+              <span class="font-bold text-xl">John Doe</span>
+              <svg class="text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>
+            </h3>
+            <q class="text-gray-600">Magna duis et deserunt nulla ipsum et adipisicing nisi amet.</q>
+          </li>
+          <li class="border border-gray-300 rounded-2xl py-6 px-8 space-y-2">
+            <span class="flex text-yellow-400">
+              {Array.from({ length: 5 }, () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>)}
+            </span>
+            <h3 class="flex items-center gap-2">
+              <span class="font-bold text-xl">John Doe</span>
+              <svg class="text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>
+            </h3>
+            <q class="text-gray-600">Magna duis et deserunt nulla ipsum et adipisicing nisi amet.</q>
+          </li>
+          <li class="border border-gray-300 rounded-2xl py-6 px-8 space-y-2">
+            <span class="flex text-yellow-400">
+              {Array.from({ length: 5 }, () => <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>)}
+            </span>
+            <h3 class="flex items-center gap-2">
+              <span class="font-bold text-xl">John Doe</span>
+              <svg class="text-green-600" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m10.6 16.6l7.05-7.05l-1.4-1.4l-5.65 5.65l-2.85-2.85l-1.4 1.4zM12 22q-2.075 0-3.9-.788t-3.175-2.137T2.788 15.9T2 12t.788-3.9t2.137-3.175T8.1 2.788T12 2t3.9.788t3.175 2.137T21.213 8.1T22 12t-.788 3.9t-2.137 3.175t-3.175 2.138T12 22"/></svg>
+            </h3>
+            <q class="text-gray-600">Magna duis et deserunt nulla ipsum et adipisicing nisi amet.</q>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="relative mt-44 sm:mt-36">
+      <div class="top-0 left-0 right-0 absolute -translate-y-1/2 container">
+        <div class="flex flex-col md:flex-row items-center justify-between bg-black py-6 px-6 md:px-16 rounded-2xl gap-4">
+          <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white">STAY UPTO DATE ABOUT<br>OUR LATEST OFFERS</h2>
+          <form class="max-w-sm">
+            <input type="text" placeholder="Enter your email address" class="bg-neutral-100 w-full rounded-full py-2 sm:py-3 px-5">
+            <button class="bg-white hover:bg-zinc-300 transition text-black py-2 sm:py-3 mt-3 inline-block rounded-full w-full">Subscribe to Newsletter</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="bg-neutral-200 pt-24 md:pt-20">
+      <div class="container">
+        <section class="flex flex-col md:flex-row items-center justify-between gap-4 pt-12 pb-6">
+          <div class="flex flex-col sm:flex-row items-center gap-4">
+            <img src="https://placehold.co/150x60" alt="logo" />
+            <ul class="flex flex-wrap items-center gap-4">
+              <li><a href="#">Shop</a></li>
+              <li><a href="#">On Sale</a></li>
+              <li><a href="#">New Arrivals</a></li>
+              <li><a href="#">Brands</a></li>
+            </ul>
+          </div>
+          <ul class="flex items-center gap-4">
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms & Conditions</a></li>
+          </ul>
+        </section>
+        <section class="border-t-2 border-gray-300">
+          <p class="text-center  text-gray-700 py-4">Copyright 2023 Shop.co. All rights reserved.</p>
+        </section>
+      </div>
+    </footer>
+	</body>
+</html>
+
+<style>
+  .stats-item {
+    @apply flex flex-col gap-1 first:pl-0 px-4 last:pr-0;
+  }
+  .stats-item strong {
+    @apply text-3xl lg:text-4xl font-bold
+  }
+  .stats-item small {
+    @apply text-gray-500
+  }
+  .dress-style-item {
+    @apply bg-white h-52 block rounded-xl p-6 text-2xl font-bold bg-contain bg-no-repeat bg-right;
+  }
+</style>

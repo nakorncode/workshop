@@ -1,0 +1,30 @@
+---
+const { img, name, star, price, sale } = Astro.props;
+---
+
+<li>
+  <img class="w-full rounded-2xl" src={img} alt={name}>
+  <h3 class="font-bold text-xl mt-2">{name}</h3>
+  <p class="mt-2 text-yellow-400 flex items-center">
+    {Array.from({ length: Math.floor(star) }).map((_, i) => (
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+    ))}
+    {star % 1 !== 0 && (
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="m15.15 16.85l-.825-3.6l2.775-2.4l-3.65-.325l-1.45-3.4v7.8zM5.825 21l1.625-7.025L2 9.25l7.2-.625L12 2l2.8 6.625l7.2.625l-5.45 4.725L18.175 21L12 17.275z"/></svg>
+    )}
+    <span class="text-black ml-2 text-sm">{star}/5</span>
+  </p>
+  <section class="mt-2">
+    {
+      sale ? (
+        <div class="flex md:flex-row gap-3 items-center text-xl">
+          <p class="font-bold">${sale.price}</p>
+          <p class="line-through text-gray-400">${price}</p>
+          <p class="hidden md:inline-block bg-red-100 text-red-500 px-4 py-1 rounded-full text-base">-{sale.percentage}%</p>
+        </div>
+      ) : (
+        <p class="font-bold text-xl">${price}</p>
+      )
+    }
+  </section>
+</li>
