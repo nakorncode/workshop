@@ -1,0 +1,16 @@
+# - สร้างไฟล์ loadtest.yml
+# - pnpm i -g artillery
+# - artillery run loadtest.yml
+
+config:
+  target: 'http://localhost:3000'
+  phases:
+    - duration: 1
+      arrivalRate: 100
+  http:
+    timeout: 1000
+
+scenarios:
+  - flow:
+    - get:
+        url: '/fib?n=36'
