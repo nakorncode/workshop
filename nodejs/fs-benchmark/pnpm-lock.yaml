@@ -1,0 +1,23 @@
+lockfileVersion: '9.0'
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false
+
+importers:
+
+  .:
+    dependencies:
+      tinybench:
+        specifier: ^3.1.0
+        version: 3.1.0
+
+packages:
+
+  tinybench@3.1.0:
+    resolution: {integrity: sha512-Km+oMh2xqNCxuyoUsqbRmHgFSd8sATh7v7xreP+kHN6x67w28Pawr83WmBxcaORvxkc0Ex6zgqK951yBnTFaaQ==}
+    engines: {node: '>=18.0.0'}
+
+snapshots:
+
+  tinybench@3.1.0: {}
