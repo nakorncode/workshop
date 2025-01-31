@@ -20,8 +20,10 @@ model User {
   id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   email     String   @unique
+  password  String
   name      String?  @db.VarChar(50)
   bio       String?
+  image     String?
   role      Role     @default(USER)
   posts     Post[]
 }
