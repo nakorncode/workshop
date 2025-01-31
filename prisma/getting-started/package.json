@@ -7,6 +7,9 @@
     "dev": "tsx --watch src/index.ts",
     "deploy:db": "dotenv -e .env.production -- prisma migrate deploy"
   },
+  "prisma": {
+    "seed": "tsx prisma/seed.ts"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
