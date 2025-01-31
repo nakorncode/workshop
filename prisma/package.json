@@ -1,0 +1,19 @@
+{
+  "name": "prisma",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "deploy:db": "dotenv -e .env.production -- prisma migrate deploy"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "dotenv-cli": "^8.0.0",
+    "prisma": "^6.3.0"
+  },
+  "dependencies": {
+    "@prisma/client": "6.3.0"
+  }
+}

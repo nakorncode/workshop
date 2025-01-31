@@ -1,0 +1,54 @@
+// Reference: https://www.prisma.io/docs/orm/reference/prisma-schema-reference
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// Model: https://www.prisma.io/docs/orm/reference/prisma-schema-reference#model-fields
+// Field type scalar types: https://www.prisma.io/docs/orm/reference/prisma-schema-reference#model-field-scalar-types
+// Field type modifiers: https://www.prisma.io/docs/orm/reference/prisma-schema-reference#model-field-type-modifiers
+// Attributes: https://www.prisma.io/docs/orm/reference/prisma-schema-reference#attributes
+// Attribute functions: https://www.prisma.io/docs/orm/reference/prisma-schema-reference#attribute-functions
+
+model User {
+  // Field name    Field type    Attributes
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  email     String   @unique
+  name      String?  @db.VarChar(50)
+  bio       String?
+  role      Role     @default(USER)
+  posts     Post[]
+}
+
+model Post {
+  id         Int        @id @default(autoincrement())
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
+  published  Boolean    @default(false)
+  title      String     @db.VarChar(255)
+  author     User?      @relation(fields: [authorId], references: [id])
+  authorId   Int?
+  categories Category[]
+  tags       String[]
+}
+
+model Category {
+  id    Int    @id @default(autoincrement())
+  name  String
+  posts Post[]
+}
+
+// Enum: https://www.prisma.io/docs/orm/reference/prisma-schema-reference#enum
+
+enum Role {
+  USER
+  ADMIN
+}
+
+// Type (MongoDB only): https://www.prisma.io/docs/orm/reference/prisma-schema-reference#type
