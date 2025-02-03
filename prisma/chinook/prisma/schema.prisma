@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model album {
+  album_id  Int     @id @default(autoincrement())
+  title     String  @db.VarChar(160)
+  artist_id Int
+  artist    artist  @relation(fields: [artist_id], references: [artist_id], onDelete: NoAction, onUpdate: NoAction)
+  track     track[]
+
+  @@index([artist_id])
+}
+
+model artist {
+  artist_id Int     @id @default(autoincrement())
+  name      String? @db.VarChar(120)
+  album     album[]
+}
+
+model customer {
+  customer_id    Int       @id @default(autoincrement())
+  first_name     String    @db.VarChar(40)
+  last_name      String    @db.VarChar(20)
+  company        String?   @db.VarChar(80)
+  address        String?   @db.VarChar(70)
+  city           String?   @db.VarChar(40)
+  state          String?   @db.VarChar(40)
+  country        String?   @db.VarChar(40)
+  postal_code    String?   @db.VarChar(10)
+  phone          String?   @db.VarChar(24)
+  fax            String?   @db.VarChar(24)
+  email          String    @db.VarChar(60)
+  support_rep_id Int?
+  employee       employee? @relation(fields: [support_rep_id], references: [employee_id], onDelete: NoAction, onUpdate: NoAction)
+  invoice        invoice[]
+
+  @@index([support_rep_id])
+}
+
+model employee {
+  employee_id    Int        @id @default(autoincrement())
+  last_name      String     @db.VarChar(20)
+  first_name     String     @db.VarChar(20)
+  title          String?    @db.VarChar(30)
+  reports_to     Int?
+  birth_date     DateTime?  @db.Timestamp(6)
+  hire_date      DateTime?  @db.Timestamp(6)
+  address        String?    @db.VarChar(70)
+  city           String?    @db.VarChar(40)
+  state          String?    @db.VarChar(40)
+  country        String?    @db.VarChar(40)
+  postal_code    String?    @db.VarChar(10)
+  phone          String?    @db.VarChar(24)
+  fax            String?    @db.VarChar(24)
+  email          String?    @db.VarChar(60)
+  customer       customer[]
+  employee       employee?  @relation("employeeToemployee", fields: [reports_to], references: [employee_id], onDelete: NoAction, onUpdate: NoAction)
+  other_employee employee[] @relation("employeeToemployee")
+
+  @@index([reports_to])
+}
+
+model genre {
+  genre_id Int     @id @default(autoincrement())
+  name     String? @db.VarChar(120)
+  track    track[]
+}
+
+model invoice {
+  invoice_id          Int            @id @default(autoincrement())
+  customer_id         Int
+  invoice_date        DateTime       @db.Timestamp(6)
+  billing_address     String?        @db.VarChar(70)
+  billing_city        String?        @db.VarChar(40)
+  billing_state       String?        @db.VarChar(40)
+  billing_country     String?        @db.VarChar(40)
+  billing_postal_code String?        @db.VarChar(10)
+  total               Decimal        @db.Decimal(10, 2)
+  customer            customer       @relation(fields: [customer_id], references: [customer_id], onDelete: NoAction, onUpdate: NoAction)
+  invoice_line        invoice_line[]
+
+  @@index([customer_id])
+}
+
+model invoice_line {
+  invoice_line_id Int     @id @default(autoincrement())
+  invoice_id      Int
+  track_id        Int
+  unit_price      Decimal @db.Decimal(10, 2)
+  quantity        Int
+  invoice         invoice @relation(fields: [invoice_id], references: [invoice_id], onDelete: NoAction, onUpdate: NoAction)
+  track           track   @relation(fields: [track_id], references: [track_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([invoice_id])
+  @@index([track_id])
+}
+
+model media_type {
+  media_type_id Int     @id @default(autoincrement())
+  name          String? @db.VarChar(120)
+  track         track[]
+}
+
+model playlist {
+  playlist_id    Int              @id @default(autoincrement())
+  name           String?          @db.VarChar(120)
+  playlist_track playlist_track[]
+}
+
+model playlist_track {
+  playlist_id Int
+  track_id    Int
+  playlist    playlist @relation(fields: [playlist_id], references: [playlist_id], onDelete: NoAction, onUpdate: NoAction)
+  track       track    @relation(fields: [track_id], references: [track_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@id([playlist_id, track_id])
+  @@index([playlist_id])
+  @@index([track_id])
+}
+
+model track {
+  track_id       Int              @id @default(autoincrement())
+  name           String           @db.VarChar(200)
+  album_id       Int?
+  media_type_id  Int
+  genre_id       Int?
+  composer       String?          @db.VarChar(220)
+  milliseconds   Int
+  bytes          Int?
+  unit_price     Decimal          @db.Decimal(10, 2)
+  invoice_line   invoice_line[]
+  playlist_track playlist_track[]
+  album          album?           @relation(fields: [album_id], references: [album_id], onDelete: NoAction, onUpdate: NoAction)
+  genre          genre?           @relation(fields: [genre_id], references: [genre_id], onDelete: NoAction, onUpdate: NoAction)
+  media_type     media_type       @relation(fields: [media_type_id], references: [media_type_id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([album_id])
+  @@index([genre_id])
+  @@index([media_type_id])
+}
