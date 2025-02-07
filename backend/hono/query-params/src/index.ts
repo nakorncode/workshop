@@ -81,7 +81,7 @@ app.get('/toys', async (c) => {
     data = data.filter((toy) => toy.quantity <= parseInt(query.quantityMax))
   }
   const accept = c.req.header('Accept')
-  if (accept && (accept.includes('application/json'))) {
+  if (accept && accept.includes('application/json')) {
     return c.json({ total: data.length, data })
   }
   return c.html(`

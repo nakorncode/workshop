@@ -26,16 +26,14 @@ app.get('/products', (c) => {
 app.post('/products', async (c) => {
   const product = await c.req.json() as Product
   products.push({ ...product, id: products.length + 1 })
-  c.status(201)
-  return c.json({ message: 'Product created' })
+  return c.json({ message: 'Product created' }, 201)
 })
 
 app.get('/products/:id', (c) => {
   const id = Number(c.req.param('id'))
   const product = products.find((p) => p.id === id)
   if (!product) {
-    c.status(404)
-    return c.json({ message: 'Product not found' })
+    return c.json({ message: 'Product not found' }, 404)
   }
   return c.json({ data: product })
 })
@@ -45,8 +43,7 @@ app.put('/products/:id', async (c) => {
   const product = await c.req.json() as Product
   const index = products.findIndex((p) => p.id === id)
   if (index === -1) {
-    c.status(404)
-    return c.json({ message: 'Product not found' })
+    return c.json({ message: 'Product not found' }, 404)
   }
   products[index] = { ...product, id: products[index].id }
   return c.json({ message: 'Product updated' })
@@ -57,8 +54,7 @@ app.patch('/products/:id/status', async (c) => {
   const product = await c.req.json() as { status: Status }
   const index = products.findIndex((p) => p.id === id)
   if (index === -1) {
-    c.status(404)
-    return c.json({ message: 'Product not found' })
+    return c.json({ message: 'Product not found' }, 404)
   }
   products[index] = { ...products[index], status: product.status }
   return c.json({ message: 'Product status updated' })
@@ -69,8 +65,7 @@ app.patch('/products/:id/quantity', async (c) => {
   const product = await c.req.json() as { quantity: number }
   const index = products.findIndex((p) => p.id === id)
   if (index === -1) {
-    c.status(404)
-    return c.json({ message: 'Product not found' })
+    return c.json({ message: 'Product not found' }, 404)
   }
   products[index] = { ...products[index], quantity: product.quantity }
   return c.json({ message: 'Product quantity updated' })
@@ -80,8 +75,7 @@ app.delete('/products/:id', (c) => {
   const id = Number(c.req.param('id'))
   const index = products.findIndex((p) => p.id === id)
   if (index === -1) {
-    c.status(404)
-    return c.json({ message: 'Product not found' })
+    return c.json({ message: 'Product not found' }, 404)
   }
   products.splice(index, 1)
   return c.json({ message: 'Product deleted' })
