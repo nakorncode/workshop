@@ -16,6 +16,10 @@ app.get('/say/:message', (c) => {
   return c.text('Unsupported Media Type', 415)
 })
 
-serve(app, (info) => {
-  console.log(`Server started on http://localhost:${info.port}`)
+const port = 3000
+console.log(`Server is running on http://localhost:${port}`)
+
+serve({
+  fetch: app.fetch,
+  port
 })

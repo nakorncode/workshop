@@ -87,6 +87,10 @@ app.delete('/products/:id', (c) => {
   return c.json({ message: 'Product deleted' })
 })
 
-serve(app, (info) => {
-  console.log(`Server started on http://localhost:${info.port}`)
+const port = 3000
+console.log(`Server is running on http://localhost:${port}`)
+
+serve({
+  fetch: app.fetch,
+  port
 })
