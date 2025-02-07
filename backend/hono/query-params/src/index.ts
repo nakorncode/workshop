@@ -24,6 +24,41 @@ const toys: Toy[] = [
   { id: 10, name: 'Rubik\'s Cube', tags: ['brain', 'challenge', 'fun'], price: 410, quantity: 50 },
 ]
 
+app.get('/', (c) => {
+  return c.html(`
+    <h1>Search Toys</h1>
+    <form action="/toys" method="get">
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" name="name" id="name" placeholder="Name" />
+      </div>
+      <div>
+        <label for="tag">Tag:</label>
+        <input type="text" name="tag" id="tag" placeholder="Tag" />
+      </div>
+      <div>
+        <label for="priceMin">Price Min:</label>
+        <input type="number" name="priceMin" id="priceMin" placeholder="Price Min" />
+      </div>
+      <div>
+        <label for="priceMax">Price Max:</label>
+        <input type="number" name="priceMax" id="priceMax" placeholder="Price Max" />
+      </div>
+      <div>
+        <label for="quantityMin">Quantity Min:</label>
+        <input type="number" name="quantityMin" id="quantityMin" placeholder="Quantity Min" />
+      </div>
+      <div>
+        <label for="quantityMax">Quantity Max:</label>
+        <input type="number" name="quantityMax" id="quantityMax" placeholder="Quantity Max" />
+      </div>
+      <div>
+        <button type="submit">Search</button>
+      </div>
+    </form>
+  `)
+})
+
 app.get('/toys', async (c) => {
   const query = c.req.query()
   let data = structuredClone(toys)
@@ -45,7 +80,34 @@ app.get('/toys', async (c) => {
   if (query.quantityMax) {
     data = data.filter((toy) => toy.quantity <= parseInt(query.quantityMax))
   }
-  return c.json({ total: data.length, data })
+  const accept = c.req.header('Accept')
+  if (accept && (accept.includes('application/json'))) {
+    return c.json({ total: data.length, data })
+  }
+  return c.html(`
+    <h1>Result</h1>
+    <p>Total: ${data.length}</p>
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Tags</th>
+          <th>Price</th>
+          <th>Quantity</th>
+        </tr>
+      </thead>
+      <tbody>
+        ${data.map((toy) => `
+          <tr>
+            <td>${toy.name}</td>
+            <td>${toy.tags.join(', ')}</td>
+            <td>${toy.price}</td>
+            <td>${toy.quantity}</td>
+          </tr>
+        `).join('')}
+      </tbody>
+    </table>
+  `)
 })
 
 const port = 3000
