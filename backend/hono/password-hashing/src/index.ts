@@ -6,6 +6,7 @@ import argon2 from '@node-rs/argon2'
 import { HTTPException } from 'hono/http-exception'
 import { zValidator } from '@hono/zod-validator'
 import { z } from 'zod'
+import { showRoutes } from 'hono/dev'
 
 const prisma = new PrismaClient()
 
@@ -60,6 +61,8 @@ app.post('/argon2/login', authInput, async (c) => {
   }
   return c.json({ message: 'Logged in (Argon2)', data: user })
 })
+
+showRoutes(app)
 
 app.onError((err, c) => {
   console.error(err)
