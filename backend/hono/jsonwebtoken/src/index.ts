@@ -8,6 +8,7 @@ import { z } from 'zod'
 import { createMiddleware } from 'hono/factory'
 import { deleteCookie, getCookie, setCookie } from 'hono/cookie'
 import { SignJWT, jwtVerify } from 'jose'
+import { showRoutes } from 'hono/dev'
 
 const prisma = new PrismaClient()
 const app = new Hono()
@@ -91,6 +92,8 @@ app.get('/me', mustAuth, async (c) => {
   const user = await prisma.user.findUnique({ where: { id: userId } })
   return c.json({ data: user })
 })
+
+showRoutes(app)
 
 app.onError((err, c) => {
   if (err instanceof HTTPException) {
