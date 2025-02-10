@@ -2,7 +2,7 @@
   "name": "file-uploader",
   "type": "module",
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.tsx"
   },
   "dependencies": {
     "@hono/node-server": "^1.13.8",

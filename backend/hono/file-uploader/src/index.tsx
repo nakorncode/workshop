@@ -9,6 +9,18 @@ import { pipeline } from 'node:stream/promises'
 
 const app = new Hono()
 
+app.get('/', (c) => {
+  return c.html(
+    <>
+      <h1>File Uploader</h1>
+      <form action="/upload/avatar" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" />
+        <button type="submit">Upload</button>
+      </form>
+    </>
+  )
+})
+
 app.post('/upload/avatar', async (c) => {
   const body = await c.req.parseBody()
   if (!(body.file instanceof File)) {
