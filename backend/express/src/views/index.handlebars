@@ -1,0 +1,45 @@
+<div class="container" style="max-width: 560px;">
+  <h1 class="mt-4">Todo</h1>
+  <hr />
+  {{> notification }}
+  <p class="mt-3">Hello, {{user.name}}, <a href="/logout">Logout</a></p>
+  <hr />
+  {{#if todos}}
+    {{#each todos}}
+      <div class="shadow mb-3 p-4 rounded-3">
+        <h3>{{title}}</h3>
+        <p class="mt-2">{{description}}</p>
+        <ul>
+          {{#each items}}
+            <li>{{title}}</li>
+          {{/each}}
+        </ul>
+        <form action="/add-item/{{id}}" method="post">
+          <div class="row g-2 mb-3">
+            <div class="col">
+              <input type="text" class="form-control" id="title" name="title" placeholder="Please input item" required />
+            </div>
+            <div class="col-auto">
+              <button type="submit" class="btn btn-primary">Add Item</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    {{/each}}
+  {{else}}
+    <p>No todo found</p>
+  {{/if}}
+  <hr />
+  <form action="/create" method="post" class="p-3 shadow-lg rounded">
+    <h2 class="fs-4 mb-3">Create New Todo</h2>
+    <div class="mb-3">
+      <label for="title" class="form-label">Title</label>
+      <input type="text" class="form-control" id="title" name="title" required />
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Description</label>
+      <textarea class="form-control" id="description" name="description" rows="3"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Create Todo</button>
+  </form>
+</div>

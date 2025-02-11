@@ -1,0 +1,27 @@
+<div class="container" style="max-width: 360px;">
+  <h1 class="mt-4">Sign-up</h1>
+  <hr />
+  {{> notification}}
+  <form action="/sign-up" method="post">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required />
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input type="password" class="form-control" id="password" name="password" required />
+    </div>
+    <div class="mb-3">
+      <label for="passwordConfirm" class="form-label">Password Confirm</label>
+      <input type="password" class="form-control" id="passwordConfirm" name="passwordConfirm" required />
+    </div>
+    <button type="submit" class="btn btn-primary w-100">Submit</button>
+  </form>
+  <p class="mt-3">
+    Already have an account? <a href="/login">Login</a>
+  </p>
+</div>
