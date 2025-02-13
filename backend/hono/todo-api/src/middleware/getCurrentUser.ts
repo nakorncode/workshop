@@ -1,7 +1,7 @@
 import { createMiddleware } from 'hono/factory'
 import { auth } from '../auth.js'
 
-interface User {
+export interface User {
   id: string;
   email: string;
   emailVerified: boolean;

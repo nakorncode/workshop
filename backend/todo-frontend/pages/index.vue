@@ -13,6 +13,9 @@ if (!loggedIn) {
     <h1 class="text-2xl font-bold">My Todo</h1>
     <hr class="my-4 border-gray-300">
     <ShowNotification class="my-4" :messages="notification.messages.value"></ShowNotification>
-    Welcome {{ user.name }}. Not your account? <button @click="logout" type="button" class="cursor-pointer underline text-blue-600">Sign Out</button>
+    <p>Welcome {{ user.name }}. Not your account? <button @click="logout" type="button" class="cursor-pointer underline text-blue-600">Sign Out</button></p>
+    <div class="mt-6">
+      <TodoList></TodoList>
+    </div>
   </div>
 </template>
