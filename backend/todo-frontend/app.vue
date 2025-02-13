@@ -19,7 +19,7 @@ try {
 </script>
 
 <template>
-  <div>
+  <div class="p-3">
     <NuxtLayout>
       <NuxtPage></NuxtPage>
     </NuxtLayout>

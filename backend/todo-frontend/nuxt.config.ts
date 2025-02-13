@@ -12,6 +12,9 @@ export default defineNuxtConfig({
       apiUrl: ''
     }
   },
+  modules: [
+    '@vee-validate/nuxt',
+  ],
   vite: {
     plugins: [
       tailwindcss()
