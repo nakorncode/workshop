@@ -16,7 +16,7 @@ const app = new Hono()
 app.use('*', cors({
   origin: 'http://localhost:3001',
   allowHeaders: ['Content-Type', 'Authorization'],
-  allowMethods: ['POST', 'GET', 'PATCH', 'OPTIONS'],
+  allowMethods: ['POST', 'GET', 'PATCH', 'DELETE', 'OPTIONS'],
   exposeHeaders: ['Content-Length'],
   maxAge: 600,
   credentials: true,
@@ -36,6 +36,9 @@ app.get('/todos', needSession, zValidator('query', z.object({
     where: {
       userId: user.id,
       isArchived: c.req.valid('query').withArchived ?? false
+    },
+    orderBy: {
+      createdAt: 'asc'
     },
     include: {
       items: {
@@ -97,16 +100,42 @@ app.patch('/todos/:todoId/items/:todoItemId/done', ...checkOwnTodo, zValidator('
 })), async (c) => {
   const todoId = c.req.param('todoId')
   const todoItemId = c.req.param('todoItemId')
-  await prisma.todoItem.update({
+  const todoItem = await prisma.todoItem.update({
     where: {
       id: todoItemId,
       todoId
     },
     data: {
       done: c.req.valid('json').done
+    },
+    select: {
+      todo: {
+        select: {
+          items: {
+            select: {
+              done: true
+            }
+          }
+        }
+      }
+    }
+  })
+  await prisma.todo.update({
+    where: { id: todoId },
+    data: {
+      done: todoItem.todo.items.every((item) => item.done)
     }
   })
   return c.json({ message: 'Done' })
+})
+
+app.delete('/todos/:todoId', ...checkOwnTodo, async (c) => {
+  const todoId = c.req.param('todoId')
+  await prisma.todo.update({
+    where: { id: todoId },
+    data: { isArchived: true }
+  })
+  return c.json({ message: 'Deleted' })
 })
 
 showRoutes(app)

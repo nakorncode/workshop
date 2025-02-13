@@ -39,6 +39,17 @@ async function changeStatusItem(todoId: string, todoItemId: string, done: boolea
     alert((error as Error).message)
   }
 }
+
+async function archiveTodo(todoId: string) {
+  try {
+    await fetch(`/todos/${todoId}`, {
+      method: 'delete'
+    })
+    await fetchTodos()
+  } catch (error) {
+    alert((error as Error).message)
+  }
+}
 </script>
 
 <template>
@@ -46,8 +57,9 @@ async function changeStatusItem(todoId: string, todoItemId: string, done: boolea
     <p>No todo found</p>
   </div>
   <ul v-else class="space-y-4">
-    <li v-for="(todo, i) of todos" :key="i" class="p-4 rounded-md border border-gray-300">
-      <h3 class="text-xl font-bold">Todo List: {{ todo.title }}</h3>
+    <li v-for="(todo, i) of todos" :key="i" class="p-4 rounded-md border border-gray-300 relative">
+      <h3 class="text-xl font-bold" :class="{ 'line-through': todo.done }">Todo List: {{ todo.title }}</h3>
+      <button @click="() => archiveTodo(todo.id)" type="button" class="absolute top-4 right-4 text-sm inline-block py-1 px-2 bg-red-600 text-white rounded cursor-pointer">Archive</button>
       <p v-if="todo.description">{{ todo.description }}</p>
       <div class="mt-3">
         <p v-if="todo.items.length === 0" class="italic text-gray-600">No items</p>
