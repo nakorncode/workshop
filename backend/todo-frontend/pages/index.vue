@@ -9,7 +9,7 @@ if (!loggedIn) {
 </script>
 
 <template>
-  <div v-if="user">
+  <div v-if="user" class="max-w-xl mx-auto">
     <h1 class="text-2xl font-bold">My Todo</h1>
     <hr class="my-4 border-gray-300">
     <ShowNotification class="my-4" :messages="notification.messages.value"></ShowNotification>
