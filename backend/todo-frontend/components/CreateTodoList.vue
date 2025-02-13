@@ -1,14 +1,20 @@
 <script lang="ts" setup>
 const fetch = useFetchBackend()
 
-async function onSubmit(event: Event) {
-  const formData = new FormData(event.target as HTMLFormElement)
-  const data = Object.fromEntries(formData)
+const title = ref('')
+const description = ref('')
+
+async function onSubmit() {
   try {
     await fetch('/todos', {
       method: 'post',
-      body: data
+      body: {
+        title: title.value,
+        description: description.value
+      }
     })
+    title.value = ''
+    description.value = ''
     emit('created')
   } catch (error) {
     alert((error as Error).message)
@@ -25,11 +31,11 @@ const emit = defineEmits<{
   <form @submit.prevent="onSubmit">
     <div class="mb-3">
       <label for="title" class="mb-1 inline-block font-bold">Title:</label>
-      <input type="text" class="input" id="title" name="title" required />
+      <input v-model="title" type="text" class="input" id="title" name="title" required />
     </div>
     <div class="mb-3">
       <label for="description" class="mb-1 inline-block font-bold">Description (Optional):</label>
-      <textarea class="input" id="description" name="description" rows="3"></textarea>
+      <textarea v-model="description" class="input" id="description" name="description" rows="3"></textarea>
     </div>
     <button type="submit" class="btn btn-primary">Create Todo</button>
   </form>
