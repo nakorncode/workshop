@@ -68,7 +68,7 @@ app.post('/sum', async (c) => {
   }
   if (contentType.includes('application/json')) {
     const data = await c.req.json()
-    return c.text(printSumResult(data.a, data.b))
+    return c.text(printSumResult(Number(data.a), Number(data.b)))
   }
   if (contentType.includes('application/x-www-form-urlencoded')) {
     const data = await c.req.parseBody()
