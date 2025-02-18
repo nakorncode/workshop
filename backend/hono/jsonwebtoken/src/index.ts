@@ -60,8 +60,8 @@ const mustAuth = createMiddleware<{
       c.set('userId', userId)
       await next()
     } catch (error) {
-      deleteCookie(c, 'accessToken')
-      deleteCookie(c, 'refreshToken')
+      deleteCookie(c, 'accessToken', { httpOnly: true })
+      deleteCookie(c, 'refreshToken', { httpOnly: true })
       throw new HTTPException(401, { message: 'Unauthorized' })
     }
   }
