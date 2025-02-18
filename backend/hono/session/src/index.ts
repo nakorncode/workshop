@@ -47,6 +47,9 @@ const mustAuth = createMiddleware<{
   }
 }>(async (c, next) => {
   const key = getCookie(c, sessionCookieKey)
+  if (!key) {
+    throw new HTTPException(401, { message: 'Unauthorized' })
+  }
   const session = await prisma.session.findUnique({
     where: { key },
   })
@@ -62,6 +65,10 @@ const mustAuth = createMiddleware<{
   await prisma.session.update({
     where: { id: session.id },
     data: { expiresAt: session.expiresAt }
+  })
+  setCookie(c, sessionCookieKey, key, {
+    httpOnly: true,
+    maxAge,
   })
   c.set('userId', session.userId)
   await next()
