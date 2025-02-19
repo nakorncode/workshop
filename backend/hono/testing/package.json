@@ -1,0 +1,26 @@
+{
+  "name": "testing",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/startServer.ts",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "@hono/zod-validator": "^0.4.2",
+    "@node-rs/argon2": "^2.0.2",
+    "hono": "^4.6.20",
+    "jose": "^5.9.6",
+    "zod": "^3.24.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "tsx": "^4.7.1",
+    "vitest": "^3.0.5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  }
+}

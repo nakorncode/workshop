@@ -1,0 +1,26 @@
+{
+  "name": "s3",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "aws-sdk": "^2.1692.0",
+    "dotenv": "^16.4.7",
+    "hono": "^4.6.20",
+    "s3-upload-stream": "^1.0.7",
+    "sharp": "^0.33.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "@types/s3-upload-stream": "^1.0.7",
+    "tsx": "^4.7.1"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "aws-sdk",
+      "sharp"
+    ]
+  }
+}

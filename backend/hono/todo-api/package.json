@@ -1,0 +1,20 @@
+{
+  "name": "todo-api",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "^1.13.8",
+    "@hono/zod-validator": "^0.4.2",
+    "@prisma/client": "^6.3.1",
+    "better-auth": "^1.1.17",
+    "hono": "^4.6.20",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.17",
+    "prisma": "^6.3.1",
+    "tsx": "^4.7.1"
+  }
+}

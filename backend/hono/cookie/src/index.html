@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body.dark {
+      background-color: black;
+      color: white;
+    }
+    body.dark h1 {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <h1>Theme switcher</h1>
+  <button onclick="setTheme('dark')" type="button">Theme: Dark</button>
+  <button onclick="setTheme('light')" type="button">Theme: Light</button>
+
+  <script>
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.body.classList.add('dark')
+      } else {
+        document.body.classList.remove('dark')
+      }
+      localStorage.setItem('theme', theme === 'dark' ? 'dark' : 'light')
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const theme = localStorage.getItem('theme')
+      setTheme(theme)
+    })
+  </script>
+</body>
+</html>

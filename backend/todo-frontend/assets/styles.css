@@ -1,0 +1,9 @@
+@import "tailwindcss";
+
+.btn {
+  @apply bg-blue-600 text-white py-2 px-4 inline-block rounded-md cursor-pointer shadow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2;
+}
+
+.input {
+  @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500;
+}

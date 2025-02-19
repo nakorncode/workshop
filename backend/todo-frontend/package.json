@@ -1,0 +1,28 @@
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
+  },
+  "dependencies": {
+    "@tailwindcss/vite": "^4.0.6",
+    "@vee-validate/nuxt": "^4.15.0",
+    "@vee-validate/zod": "^4.15.0",
+    "better-auth": "^1.1.17",
+    "lodash-es": "^4.17.21",
+    "nuxt": "^3.15.4",
+    "tailwindcss": "^4.0.6",
+    "vue": "latest",
+    "vue-router": "latest",
+    "zod": "^3.24.2"
+  },
+  "packageManager": "pnpm@9.7.1+sha512.faf344af2d6ca65c4c5c8c2224ea77a81a5e8859cbc4e06b1511ddce2f0151512431dd19e6aff31f2c6a8f5f2aced9bd2273e1fed7dd4de1868984059d2c4247",
+  "devDependencies": {
+    "@types/lodash-es": "^4.17.12"
+  }
+}
