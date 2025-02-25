@@ -1,0 +1,7 @@
+{
+	"dependencies": {
+		"@vitejs/plugin-vue": "^5.2.1",
+		"vite": "^6.1.1",
+		"vue": "^3.5.13"
+	}
+}
