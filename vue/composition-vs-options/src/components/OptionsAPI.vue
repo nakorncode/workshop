@@ -1,26 +1,29 @@
 <template>
+  <h1>{{ title }}</h1>
   <div>
-    <h1>Options API</h1>
     <p>Counter: {{ counter }}</p>
     <p>Double: {{ doubleCounter }}</p>
-    <button @click="increment">Increment</button>
-    <input v-model="counter" type="number" />
+    <div>
+      <button @click="increment">Increment</button>
+      <input v-model="counter" type="number" />
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  // Props
   props: {
-    initialValue: {
-      type: Number,
+    title: {
+      type: String,
       required: true
-    },
-    modelValue: Number // v-model
+    }
+  },
+  emits: {
+    'counterChanged': (value) => typeof value === 'number'
   },
   data() {
     return {
-      counter: this.initialValue
+      counter: 0
     }
   },
   computed: {
@@ -31,7 +34,7 @@ export default {
   watch: {
     counter(newValue, oldValue) {
       console.log(`Counter changed from ${oldValue} to ${newValue}`)
-      this.$emit('update:modelValue', newValue) // Emit event
+      this.$emit('counterChanged', newValue) // Emit event
     }
   },
   mounted() {
