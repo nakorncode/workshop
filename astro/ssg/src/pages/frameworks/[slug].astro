@@ -20,7 +20,7 @@ export const getStaticPaths = (() => {
 const { name, description, year } = Astro.props
 ---
 
-<Layout>
+<Layout title={name}>
   <div class="text-center text-gray-700 p-5">
     <h1 class="text-3xl font-bold mb-2">{name}</h1>
     <p>{description}</p>

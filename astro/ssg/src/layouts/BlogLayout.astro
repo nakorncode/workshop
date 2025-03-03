@@ -2,11 +2,13 @@
 import '../styles/global.css'
 
 interface Props {
-  title?: string;
+  frontmatter: {
+    title?: string;
+  }
 }
 
-const siteName = 'My Apps'
-const { title } = Astro.props
+const siteName = 'My Blog'
+const { frontmatter: { title } } = Astro.props
 ---
 
 <!doctype html>
@@ -20,7 +22,9 @@ const { title } = Astro.props
 	</head>
 	<body>
     <main>
-      <slot />
+      <div class="prose prose-a:text-orange-500 mx-auto max-w-xl p-4 rounded-xl shadow-xl my-4">
+        <slot />
+      </div>
     </main>
 	</body>
 </html>
