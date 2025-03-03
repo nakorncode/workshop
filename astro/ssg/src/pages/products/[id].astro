@@ -1,0 +1,79 @@
+---
+import type { GetStaticPaths } from "astro";
+import Layout from '../../layouts/Layout.astro'
+
+interface Props {
+  product: {
+    id: number;
+    title: string;
+    description: string;
+    category: string;
+    price: number;
+    discountPercentage: number;
+    rating: number;
+    stock: number;
+    tags: string[];
+    brand: string;
+    sku: string;
+    weight: number;
+    dimensions: {
+      width: number;
+      height: number;
+      depth: number;
+    };
+    warrantyInformation: string;
+    shippingInformation: string;
+    availabilityStatus: string;
+    reviews: {
+      rating: number;
+      comment: string;
+      reviewerName: string;
+      reviewerEmail: string;
+    }[];
+  }
+}
+
+interface DummyJSONProductsResponse {
+  products: Props['product'][];
+  total: number
+  skip: number
+  limit: number
+}
+
+export const getStaticPaths = (async () => {
+  const res = await fetch('https://dummyjson.com/products?limit=0')
+  const data = await res.json() as DummyJSONProductsResponse
+  return data.products.map(product => ({
+    params: {
+      id: product.id
+    },
+    props: {
+      product
+    }
+  }))
+}) satisfies GetStaticPaths;
+
+const { product } = Astro.props
+---
+
+<Layout>
+  <div class="flex flex-col gap-4 m-8 bg-white p-8 rounded-lg shadow-lg">
+    <h1 class="text-3xl font-bold">{product.title}</h1>
+    <p class="text-lg">{product.description}</p>
+    <p class="text-lg">{product.category}</p>
+    <p class="text-lg">${product.price}</p>
+    <ul class="list-disc list-inside mt-4">
+      {product.reviews.map(review => (
+        <li class="flex items-center gap-2 space-y-4">
+          <div class="flex-1">
+            <p class="text-lg">{review.reviewerName}</p>
+            <p class="text-sm">{review.comment}</p>
+          </div>
+          <div class="flex-shrink-0">
+            <span class="text-yellow-500">{review.rating} / 5</span>
+          </div>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>

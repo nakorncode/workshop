@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths } from "astro";
+import { readFile } from 'node:fs/promises';
+import Layout from '../../layouts/Layout.astro'
+
+interface Member {
+  id: number;
+  name: string;
+  role: string;
+}
+
+interface Props {
+  member: Member
+}
+
+export const getStaticPaths = (async () => {
+  const data = await readFile('src/data/member.json', 'utf-8');
+  const parsed = JSON.parse(data) as Member[];
+  return parsed.map(member => ({
+    params: { id: member.id },
+    props: { member }
+  }));
+}) satisfies GetStaticPaths;
+
+const { member } = Astro.props;
+---
+
+<Layout>
+  <h1>{member.name} ({member.role})</h1>
+  <p>ID: {member.id}</p>
+</Layout>
