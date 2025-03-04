@@ -1,0 +1,25 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const payloadCmsUrl = import.meta.env.PUBLIC_PAYLOAD_CMS_URL
+const postsUrl = new URL('/api/posts', payloadCmsUrl)
+
+interface ResponseData {
+  docs: {
+    id: number
+    title: string
+  }[]
+}
+
+const data = await fetch(postsUrl).then(res => res.json()) as ResponseData
+---
+
+<Layout>
+  <ul>
+    {data.docs.map(post => (
+      <li>
+        <a href={`/posts/${post.id}`}>{post.title}</a>
+      </li>
+    ))}
+  </ul>
+</Layout>

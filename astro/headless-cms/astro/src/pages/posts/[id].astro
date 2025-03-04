@@ -1,0 +1,31 @@
+---
+import type { GetStaticPaths } from "astro";
+
+interface ResponseData {
+  docs: {
+    id: number
+    title: string
+    contentHtml: string
+  }[]
+}
+
+interface Props {
+  post: ResponseData['docs'][0]
+}
+
+export const getStaticPaths = (async () => {
+  const payloadCmsUrl = import.meta.env.PUBLIC_PAYLOAD_CMS_URL
+  const postsUrl = new URL('/api/posts', payloadCmsUrl)
+  const data = await fetch(postsUrl).then(res => res.json()) as ResponseData
+  return data.docs.map(post => ({
+    params: { id: post.id },
+    props: { post }
+  }));
+}) satisfies GetStaticPaths;
+
+const { post } = Astro.props;
+---
+
+<h1>{post.title}</h1>
+
+<article set:html={post.contentHtml}></article>
