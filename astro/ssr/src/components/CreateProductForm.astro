@@ -1,0 +1,36 @@
+---
+import { isActionError } from 'astro:actions'
+import { actions } from 'astro:actions'
+
+const result = Astro.getActionResult(actions.createProductForm)
+const error = isActionError(result?.error)
+---
+
+{result?.data && <p style="color: green;">Notification: {result.data.message}</p>}
+
+{error && <p style="color: red;">{result.error.message}</p>}
+
+<form method="post" action={actions.createProductForm}>
+  <label>
+    Title
+    <input name="title" type="text" required>
+  </label>
+
+  <label>
+    Description
+    <input name="description" type="text" required>
+  </label>
+
+  <label>
+    Price
+    <input name="price" type="number" min="0" required>
+  </label>
+
+  <button type="submit">Create</button>
+</form>
+
+<style>
+  label {
+    display: block;
+  }
+</style>

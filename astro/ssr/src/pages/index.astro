@@ -1,12 +1,21 @@
 ---
+import CreateProduct from '../components/CreateProduct.vue'
+import CreateProductForm from '../components/CreateProductForm.astro'
 import Layout from '../layouts/Layout.astro';
-import { prisma } from '../lib/prisma'
-
-const siteName = await prisma.config.findUnique({
-  where: { name: 'siteName' }
-})
 ---
 
 <Layout>
-	<p>{siteName?.value}</p>
+  <h2>Create new product (Vue)</h2>
+	<CreateProduct client:load></CreateProduct>
+
+  <hr>
+
+  <h2>Create new product (Astro/HTML)</h2>
+  <CreateProductForm></CreateProductForm>
 </Layout>
+
+<style>
+  label {
+    display: block;
+  }
+</style>
