@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../layouts/Layout.astro'
+
+const pets = await getCollection('pets', (pet) => {
+  return !pet.data.isHidden
+})
+---
+
+<Layout>
+  <h1 class="text-2xl font-bold mb-3">Pets</h1>
+  <ul class="space-y-4">
+    {pets.map(pet => (
+      <li class="border border-gray-300 rounded p-4">
+        {pet.data.name} ({pet.data.description}) [${pet.data.price}]
+      </li>
+    ))}
+  </ul>
+</Layout>

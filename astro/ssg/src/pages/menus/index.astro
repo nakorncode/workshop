@@ -1,0 +1,21 @@
+---
+import { getCollection } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+
+const menus = await getCollection('menus')
+---
+
+<Layout>
+  <div class="shadow-xl p-4 rounded my-6 mx-auto max-w-sm">
+    <h1 class="text-2xl font-bold">Menus</h1>
+    <ul class="list-disc pl-6 mt-4 space-y-2">
+      {menus.sort((a, b) => (b.data.orderAt || 0) - (a.data.orderAt || 0)).map(menu => (
+        <li>
+          <a class="underline text-blue-600" href={`/menus/${menu.data.slug}`}>
+            {menu.data.title} {menu.data.description && `(${menu.data.description})`} ({menu.data.price})
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>

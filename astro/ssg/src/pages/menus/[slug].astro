@@ -1,0 +1,32 @@
+---
+import type { GetStaticPaths } from "astro";
+import { getCollection, type CollectionEntry, render } from 'astro:content'
+import Layout from '../../layouts/Layout.astro'
+
+interface Props {
+  menu: CollectionEntry<'menus'>
+}
+
+export const getStaticPaths = (async () => {
+  const menus = await getCollection('menus')
+  return menus.map(menu => ({
+    params: { slug: menu.data.slug },
+    props: { menu }
+  }));
+}) satisfies GetStaticPaths;
+
+const { menu } = Astro.props;
+const { Content } = await render(menu)
+---
+
+<Layout title={menu.data.title}>
+  <h1>{menu.data.title}</h1>
+  <ul>
+    <li>Price: {menu.data.price}</li>
+    <li>Is Vegan: {menu.data.isVegan ? '✅' : '❌'}</li>
+    <li>Premium: {menu.data.premium ? '✅' : '❌'}</li>
+  </ul>
+  <div class="prose">
+    <Content></Content>
+  </div>
+</Layout>

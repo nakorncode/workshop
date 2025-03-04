@@ -1,0 +1,32 @@
+[
+  {
+    "id": 3,
+    "slug": "rabbit",
+    "name": "Rabbit",
+    "description": "A small domesticated carnivorous mammal with soft fur, a short, rounded head, four legs, and a tail.",
+    "price": 19.99,
+    "isHidden": true
+  },
+  {
+    "id": 1,
+    "slug": "cat",
+    "name": "Cat",
+    "description": "A small domesticated carnivorous mammal with soft fur, a short, rounded head, four legs, and a tail.",
+    "price": 9.99,
+    "isHidden": true
+  },
+  {
+    "id": 2,
+    "slug": "dog",
+    "name": "Dog",
+    "description": "A domesticated carnivorous mammal that typically has a long snout, an acute sense of smell, and a short, rounded head.",
+    "price": 14.99
+  },
+  {
+    "id": 4,
+    "slug": "hamster",
+    "name": "Hamster",
+    "description": "A small domesticated carnivorous mammal with soft fur, a short, rounded head, four legs, and a tail.",
+    "price": 24.99
+  }
+]
