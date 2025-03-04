@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths, MarkdownInstance } from "astro";
+import Layout from '../../layouts/Layout.astro'
+
+interface Props {
+  article: MarkdownInstance<{
+    title: string;
+    slug: string;
+    created_at: string;
+  }>
+}
+
+export const getStaticPaths = (() => {
+  const files = import.meta.glob('../../articles/*.md', { eager: true })
+  const articles = Object.values(files) as any[]
+  return articles.map(article => ({
+    params: { slug: article.frontmatter.slug },
+    props: { article }
+  }));
+}) satisfies GetStaticPaths;
+
+const { article } = Astro.props
+const { Content } = article
+---
+
+<Layout title={article.frontmatter.title}>
+  <div class="shadow-xl rounded-xl p-4 max-w-lg mx-auto my-4">
+    <a href="/articles" class="underline text-blue-600">Back to articles</a>
+    <h1 class="text-2xl font-bold my-4">{article.frontmatter.title}</h1>
+    <p class="mb-4 text-gray-600 italic text-sm">วันที่เขียนบทความ: {article.frontmatter.created_at}</p>
+    <article class="prose prose-h2:mt-6">
+      <Content/>
+    </article>
+  </div>
+</Layout>

@@ -1,0 +1,30 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  frontmatter: {
+    title?: string;
+  }
+}
+
+const siteName = 'My Blog'
+const { frontmatter: { title } } = Astro.props
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title ? `${title} | ${siteName}` : siteName}</title>
+	</head>
+	<body>
+    <main>
+      <div class="prose prose-a:text-orange-500 mx-auto max-w-xl p-4 rounded-xl shadow-xl my-4">
+        <slot />
+      </div>
+    </main>
+	</body>
+</html>

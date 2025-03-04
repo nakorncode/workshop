@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "name": "John Doe",
+    "role": "Developer"
+  },
+  {
+    "id": 2,
+    "name": "Jane Doe",
+    "role": "Designer"
+  },
+  {
+    "id": 3,
+    "name": "Bob Smith",
+    "role": "Manager"
+  },
+  {
+    "id": 4,
+    "name": "Alice Johnson",
+    "role": "Tester"
+  }
+]

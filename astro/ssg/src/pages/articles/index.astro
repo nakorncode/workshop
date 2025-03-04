@@ -1,0 +1,22 @@
+---
+import Layout from '../../layouts/Layout.astro'
+
+const files = import.meta.glob('../../articles/*.md', { eager: true })
+const articles = Object.values(files) as any[]
+---
+
+<Layout>
+  <div class="shadow-xl p-4 rounded my-6 mx-auto max-w-sm">
+    <h1 class="text-2xl font-bold">Articles</h1>
+    <ul class="list-disc pl-6 mt-4 space-y-2">
+      {articles.sort((a, b) => new Date(b.frontmatter.created_at).getTime() - new Date(a.frontmatter.created_at).getTime()).map((article) => (
+        <li>
+          <a class="underline text-blue-600" href={`/articles/${article.frontmatter.slug}`}>
+            {article.frontmatter.title}
+            - {article.frontmatter.created_at}
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</Layout>

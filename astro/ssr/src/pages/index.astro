@@ -1,0 +1,21 @@
+---
+import CreateProduct from '../components/CreateProduct.vue'
+import CreateProductForm from '../components/CreateProductForm.astro'
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <h2>Create new product (Vue)</h2>
+	<CreateProduct client:load></CreateProduct>
+
+  <hr>
+
+  <h2>Create new product (Astro/HTML)</h2>
+  <CreateProductForm></CreateProductForm>
+</Layout>
+
+<style>
+  label {
+    display: block;
+  }
+</style>
