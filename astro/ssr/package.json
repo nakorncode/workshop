@@ -1,0 +1,17 @@
+{
+  "name": "ssr",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "@astrojs/node": "^9.1.2",
+    "@prisma/client": "6.4.1",
+    "astro": "^5.4.1",
+    "prisma": "^6.4.1"
+  }
+}

@@ -1,0 +1,21 @@
+---
+import { prisma } from '../../lib/prisma'
+
+const { id } = Astro.params
+
+if (!id || isNaN(Number(id))) {
+  return Astro.redirect('/')
+}
+
+const product = await prisma.product.findUnique({
+  where: { id: Number(id) }
+})
+
+if (!product) {
+  return Astro.redirect('/404')
+}
+---
+
+<h1>{product.title}</h1>
+<p>{product.description}</p>
+<p>Price: {product.price}</p>

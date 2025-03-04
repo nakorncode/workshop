@@ -1,0 +1,12 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { prisma } from '../lib/prisma'
+
+const siteName = await prisma.config.findUnique({
+  where: { name: 'siteName' }
+})
+---
+
+<Layout>
+	<p>{siteName?.value}</p>
+</Layout>
