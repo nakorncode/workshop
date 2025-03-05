@@ -90,6 +90,7 @@ const country = ref<'us' | 'fr' | 'th' | null>(null)
     <hr>
 
     <h2><code>v-bind</code> <code>:</code></h2>
+    <!-- <p>Color (Incorrect): <span style="background-color: {{ color }}">{{ color }}</span></p> -->
     <p>Color (v-bind): <span v-bind:style="{ backgroundColor: color }">{{ color }}</span></p>
     <p>Color (shorthand): <span :style="{ backgroundColor: color }">{{ color }}</span></p>
     <hr>

@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
 
 h2 {
   @apply text-xl font-bold my-3;
