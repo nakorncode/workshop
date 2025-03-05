@@ -8,17 +8,19 @@ const showPractical = ref(true)
 </script>
 
 <template>
-  <Basic v-if="showBasic"></Basic>
+  <div class="max-w-md p-4">
+    <Basic v-if="showBasic"></Basic>
 
-  <hr>
+    <hr>
 
-  <button @click="showBasic = !showBasic">{{ showBasic ? 'Hide Basic' : 'Show Basic' }}</button>
+    <button class="!bg-gray-700" @click="showBasic = !showBasic">{{ showBasic ? 'Hide Basic' : 'Show Basic' }}</button>
 
-  <hr>
+    <hr>
 
-  <Practical v-if="showPractical"></Practical>
+    <Practical v-if="showPractical"></Practical>
 
-  <hr>
+    <hr>
 
-  <button @click="showPractical = !showPractical">{{ showPractical ? 'Hide Practical' : 'Show Practical' }}</button>
+    <button class="!bg-gray-700" @click="showPractical = !showPractical">{{ showPractical ? 'Hide Practical' : 'Show Practical' }}</button>
+  </div>
 </template>

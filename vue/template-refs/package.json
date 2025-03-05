@@ -1,8 +1,9 @@
 {
-  "name": "composition-vs-options",
+  "name": "vue-example",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "vite"
   },

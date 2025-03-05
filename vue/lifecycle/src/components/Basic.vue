@@ -28,16 +28,20 @@ onBeforeUnmount(() => {
 })
 
 const currentTime = ref(new Date())
+const timeRunning = ref(false)
 let timer: ReturnType<typeof setInterval> | null = null
 
 function onButtonTimeClick() {
   if (timer) {
     clearInterval(timer)
     timer = null
+    timeRunning.value = false
   } else {
+    currentTime.value = new Date()
     timer = setInterval(() => {
       currentTime.value = new Date()
     }, 1000)
+    timeRunning.value = true
   }
 }
 </script>
@@ -45,5 +49,5 @@ function onButtonTimeClick() {
 <template>
   <h2>Basic</h2>
   <p>Current time: {{ currentTime }}</p>
-  <button @click="onButtonTimeClick" type="button">{{ timer ? 'Stop' : 'Start' }}</button>
+  <button @click="onButtonTimeClick" type="button">{{ timeRunning ? '🔴 Stop' : '🟢 Start' }}</button>
 </template>

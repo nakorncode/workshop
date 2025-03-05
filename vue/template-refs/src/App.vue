@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { ref, useTemplateRef } from 'vue'
+import { ref, useTemplateRef, watch } from 'vue'
 
 interface ProductItem {
   name: string
@@ -14,9 +14,14 @@ const input = ref<ProductItem>({
   price: 0,
   isActive: true
 })
+const inputValid = ref(false)
+
+watch(input, (value) => {
+  inputValid.value = value.name !== '' && value.price > 0
+}, { deep: true })
 
 function onSubmit() {
-  if (!input.value.name || !input.value.price) {
+  if (!inputValid.value) {
     return
   }
   products.value.push({ ...input.value }) // ทำเพื่อป้องกัน Reference
@@ -32,41 +37,45 @@ function resetField() {
 </script>
 
 <template>
-  <h1>Template Refs</h1>
-  <form @submit.prevent="onSubmit">
-    <label>
-      <span>Product Name:</span>
-      <input ref="productName" v-model.trim="input.name" type="text">
-    </label>
-    <label>
-      <span>Product Price:</span>
-      <input v-model.number="input.price" type="number">
-    </label>
-    <label>
-      <span>Product Active:</span>
-      <input v-model="input.isActive" type="checkbox">
-    </label>
-    <button type="submit">Submit</button>
-  </form>
+  <div class="max-w-md p-4">
+    <h1>Template Refs</h1>
+    <form @submit.prevent="onSubmit" class="space-y-2">
+      <label>
+        <span>Product Name:</span>
+        <input ref="productName" v-model.trim="input.name" type="text">
+      </label>
+      <label>
+        <span>Product Price:</span>
+        <input v-model.number="input.price" type="number" step="0.01">
+      </label>
+      <label>
+        <span class="mr-2">Product Active:</span>
+        <input v-model="input.isActive" type="checkbox">
+      </label>
+      <button :disabled="!inputValid" type="submit">Submit</button>
+    </form>
 
-  <hr>
+    <hr>
 
-  <table border="1">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Price</th>
-        <th>Active</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr v-for="product in products" :key="product.name">
-        <td>{{ product.name }}</td>
-        <td>{{ product.price }}</td>
-        <td>{{ product.isActive }}</td>
-      </tr>
-    </tbody>
-  </table>
+    <div class="prose">
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Price</th>
+            <th>Active</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="product in products" :key="product.name">
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.isActive }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
 
 <style scoped>

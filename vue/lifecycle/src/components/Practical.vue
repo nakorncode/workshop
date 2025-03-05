@@ -30,7 +30,7 @@ const chatTimer = setInterval(() => {
 }, 500)
 onUpdated(() => {
   const textarea = document.querySelector('textarea') as HTMLTextAreaElement
-  const isAtBottom = textarea.scrollTop + textarea.clientHeight > textarea.scrollHeight - 20
+  const isAtBottom = textarea.scrollTop + textarea.clientHeight > textarea.scrollHeight - 30
   if (isAtBottom) {
     textarea.scrollTop = textarea.scrollHeight
   }
@@ -45,17 +45,17 @@ onUnmounted(() => {
 <template>
   <h2>Practical</h2>
 
-  <h3>Get user from API (onMounted)</h3>
+  <h3>Get user from API <code>onMounted</code></h3>
   <form @submit.prevent="fetchUser">
     <label for="id">ID:</label>
     <input id="id" v-model="userId" type="number">
-    <button>Fetch User</button>
+    <button class="mt-2">Fetch User</button>
   </form>
-  <p v-if="user">Name: {{ user.firstName }} {{ user.lastName }}, Age: {{ user.age }}</p>
+  <p v-if="user" class="mt-2">Name: {{ user.firstName }} {{ user.lastName }}, Age: {{ user.age }}</p>
 
   <hr>
 
-  <h3>Auto-scroll when new content added but only if at the bottom (onUpdated)</h3>
+  <h3>Auto-scroll when new content added but only if at the bottom <code>onUpdated</code></h3>
   <textarea cols="50" rows="10" readonly style="white-space: pre;">
 {{ chat.map((c) => `${c.from}: ${c.message}`).join('\n') }}
   </textarea>

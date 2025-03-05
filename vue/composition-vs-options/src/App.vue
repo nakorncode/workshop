@@ -25,17 +25,19 @@ function onCounterChangedC(value: number) {
 </script>
 
 <template>
-  <CompositionAPI @counter-changed="onCounterChangedA" title="Composition API (defineComponent)"></CompositionAPI>
+  <div class="p-4 max-w-md">
+    <CompositionAPI @counter-changed="onCounterChangedA" title="Composition API (defineComponent)"></CompositionAPI>
 
-  <hr>
+    <hr>
 
-  <CompositionAPISetup @counter-changed="onCounterChangedB" title="Composition API (Setup)"></CompositionAPISetup>
+    <CompositionAPISetup @counter-changed="onCounterChangedB" title="Composition API (Setup)"></CompositionAPISetup>
 
-  <hr>
+    <hr>
 
-  <OptionsAPI @counter-changed="onCounterChangedC" title="Options API"></OptionsAPI>
+    <OptionsAPI @counter-changed="onCounterChangedC" title="Options API"></OptionsAPI>
 
-  <hr>
+    <hr>
 
-  <pre>{{ counter }}</pre>
+    <pre>{{ counter }}</pre>
+  </div>
 </template>

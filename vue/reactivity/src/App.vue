@@ -38,25 +38,27 @@ const badShowFullNameFromReactive = () => {
 </script>
 
 <template>
-  <h2>ref()</h2>
-  <div>
-    <p>First Name: {{ firstName }}</p>
-    <p>Last Name: {{ lastName }}</p>
-    <p>Full Name (computed): {{ showFullNameFromRef }}</p>
-    <p>Full Name (method): {{ badShowFullNameFromRef() }}</p>
-    <input v-model="firstName" type="text" placeholder="First Name" />
-    <input v-model="lastName" type="text" placeholder="Last Name" />
-  </div>
+  <div class="max-w-md p-4">
+    <h2>ref()</h2>
+    <div class="space-y-3">
+      <p><b>First Name:</b> {{ firstName }}</p>
+      <p><b>Last Name:</b> {{ lastName }}</p>
+      <p><b>Full Name (computed):</b> {{ showFullNameFromRef }}</p>
+      <p><b>Full Name (method):</b> {{ badShowFullNameFromRef() }}</p>
+      <input v-model="firstName" type="text" placeholder="First Name" />
+      <input v-model="lastName" type="text" placeholder="Last Name" />
+    </div>
 
-  <hr>
+    <hr>
 
-  <h2>reactive()</h2>
-  <div>
-    <p>First Name: {{ fullName.firstName }}</p>
-    <p>Last Name: {{ fullName.lastName }}</p>
-    <p>Full Name (computed): {{ showFullNameFromReactive }}</p>
-    <p>Full Name (method): {{ badShowFullNameFromReactive() }}</p>
-    <input v-model="fullName.firstName" type="text" placeholder="First Name" />
-    <input v-model="fullName.lastName" type="text" placeholder="Last Name" />
+    <h2>reactive()</h2>
+    <div class="space-y-3">
+      <p><b>First Name:</b> {{ fullName.firstName }}</p>
+      <p><b>Last Name:</b> {{ fullName.lastName }}</p>
+      <p><b>Full Name (computed):</b> {{ showFullNameFromReactive }}</p>
+      <p><b>Full Name (method):</b> {{ badShowFullNameFromReactive() }}</p>
+      <input v-model="fullName.firstName" type="text" placeholder="First Name" />
+      <input v-model="fullName.lastName" type="text" placeholder="Last Name" />
+    </div>
   </div>
 </template>

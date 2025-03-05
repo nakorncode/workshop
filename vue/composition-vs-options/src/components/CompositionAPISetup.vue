@@ -35,11 +35,11 @@ const increment = () => {
 </script>
 
 <template>
-  <h1>{{ props.title }}</h1>
+  <h2>{{ props.title }}</h2>
   <div>
     <p>Counter: {{ counter }}</p>
     <p>Double: {{ doubleCounter }}</p>
-    <div>
+    <div class="flex gap-2">
       <button @click="increment">Increment</button>
       <input v-model="counter" type="number" />
     </div>
