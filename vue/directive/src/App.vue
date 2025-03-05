@@ -119,11 +119,12 @@ const country = ref<'us' | 'fr' | 'th' | null>(null)
     <ul>
       <li v-for="person of people">Name: {{ person.name }}, Age: {{ person.age }}</li>
     </ul>
+    <!-- แทรก :key="" เพื่อช่วยให้อัลกอริทึมการวนลูปบน DOM ได้ดีขึ้น โดยต้องเป็นข้อมูล Unique สามารถอ่านเพิ่มเติมที่ https://vuejs.org/guide/essentials/list.html#maintaining-state-with-key -->
     <ul>
-      <li v-for="(value, key) in countries">Index {{ key }}, Country: {{ value }}</li>
+      <li v-for="(value, key) in countries" :key="key">Index {{ key }}, Country: {{ value }}</li>
     </ul>
     <ul>
-      <li v-for="(value, key, index) in currencies">Index: {{ index }}, Currency: {{ key }}, Symbol: {{ value }}</li>
+      <li v-for="(value, key, index) in currencies" :key="key">Index: {{ index }}, Currency: {{ key }}, Symbol: {{ value }}</li>
     </ul>
 
     <hr>

@@ -1,1 +1,25 @@
 @import "tailwindcss";
+
+h2 {
+  @apply text-xl font-bold my-3;
+}
+
+hr {
+  @apply my-6;
+}
+
+.product-card {
+  @apply p-4 border border-gray-200 rounded;
+}
+
+.product-card h3 {
+  @apply font-bold text-lg mb-1;
+}
+
+.product-card ul {
+  @apply flex gap-1 mt-3;
+}
+
+.product-card ul li {
+  @apply bg-gray-200 inline-block px-3 py-1 text-sm rounded font-mono;
+}
