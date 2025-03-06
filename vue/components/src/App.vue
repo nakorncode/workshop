@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useToast } from 'vue-toast-notification'
+import { ref } from 'vue'
 import 'vue-toast-notification/dist/theme-default.css'
 import VueAttrsDisableInherit from './components/VueAttrsDisableInherit.vue'
 import VueAttrsInherit from './components/VueAttrsInherit.vue'
@@ -13,6 +14,14 @@ import VuePropsName from './components/VuePropsName.vue'
 import VuePropsValidation from './components/VuePropsValidation.vue'
 import VueScopedSlot from './components/VueScopedSlot.vue'
 import VueSlot from './components/VueSlot.vue'
+import VueTwoWayBinding from './components/VueTwoWayBinding.vue'
+import VueDefineModel from './components/VueDefineModel.vue'
+import VueTransition from './components/VueTransition.vue'
+import VueTransitionGroup from './components/VueTransitionGroup.vue'
+import VueKeepAliveA from './components/VueKeepAliveA.vue'
+import VueKeepAliveB from './components/VueKeepAliveB.vue'
+import VueTeleport from './components/VueTeleport.vue'
+import VueSuspense from './components/VueSuspense.vue'
 
 interface ProductItem {
   title: string
@@ -72,6 +81,15 @@ function onStatusUpdated(from: TodoItem, to: TodoItem) {
 function onDeleted(item: TodoItem, key: number) {
   toast.error(`Todo deleted: ${item.text} (Item at ${key + 1}) 🗑️`)
 }
+
+const logo = ref({
+  title: 'LOGO',
+  bgColor: '#000000',
+  textColor: '#ffffff'
+})
+
+const keepAliveType = ref<'A' | 'B'>('A')
+const showModal = ref(false)
 </script>
 
 <template>
@@ -139,13 +157,17 @@ function onDeleted(item: TodoItem, key: number) {
 
     <hr>
 
-    <h2>Vue Attrs</h2>
+    <h2>Vue Attrs (Auto Inherit on Single Root)</h2>
     <div class="mb-8">
       <VueAttrsRoot class="bg-red-200 p-2 rounded shadow-md"></VueAttrsRoot>
     </div>
+
+    <h2>Vue Attrs (Inherit on Multi Root)</h2>
     <div class="mb-8">
       <VueAttrsInherit class="bg-red-200 p-2 rounded shadow-md"></VueAttrsInherit>
     </div>
+
+    <h2>Vue Attrs (Disable Inherit on Root)</h2>
     <div>
       <VueAttrsDisableInherit class="bg-red-200 p-2 rounded shadow-md"></VueAttrsDisableInherit>
     </div>
@@ -158,5 +180,56 @@ function onDeleted(item: TodoItem, key: number) {
     <hr>
 
     <h2><code>v-model</code></h2>
+    <div class="space-y-4">
+      <div :style="{ backgroundColor: logo.bgColor, color: logo.textColor }" class="p-4 rounded-md shadow-lg font-bold text-xl">
+        {{ logo.title }}
+      </div>
+      <VueTwoWayBinding
+        :model-value="logo.title"
+        :bg-color="logo.bgColor"
+        :text-color="logo.textColor"
+        @update:model-value="logo.title = $event"
+        @update:bg-color="logo.bgColor = $event"
+        @update:text-color="logo.textColor = $event"
+      ></VueTwoWayBinding>
+      <VueTwoWayBinding
+        v-model="logo.title"
+        v-model:bg-color="logo.bgColor"
+        v-model:text-color="logo.textColor"
+      ></VueTwoWayBinding>
+      <VueDefineModel
+        v-model="logo.title"
+        v-model:bg-color="logo.bgColor"
+        v-model:text-color="logo.textColor"
+      ></VueDefineModel>
+    </div>
+
+    <hr>
+
+    <h2>Vue Built-in Components (Transition)</h2>
+    <VueTransition></VueTransition>
+
+    <h2>Vue Built-in Components (TransitionGroup)</h2>
+    <VueTransitionGroup></VueTransitionGroup>
+
+    <h2>Vue Built-in Components (KeepAlive)</h2>
+    <button type="button" class="btn mb-2" @click="keepAliveType = keepAliveType === 'A' ? 'B' : 'A'">Switch</button>
+    <KeepAlive>
+      <component :is="keepAliveType === 'A' ? VueKeepAliveA : VueKeepAliveB"></component>
+    </KeepAlive>
+
+    <h2>Vue Built-in Components (Teleport)</h2>
+    <button type="button" class="btn mb-2" @click="showModal = !showModal">Toggle Modal</button>
+    <VueTeleport v-if="showModal" @close="showModal = false">Hello Modal!</VueTeleport>
+
+    <h2>Vue Built-in Components (Suspense)</h2>
+    <Suspense>
+      <template #default>
+        <VueSuspense></VueSuspense>
+      </template>
+      <template #fallback>
+        <p>Loading...</p>
+      </template>
+    </Suspense>
   </div>
 </template>
