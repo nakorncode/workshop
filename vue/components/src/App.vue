@@ -1,7 +1,10 @@
 <script setup lang="ts">
+import { useToast } from 'vue-toast-notification'
+import 'vue-toast-notification/dist/theme-default.css'
 import VueAttrsDisableInherit from './components/VueAttrsDisableInherit.vue'
 import VueAttrsInherit from './components/VueAttrsInherit.vue'
 import VueAttrsRoot from './components/VueAttrsRoot.vue'
+import VueEmits, { type TodoItem } from './components/VueEmits.vue'
 import VueProps1 from './components/VueProps1.vue'
 import VueProps2 from './components/VueProps2.vue'
 import VueProps3 from './components/VueProps3.vue'
@@ -23,13 +26,6 @@ const product1B: ProductItem = {
   quantity: 15,
   price: 24.99,
   tags: ['tag4', 'tag5', 'tag6']
-}
-
-const product2B: ProductItem = {
-  title: 'Product 2B',
-  quantity: 20,
-  price: 29.99,
-  tags: ['tag10', 'tag11', 'tag12']
 }
 
 const products: (ProductItem & { id: number })[] = [
@@ -55,6 +51,27 @@ const products: (ProductItem & { id: number })[] = [
     tags: ['tag13', 'tag14', 'tag15']
   }
 ]
+
+const toast = useToast({
+  position: 'top',
+  duration: 5000
+})
+
+function onInit() {
+  toast.success('Todo loaded! 🚀')
+}
+
+function onCreated(item: TodoItem) {
+  toast.success(`Todo created: ${item.text} 🆕`)
+}
+
+function onStatusUpdated(from: TodoItem, to: TodoItem) {
+  toast.info(`Todo status updated: ${from.text}: From ${from.done ? '✅' : '❌'} To ${to.done ? '✅' : '❌'}`)
+}
+
+function onDeleted(item: TodoItem, key: number) {
+  toast.error(`Todo deleted: ${item.text} (Item at ${key + 1}) 🗑️`)
+}
 </script>
 
 <template>
@@ -136,5 +153,10 @@ const products: (ProductItem & { id: number })[] = [
     <hr>
 
     <h2>Vue Events Emitting</h2>
+    <VueEmits @init="onInit" @created="onCreated" @deleted="onDeleted" @status-updated="onStatusUpdated"></VueEmits>
+
+    <hr>
+
+    <h2><code>v-model</code></h2>
   </div>
 </template>
