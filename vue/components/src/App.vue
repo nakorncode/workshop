@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import VueAttrsDisableInherit from './components/VueAttrsDisableInherit.vue'
+import VueAttrsInherit from './components/VueAttrsInherit.vue'
+import VueAttrsRoot from './components/VueAttrsRoot.vue'
 import VueProps1 from './components/VueProps1.vue'
 import VueProps2 from './components/VueProps2.vue'
 import VueProps3 from './components/VueProps3.vue'
@@ -116,5 +119,22 @@ const products: (ProductItem & { id: number })[] = [
         </template>
       </VueScopedSlot>
     </div>
+
+    <hr>
+
+    <h2>Vue Attrs</h2>
+    <div class="mb-8">
+      <VueAttrsRoot class="bg-red-200 p-2 rounded shadow-md"></VueAttrsRoot>
+    </div>
+    <div class="mb-8">
+      <VueAttrsInherit class="bg-red-200 p-2 rounded shadow-md"></VueAttrsInherit>
+    </div>
+    <div>
+      <VueAttrsDisableInherit class="bg-red-200 p-2 rounded shadow-md"></VueAttrsDisableInherit>
+    </div>
+
+    <hr>
+
+    <h2>Vue Events Emitting</h2>
   </div>
 </template>
