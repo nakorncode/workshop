@@ -1,0 +1,22 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+article {
+  @apply p-4 shadow-xl rounded;
+}
+
+article.theme-light {
+  @apply bg-gray-100 text-gray-700;
+}
+
+article.theme-dark {
+  @apply bg-zinc-800 text-white;
+}
+
+article.theme-fancy {
+  @apply bg-gradient-to-tr from-cyan-100 to-pink-100 text-blue-800;
+}
+
+hr {
+  @apply my-6;
+}
