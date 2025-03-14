@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+h2 {
+  @apply text-2xl font-bold mb-3 font-mono bg-gray-700 text-white py-1 px-3 rounded-md inline-block;
+}
+
+hr {
+  @apply my-4;
+}
+
+input {
+  @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500;
+}

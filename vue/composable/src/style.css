@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+h2 {
+  @apply text-2xl font-bold mb-4;
+}
+
+hr {
+  @apply my-8;
+}
+
+code {
+  @apply bg-gray-200 text-blue-700 inline-block px-3 py-1 rounded font-mono;
+}
+
+.btn {
+  @apply bg-blue-600 text-white py-2 px-4 inline-block rounded-md cursor-pointer shadow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-700;
+}
+
+.btn-sm {
+  @apply bg-blue-600 text-white py-1 px-3 text-sm inline-block rounded-md cursor-pointer shadow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-700;
+}

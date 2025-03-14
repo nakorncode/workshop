@@ -1,0 +1,14 @@
+{
+  "name": "vue-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "test": "vitest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

@@ -1,0 +1,38 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+h2 {
+  @apply text-xl font-bold my-3;
+}
+
+hr {
+  @apply my-6;
+}
+
+code {
+  @apply bg-gray-200 text-blue-700 inline-block px-3 py-1 rounded font-mono;
+}
+
+.product-card {
+  @apply p-4 border border-gray-200 rounded;
+}
+
+.product-card h3 {
+  @apply font-bold text-lg mb-1;
+}
+
+.product-card ul {
+  @apply flex gap-1 mt-3;
+}
+
+.product-card ul li {
+  @apply bg-gray-200 inline-block px-3 py-1 text-sm rounded font-mono;
+}
+
+.input {
+  @apply block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 bg-white;
+}
+
+.btn {
+  @apply bg-blue-600 text-white py-2 px-4 inline-block rounded-md cursor-pointer shadow focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 hover:bg-blue-700;
+}
