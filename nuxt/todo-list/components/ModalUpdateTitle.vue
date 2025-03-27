@@ -1,15 +1,19 @@
 <script setup lang="ts">
-const { updateTodoTitle } = useTodo()
-
 const props = defineProps<{
-  todo: TodoList
+  headerTitle: string
+  previousTitle: string
+  placeholder: string
 }>()
 
-const title = ref(props.todo.title)
+const emit = defineEmits<{
+  updated: [newTitle: string]
+}>()
+
+const title = ref(props.previousTitle)
 const open = ref(false)
 
 function onUpdated() {
-  updateTodoTitle(props.todo.id, title.value)
+  emit('updated', title.value)
   open.value = false
 }
 </script>
@@ -18,7 +22,7 @@ function onUpdated() {
   <UModal
     v-model:open="open"
     class="max-w-sm"
-    title="Update Title"
+    :title="props.headerTitle"
     :close="{
       color: 'primary',
       variant: 'outline',
@@ -28,11 +32,11 @@ function onUpdated() {
       content: 'max-w-sm'
     }"
   >
-    <UButton color="secondary" size="xs">Update Title</UButton>
+    <slot/>
     <template #body>
       <form @submit.prevent="onUpdated">
         <div class="flex gap-1">
-          <UInput v-model="title" placeholder="Enter a new title" class="w-full"/>
+          <UInput v-model="title" :placeholder="props.placeholder" class="w-full"/>
           <UButton type="submit">Update</UButton>
         </div>
       </form>
