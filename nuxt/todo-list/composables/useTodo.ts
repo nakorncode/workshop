@@ -8,6 +8,7 @@ export interface TodoListItem {
 
 export interface TodoList {
   id: string
+  onlineMode: boolean
   title: string
   items: TodoListItem[]
 }
@@ -24,6 +25,8 @@ export function useTodo() {
     }, { deep: true })
   }
 
+  const { user } = useUser()
+
   function loadTodoListFromLocalStorage() {
     const data = localStorage.getItem('todos')
     if (data) {
@@ -35,6 +38,7 @@ export function useTodo() {
   function addTodo(title: string) {
     todos.value.push({
       id: uuid(),
+      onlineMode: user.value !== null,
       title,
       items: []
     })
@@ -94,12 +98,25 @@ export function useTodo() {
     }
   }
 
+  async function syncTodo(id: string) {
+    const { todo } = getTodo(id)
+    if (todo.onlineMode) {
+      return
+    }
+    const { message } = await $fetch('/api/todos/sync', {
+      method: 'POST',
+      body: todo
+    })
+    return { message }
+  }
+
   return {
     todos,
     addTodo,
     updateTodoTitle,
     removeTodo,
     getTodo,
-    loadTodoListFromLocalStorage
+    loadTodoListFromLocalStorage,
+    syncTodo
   }
 }

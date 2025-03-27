@@ -14,8 +14,17 @@ datasource db {
 }
 
 model TodoList {
-  id    String @id @default(uuid())
+  id    String         @id @default(uuid())
   title String
+  items TodoListItem[]
+}
+
+model TodoListItem {
+  id         String   @id @default(uuid())
+  todoList   TodoList @relation(fields: [todoListId], references: [id], onDelete: Cascade)
+  todoListId String
+  title      String
+  done       Boolean  @default(false)
 }
 
 model User {
