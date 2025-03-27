@@ -1,12 +1,10 @@
 <script setup lang="ts">
+const { addTodo } = useTodo()
+
 const title = ref('')
 
-const emit = defineEmits<{
-  'created': [value: string]
-}>()
-
 function onSubmit() {
-  emit('created', title.value)
+  addTodo(title.value)
   title.value = ''
 }
 </script>
