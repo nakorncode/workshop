@@ -4,6 +4,11 @@ export default defineAppConfig({
       primary: 'blue',
       secondary: 'gray'
     },
+    toaster: {
+      defaultVariants: {
+        position: 'top-center'
+      }
+    },
     button: {
       slots: {
         base: 'cursor-pointer'
