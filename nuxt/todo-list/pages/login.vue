@@ -6,10 +6,12 @@ const input = ref({
 
 const { login } = useUser()
 const toast = useToast()
+const { start, finish } = useLoadingIndicator()
 const loading = ref(false)
 
 async function onLogin() {
   loading.value = true
+  start()
   try {
     const data = await login(input.value.email, input.value.password)
     toast.add({ title: `Login successful on email ${data.user.email}`, color: 'success' })
@@ -17,6 +19,7 @@ async function onLogin() {
   } catch (error) {
     toast.add({ title: (error as Error)?.message || 'Unknown error', color: 'error' })
   }
+  finish()
   loading.value = false
 }
 </script>

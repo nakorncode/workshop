@@ -43,10 +43,19 @@ export function useUser() {
     clearTodoListOnline()
   }
 
+  async function signUp(name: string, email: string, password: string) {
+    const { data, error } = await authClient.signUp.email({ name, email, password })
+    if (error) {
+      throw new Error(error.message || 'Unknown error')
+    }
+    return data
+  }
+
   return {
     user,
     getCurrentUser,
     login,
-    logout
+    logout,
+    signUp
   }
 }

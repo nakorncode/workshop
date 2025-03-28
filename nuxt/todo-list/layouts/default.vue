@@ -2,11 +2,21 @@
 const { user, logout } = useUser()
 
 const toast = useToast()
+const { start, finish } = useLoadingIndicator()
+const logoutLoading = ref(false)
 
 async function onLogout() {
-  await logout()
-  toast.add({ title: 'Logout successful', color: 'success' })
-  await navigateTo('/')
+  logoutLoading.value = true
+  start()
+  try {
+    await logout()
+    toast.add({ title: 'Logout successful', color: 'success' })
+    await navigateTo('/')
+  } catch (error) {
+    console.error(error)
+  }
+  finish()
+  logoutLoading.value = false
 }
 </script>
 
@@ -22,7 +32,7 @@ async function onLogout() {
           </template>
           <template v-else>
             <li class="ml-auto"><span>{{ user.email }}</span></li>
-            <li><UButton @click="onLogout">Logout</UButton></li>
+            <li><UButton :loading="logoutLoading" @click="onLogout">Logout</UButton></li>
           </template>
         </ul>
       </div>
