@@ -1,8 +1,12 @@
 <script setup lang="ts">
 if (import.meta.client) {
-  await callOnce(() => {
-    const { loadTodoListFromLocalStorage } = useTodo()
+  await callOnce(async () => {
+    const { loadTodoListFromLocalStorage, loadTodoListFromOnline } = useTodo()
+    const { user } = useUser()
     loadTodoListFromLocalStorage()
+    if (user.value) {
+      await loadTodoListFromOnline()
+    }
   })
 }
 

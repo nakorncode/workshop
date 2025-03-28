@@ -20,7 +20,8 @@ export function useTodo() {
   if (!todos) {
     todos = useState<TodoList[]>('todos', () => [])
     watch(todos, (newTodos) => {
-      const data = JSON.stringify(newTodos)
+      const offlineNewTodos = newTodos.filter((todo) => !todo.onlineMode)
+      const data = JSON.stringify(offlineNewTodos)
       localStorage.setItem('todos', data)
     }, { deep: true })
   }
@@ -35,23 +36,68 @@ export function useTodo() {
     }
   }
 
-  function addTodo(title: string) {
-    todos.value.push({
-      id: uuid(),
-      onlineMode: user.value !== null,
-      title,
-      items: []
-    })
+  async function loadTodoListFromOnline() {
+    if (!user.value) {
+      return
+    }
+    const { data } = await $fetch('/api/todos')
+    const offlineTodos = todos.value.filter((todo) => !todo.onlineMode)
+    todos.value = data.map((todo) => ({
+      id: todo.id,
+      title: todo.title,
+      onlineMode: true,
+      items: todo.items.map((item) => ({
+        id: item.id,
+        title: item.title,
+        done: item.done
+      }))
+    })).concat(offlineTodos)
   }
 
-  function updateTodoTitle(id: string, newTitle: string) {
+  async function addTodo(title: string) {
+    if (user.value) {
+      const todo = await $fetch('/api/todos/create', {
+        method: 'POST',
+        body: { title }
+      })
+      todos.value.push({
+        ...todo.data,
+        onlineMode: true,
+        items: []
+      })
+    } else {
+      todos.value.push({
+        id: uuid(),
+        onlineMode: user.value !== null,
+        title,
+        items: []
+      })
+    }
+  }
+
+  async function updateTodoTitle(id: string, newTitle: string) {
+    if (user.value) {
+      await $fetch('/api/todos/title', {
+        method: 'PATCH',
+        body: {
+          id,
+          title: newTitle
+        }
+      })
+    }
     const todo = todos.value.find((todo) => todo.id === id)
     if (todo) {
       todo.title = newTitle
     }
   }
 
-  function removeTodo(id: string) {
+  async function removeTodo(id: string) {
+    if (user.value) {
+      await $fetch('/api/todos', {
+        method: 'DELETE',
+        body: { id }
+      })
+    }
     todos.value = todos.value.filter((todo) => todo.id !== id)
   }
 
@@ -107,6 +153,7 @@ export function useTodo() {
       method: 'POST',
       body: todo
     })
+    todo.onlineMode = true
     return { message }
   }
 
@@ -117,6 +164,7 @@ export function useTodo() {
     removeTodo,
     getTodo,
     loadTodoListFromLocalStorage,
+    loadTodoListFromOnline,
     syncTodo
   }
 }
