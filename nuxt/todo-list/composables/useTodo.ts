@@ -168,13 +168,13 @@ export function useTodo() {
       }
       item.done = true
     }
-    const markItemUndone = (id: string) => {
+    const markItemUndone = async (id: string) => {
       const item = todo.items.find((item) => item.id === id)
       if (!item) {
         return
       }
       if (user.value && todo.onlineMode) {
-        $fetch('/api/todos/items/done', {
+        await $fetch('/api/todos/items/done', {
           method: 'PATCH',
           body: {
             todoListItemId: id,
