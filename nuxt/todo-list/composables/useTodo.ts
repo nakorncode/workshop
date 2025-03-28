@@ -26,6 +26,7 @@ export function useTodo() {
     }, { deep: true })
   }
 
+  const { start, finish } = useLoadingIndicator()
   const { user } = useUser()
 
   function loadTodoListFromLocalStorage() {
@@ -40,7 +41,9 @@ export function useTodo() {
     if (!user.value) {
       return
     }
+    start()
     const { data } = await $fetch('/api/todos')
+    finish()
     const offlineTodos = todos.value.filter((todo) => !todo.onlineMode)
     todos.value = data.map((todo) => ({
       id: todo.id,
@@ -60,10 +63,12 @@ export function useTodo() {
 
   async function addTodo(title: string) {
     if (user.value) {
+      start()
       const todo = await $fetch('/api/todos/create', {
         method: 'POST',
         body: { title }
       })
+      finish()
       todos.value.push({
         ...todo.data,
         onlineMode: true,
@@ -85,6 +90,7 @@ export function useTodo() {
       return
     }
     if (user.value && todo.onlineMode) {
+      start()
       await $fetch('/api/todos/title', {
         method: 'PATCH',
         body: {
@@ -92,6 +98,7 @@ export function useTodo() {
           title: newTitle
         }
       })
+      finish()
     }
     todo.title = newTitle
   }
@@ -102,10 +109,12 @@ export function useTodo() {
       return
     }
     if (user.value && todo.onlineMode) {
+      start()
       await $fetch('/api/todos', {
         method: 'DELETE',
         body: { id }
       })
+      finish()
     }
     todos.value = todos.value.filter((todo) => todo.id !== id)
   }
@@ -117,6 +126,7 @@ export function useTodo() {
     }
     const addItem = async (title: string) => {
       if (user.value && todo.onlineMode) {
+        start()
         const { data } = await $fetch('/api/todos/items', {
           method: 'POST',
           body: {
@@ -124,6 +134,7 @@ export function useTodo() {
             title
           }
         })
+        finish()
         todo.items.push({
           id: data.id,
           title: data.title,
@@ -139,6 +150,7 @@ export function useTodo() {
     }
     const updateItemTitle = async (id: string, newTitle: string) => {
       if (user.value && todo.onlineMode) {
+        start()
         await $fetch('/api/todos/items/title', {
           method: 'PATCH',
           body: {
@@ -146,6 +158,7 @@ export function useTodo() {
             title: newTitle
           }
         })
+        finish()
       }
       const item = todo.items.find((item) => item.id === id)
       if (item) {
@@ -158,6 +171,7 @@ export function useTodo() {
         return
       }
       if (user.value && todo.onlineMode) {
+        start()
         await $fetch('/api/todos/items/done', {
           method: 'PATCH',
           body: {
@@ -165,6 +179,7 @@ export function useTodo() {
             done: true
           }
         })
+        finish()
       }
       item.done = true
     }
@@ -174,6 +189,7 @@ export function useTodo() {
         return
       }
       if (user.value && todo.onlineMode) {
+        start()
         await $fetch('/api/todos/items/done', {
           method: 'PATCH',
           body: {
@@ -181,6 +197,7 @@ export function useTodo() {
             done: false
           }
         })
+        finish()
       }
       item.done = false
     }
@@ -190,12 +207,14 @@ export function useTodo() {
         return
       }
       if (user.value && todo.onlineMode) {
+        start()
         await $fetch('/api/todos/items', {
           method: 'DELETE',
           body: {
             todoListItemId: id
           }
         })
+        finish()
       }
       todo.items = todo.items.filter((item) => item.id !== id)
     }
