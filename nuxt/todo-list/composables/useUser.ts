@@ -31,12 +31,16 @@ export function useUser() {
       throw new Error(error.message || 'Unknown error')
     }
     await getCurrentUser()
+    const { loadTodoListFromOnline } = useTodo()
+    await loadTodoListFromOnline()
     return data
   }
 
   async function logout() {
     await authClient.signOut()
     user.value = null
+    const { clearTodoListOnline } = useTodo()
+    clearTodoListOnline()
   }
 
   return {

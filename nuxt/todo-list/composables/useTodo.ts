@@ -54,6 +54,10 @@ export function useTodo() {
     })).concat(offlineTodos)
   }
 
+  function clearTodoListOnline() {
+    todos.value = todos.value.filter((todo) => !todo.onlineMode)
+  }
+
   async function addTodo(title: string) {
     if (user.value) {
       const todo = await $fetch('/api/todos/create', {
@@ -76,7 +80,11 @@ export function useTodo() {
   }
 
   async function updateTodoTitle(id: string, newTitle: string) {
-    if (user.value) {
+    const todo = todos.value.find((todo) => todo.id === id)
+    if (!todo) {
+      return
+    }
+    if (user.value && todo.onlineMode) {
       await $fetch('/api/todos/title', {
         method: 'PATCH',
         body: {
@@ -85,14 +93,15 @@ export function useTodo() {
         }
       })
     }
-    const todo = todos.value.find((todo) => todo.id === id)
-    if (todo) {
-      todo.title = newTitle
-    }
+    todo.title = newTitle
   }
 
   async function removeTodo(id: string) {
-    if (user.value) {
+    const todo = todos.value.find((todo) => todo.id === id)
+    if (!todo) {
+      return
+    }
+    if (user.value && todo.onlineMode) {
       await $fetch('/api/todos', {
         method: 'DELETE',
         body: { id }
@@ -101,37 +110,93 @@ export function useTodo() {
     todos.value = todos.value.filter((todo) => todo.id !== id)
   }
 
-  function getTodo(id: string) {
-    const todo = todos.value.find((todo) => todo.id === id)
+  function getTodo(todoListId: string) {
+    const todo = todos.value.find((todo) => todo.id === todoListId)
     if (!todo) {
       throw new Error('Todo not found')
     }
-    const addItem = (title: string) => {
-      todo.items.push({
-        id: uuid(),
-        title,
-        done: false
-      })
+    const addItem = async (title: string) => {
+      if (user.value && todo.onlineMode) {
+        const { data } = await $fetch('/api/todos/items', {
+          method: 'POST',
+          body: {
+            todoListId,
+            title
+          }
+        })
+        todo.items.push({
+          id: data.id,
+          title: data.title,
+          done: data.done
+        })
+      } else {
+        todo.items.push({
+          id: uuid(),
+          title,
+          done: false
+        })
+      }
     }
-    const updateItemTitle = (id: string, newTitle: string) => {
+    const updateItemTitle = async (id: string, newTitle: string) => {
+      if (user.value && todo.onlineMode) {
+        await $fetch('/api/todos/items/title', {
+          method: 'PATCH',
+          body: {
+            todoListItemId: id,
+            title: newTitle
+          }
+        })
+      }
       const item = todo.items.find((item) => item.id === id)
       if (item) {
         item.title = newTitle
       }
     }
-    const markItemDone = (id: string) => {
+    const markItemDone = async (id: string) => {
       const item = todo.items.find((item) => item.id === id)
-      if (item) {
-        item.done = true
+      if (!item) {
+        return
       }
+      if (user.value && todo.onlineMode) {
+        await $fetch('/api/todos/items/done', {
+          method: 'PATCH',
+          body: {
+            todoListItemId: id,
+            done: true
+          }
+        })
+      }
+      item.done = true
     }
     const markItemUndone = (id: string) => {
       const item = todo.items.find((item) => item.id === id)
-      if (item) {
-        item.done = false
+      if (!item) {
+        return
       }
+      if (user.value && todo.onlineMode) {
+        $fetch('/api/todos/items/done', {
+          method: 'PATCH',
+          body: {
+            todoListItemId: id,
+            done: false
+          }
+        })
+      }
+      item.done = false
     }
-    const removeItem = (id: string) => {
+    const removeItem = async (id: string) => {
+      const item = todo.items.find((item) => item.id === id)
+      if (!item) {
+        return
+      }
+      if (user.value && todo.onlineMode) {
+        await $fetch('/api/todos/items', {
+          method: 'DELETE',
+          body: {
+            todoListItemId: id
+          }
+        })
+      }
       todo.items = todo.items.filter((item) => item.id !== id)
     }
     return {
@@ -165,6 +230,7 @@ export function useTodo() {
     getTodo,
     loadTodoListFromLocalStorage,
     loadTodoListFromOnline,
+    clearTodoListOnline,
     syncTodo
   }
 }
