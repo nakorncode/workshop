@@ -1,0 +1,31 @@
+services:
+  frontend_and_gateway:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.prod
+    depends_on:
+      - backend
+    ports:
+      - 80:80
+    restart: unless-stopped
+  
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.prod
+    env_file:
+      - .env
+    depends_on:
+      - db
+    restart: unless-stopped
+
+  db:
+    image: postgres:17-alpine
+    env_file:
+      - .env
+    volumes:
+      - prod_data:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  prod_data:

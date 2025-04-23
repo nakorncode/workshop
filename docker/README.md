@@ -1,0 +1,2 @@
+- `docker compose up -d` สำหรับ Development
+- `docker compose -f docker-compose.prod.yml up -d` สำหรับ Production
