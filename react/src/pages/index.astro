@@ -1,0 +1,29 @@
+---
+const matches = import.meta.glob<{ url: string }>('./workshops/*.astro', {
+  eager: true
+})
+const workshops = Object.values(matches)
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>React Workshop</title>
+    <style>
+      body {
+        font-family: sans-serif;
+      }
+    </style>
+	</head>
+	<body>
+		<h1>React Workshop</h1>
+    <ul>
+      {workshops.map((workshop) => (
+        <li><a href={workshop.url}>{workshop.url}</a></li>)
+      )}
+    </ul>
+	</body>
+</html>
