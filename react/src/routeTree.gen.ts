@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
@@ -16,6 +17,11 @@ import { Route as R2ComponentsRouteImport } from './routes/2-components'
 import { Route as R1JsxRouteImport } from './routes/1-jsx'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R6ListRoute = R6ListRouteImport.update({
+  id: '/6-list',
+  path: '/6-list',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R5ConditionalRoute = R5ConditionalRouteImport.update({
   id: '/5-conditional',
   path: '/5-conditional',
@@ -54,6 +60,7 @@ export interface FileRoutesByFullPath {
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
+  '/6-list': typeof R6ListRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -62,6 +69,7 @@ export interface FileRoutesByTo {
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
+  '/6-list': typeof R6ListRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -71,6 +79,7 @@ export interface FileRoutesById {
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
+  '/6-list': typeof R6ListRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -81,6 +90,7 @@ export interface FileRouteTypes {
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
+    | '/6-list'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -89,6 +99,7 @@ export interface FileRouteTypes {
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
+    | '/6-list'
   id:
     | '__root__'
     | '/'
@@ -97,6 +108,7 @@ export interface FileRouteTypes {
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
+    | '/6-list'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -106,10 +118,18 @@ export interface RootRouteChildren {
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
   R5ConditionalRoute: typeof R5ConditionalRoute
+  R6ListRoute: typeof R6ListRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/6-list': {
+      id: '/6-list'
+      path: '/6-list'
+      fullPath: '/6-list'
+      preLoaderRoute: typeof R6ListRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/5-conditional': {
       id: '/5-conditional'
       path: '/5-conditional'
@@ -162,6 +182,7 @@ const rootRouteChildren: RootRouteChildren = {
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
   R5ConditionalRoute: R5ConditionalRoute,
+  R6ListRoute: R6ListRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
