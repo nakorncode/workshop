@@ -17,6 +17,7 @@ import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
+import { Route as R10ReferenceTypesRouteImport } from './routes/10-reference-types'
 import { Route as R1JsxRouteImport } from './routes/1-jsx'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -60,6 +61,11 @@ const R2ComponentsRoute = R2ComponentsRouteImport.update({
   path: '/2-components',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R10ReferenceTypesRoute = R10ReferenceTypesRouteImport.update({
+  id: '/10-reference-types',
+  path: '/10-reference-types',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R1JsxRoute = R1JsxRouteImport.update({
   id: '/1-jsx',
   path: '/1-jsx',
@@ -74,6 +80,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/1-jsx': typeof R1JsxRoute
+  '/10-reference-types': typeof R10ReferenceTypesRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/1-jsx': typeof R1JsxRoute
+  '/10-reference-types': typeof R10ReferenceTypesRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -99,6 +107,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/1-jsx': typeof R1JsxRoute
+  '/10-reference-types': typeof R10ReferenceTypesRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -113,6 +122,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/1-jsx'
+    | '/10-reference-types'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -125,6 +135,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/1-jsx'
+    | '/10-reference-types'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -137,6 +148,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/1-jsx'
+    | '/10-reference-types'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -150,6 +162,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R1JsxRoute: typeof R1JsxRoute
+  R10ReferenceTypesRoute: typeof R10ReferenceTypesRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
@@ -218,6 +231,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R2ComponentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/10-reference-types': {
+      id: '/10-reference-types'
+      path: '/10-reference-types'
+      fullPath: '/10-reference-types'
+      preLoaderRoute: typeof R10ReferenceTypesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/1-jsx': {
       id: '/1-jsx'
       path: '/1-jsx'
@@ -238,6 +258,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R1JsxRoute: R1JsxRoute,
+  R10ReferenceTypesRoute: R10ReferenceTypesRoute,
   R2ComponentsRoute: R2ComponentsRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
