@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R9SnapshotRouteImport } from './routes/9-snapshot'
 import { Route as R8StateRouteImport } from './routes/8-state'
 import { Route as R7EventRouteImport } from './routes/7-event'
 import { Route as R6ListRouteImport } from './routes/6-list'
@@ -19,6 +20,11 @@ import { Route as R2ComponentsRouteImport } from './routes/2-components'
 import { Route as R1JsxRouteImport } from './routes/1-jsx'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R9SnapshotRoute = R9SnapshotRouteImport.update({
+  id: '/9-snapshot',
+  path: '/9-snapshot',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R8StateRoute = R8StateRouteImport.update({
   id: '/8-state',
   path: '/8-state',
@@ -75,6 +81,7 @@ export interface FileRoutesByFullPath {
   '/6-list': typeof R6ListRoute
   '/7-event': typeof R7EventRoute
   '/8-state': typeof R8StateRoute
+  '/9-snapshot': typeof R9SnapshotRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -86,6 +93,7 @@ export interface FileRoutesByTo {
   '/6-list': typeof R6ListRoute
   '/7-event': typeof R7EventRoute
   '/8-state': typeof R8StateRoute
+  '/9-snapshot': typeof R9SnapshotRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -98,6 +106,7 @@ export interface FileRoutesById {
   '/6-list': typeof R6ListRoute
   '/7-event': typeof R7EventRoute
   '/8-state': typeof R8StateRoute
+  '/9-snapshot': typeof R9SnapshotRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +120,7 @@ export interface FileRouteTypes {
     | '/6-list'
     | '/7-event'
     | '/8-state'
+    | '/9-snapshot'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -122,6 +132,7 @@ export interface FileRouteTypes {
     | '/6-list'
     | '/7-event'
     | '/8-state'
+    | '/9-snapshot'
   id:
     | '__root__'
     | '/'
@@ -133,6 +144,7 @@ export interface FileRouteTypes {
     | '/6-list'
     | '/7-event'
     | '/8-state'
+    | '/9-snapshot'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -145,10 +157,18 @@ export interface RootRouteChildren {
   R6ListRoute: typeof R6ListRoute
   R7EventRoute: typeof R7EventRoute
   R8StateRoute: typeof R8StateRoute
+  R9SnapshotRoute: typeof R9SnapshotRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/9-snapshot': {
+      id: '/9-snapshot'
+      path: '/9-snapshot'
+      fullPath: '/9-snapshot'
+      preLoaderRoute: typeof R9SnapshotRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/8-state': {
       id: '/8-state'
       path: '/8-state'
@@ -225,6 +245,7 @@ const rootRouteChildren: RootRouteChildren = {
   R6ListRoute: R6ListRoute,
   R7EventRoute: R7EventRoute,
   R8StateRoute: R8StateRoute,
+  R9SnapshotRoute: R9SnapshotRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
