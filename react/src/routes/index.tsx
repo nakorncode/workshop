@@ -19,6 +19,7 @@ function App() {
         <li><a href="/8-state" className="underline text-blue-600">8-state</a></li>
         <li><a href="/9-snapshot" className="underline text-blue-600">9-snapshot</a></li>
         <li><a href="/10-reference-types" className="underline text-blue-600">10-reference-types</a></li>
+        <li><a href="/11-immer" className="underline text-blue-600">11-immer</a></li>
       </ul>
     </>
   )

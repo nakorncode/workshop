@@ -17,6 +17,7 @@ import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
+import { Route as R11ImmerRouteImport } from './routes/11-immer'
 import { Route as R10ReferenceTypesRouteImport } from './routes/10-reference-types'
 import { Route as R1JsxRouteImport } from './routes/1-jsx'
 import { Route as IndexRouteImport } from './routes/index'
@@ -61,6 +62,11 @@ const R2ComponentsRoute = R2ComponentsRouteImport.update({
   path: '/2-components',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R11ImmerRoute = R11ImmerRouteImport.update({
+  id: '/11-immer',
+  path: '/11-immer',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R10ReferenceTypesRoute = R10ReferenceTypesRouteImport.update({
   id: '/10-reference-types',
   path: '/10-reference-types',
@@ -81,6 +87,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/1-jsx': typeof R1JsxRoute
   '/10-reference-types': typeof R10ReferenceTypesRoute
+  '/11-immer': typeof R11ImmerRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -94,6 +101,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/1-jsx': typeof R1JsxRoute
   '/10-reference-types': typeof R10ReferenceTypesRoute
+  '/11-immer': typeof R11ImmerRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -108,6 +116,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/1-jsx': typeof R1JsxRoute
   '/10-reference-types': typeof R10ReferenceTypesRoute
+  '/11-immer': typeof R11ImmerRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -123,6 +132,7 @@ export interface FileRouteTypes {
     | '/'
     | '/1-jsx'
     | '/10-reference-types'
+    | '/11-immer'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -136,6 +146,7 @@ export interface FileRouteTypes {
     | '/'
     | '/1-jsx'
     | '/10-reference-types'
+    | '/11-immer'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -149,6 +160,7 @@ export interface FileRouteTypes {
     | '/'
     | '/1-jsx'
     | '/10-reference-types'
+    | '/11-immer'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -163,6 +175,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R1JsxRoute: typeof R1JsxRoute
   R10ReferenceTypesRoute: typeof R10ReferenceTypesRoute
+  R11ImmerRoute: typeof R11ImmerRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
@@ -231,6 +244,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R2ComponentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/11-immer': {
+      id: '/11-immer'
+      path: '/11-immer'
+      fullPath: '/11-immer'
+      preLoaderRoute: typeof R11ImmerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/10-reference-types': {
       id: '/10-reference-types'
       path: '/10-reference-types'
@@ -259,6 +279,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R1JsxRoute: R1JsxRoute,
   R10ReferenceTypesRoute: R10ReferenceTypesRoute,
+  R11ImmerRoute: R11ImmerRoute,
   R2ComponentsRoute: R2ComponentsRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
