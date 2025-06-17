@@ -10,6 +10,9 @@ function App() {
       <h1>Index</h1>
       <ul className="list-disc pl-5">
         <li><a href="/1-jsx" className="underline text-blue-600">1-jsx</a></li>
+        <li><a href="/2-components" className="underline text-blue-600">2-components</a></li>
+        <li><a href="/3-props" className="underline text-blue-600">3-props</a></li>
+        <li><a href="/4-children" className="underline text-blue-600">4-children</a></li>
       </ul>
     </>
   )
