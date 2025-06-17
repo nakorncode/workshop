@@ -15,6 +15,7 @@ function App() {
         <li><a href="/4-children" className="underline text-blue-600">4-children</a></li>
         <li><a href="/5-conditional" className="underline text-blue-600">5-conditional</a></li>
         <li><a href="/6-list" className="underline text-blue-600">6-list</a></li>
+        <li><a href="/7-event" className="underline text-blue-600">7-event</a></li>
       </ul>
     </>
   )
