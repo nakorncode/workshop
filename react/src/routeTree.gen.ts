@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as R8StateRouteImport } from './routes/8-state'
 import { Route as R7EventRouteImport } from './routes/7-event'
 import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
@@ -18,6 +19,11 @@ import { Route as R2ComponentsRouteImport } from './routes/2-components'
 import { Route as R1JsxRouteImport } from './routes/1-jsx'
 import { Route as IndexRouteImport } from './routes/index'
 
+const R8StateRoute = R8StateRouteImport.update({
+  id: '/8-state',
+  path: '/8-state',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R7EventRoute = R7EventRouteImport.update({
   id: '/7-event',
   path: '/7-event',
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/5-conditional': typeof R5ConditionalRoute
   '/6-list': typeof R6ListRoute
   '/7-event': typeof R7EventRoute
+  '/8-state': typeof R8StateRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/5-conditional': typeof R5ConditionalRoute
   '/6-list': typeof R6ListRoute
   '/7-event': typeof R7EventRoute
+  '/8-state': typeof R8StateRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/5-conditional': typeof R5ConditionalRoute
   '/6-list': typeof R6ListRoute
   '/7-event': typeof R7EventRoute
+  '/8-state': typeof R8StateRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/5-conditional'
     | '/6-list'
     | '/7-event'
+    | '/8-state'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/5-conditional'
     | '/6-list'
     | '/7-event'
+    | '/8-state'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/5-conditional'
     | '/6-list'
     | '/7-event'
+    | '/8-state'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,10 +144,18 @@ export interface RootRouteChildren {
   R5ConditionalRoute: typeof R5ConditionalRoute
   R6ListRoute: typeof R6ListRoute
   R7EventRoute: typeof R7EventRoute
+  R8StateRoute: typeof R8StateRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/8-state': {
+      id: '/8-state'
+      path: '/8-state'
+      fullPath: '/8-state'
+      preLoaderRoute: typeof R8StateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/7-event': {
       id: '/7-event'
       path: '/7-event'
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   R5ConditionalRoute: R5ConditionalRoute,
   R6ListRoute: R6ListRoute,
   R7EventRoute: R7EventRoute,
+  R8StateRoute: R8StateRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

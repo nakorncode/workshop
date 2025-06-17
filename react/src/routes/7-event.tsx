@@ -35,7 +35,7 @@ function RouteComponent() {
         onKeyDown={onKeyDown}
       />
       <div className="mt-2">
-        <button className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded">Submit</button>
+        <button className="bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded cursor-pointer">Submit</button>
       </div>
     </form>
   )
