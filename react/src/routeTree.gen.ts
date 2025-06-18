@@ -17,6 +17,7 @@ import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
+import { Route as R13EventEmissionRouteImport } from './routes/13-event-emission'
 import { Route as R12TwoWayBindingRouteImport } from './routes/12-two-way-binding'
 import { Route as R11ImmerRouteImport } from './routes/11-immer'
 import { Route as R10ReferenceTypesRouteImport } from './routes/10-reference-types'
@@ -63,6 +64,11 @@ const R2ComponentsRoute = R2ComponentsRouteImport.update({
   path: '/2-components',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R13EventEmissionRoute = R13EventEmissionRouteImport.update({
+  id: '/13-event-emission',
+  path: '/13-event-emission',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R12TwoWayBindingRoute = R12TwoWayBindingRouteImport.update({
   id: '/12-two-way-binding',
   path: '/12-two-way-binding',
@@ -95,6 +101,7 @@ export interface FileRoutesByFullPath {
   '/10-reference-types': typeof R10ReferenceTypesRoute
   '/11-immer': typeof R11ImmerRoute
   '/12-two-way-binding': typeof R12TwoWayBindingRoute
+  '/13-event-emission': typeof R13EventEmissionRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -110,6 +117,7 @@ export interface FileRoutesByTo {
   '/10-reference-types': typeof R10ReferenceTypesRoute
   '/11-immer': typeof R11ImmerRoute
   '/12-two-way-binding': typeof R12TwoWayBindingRoute
+  '/13-event-emission': typeof R13EventEmissionRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -126,6 +134,7 @@ export interface FileRoutesById {
   '/10-reference-types': typeof R10ReferenceTypesRoute
   '/11-immer': typeof R11ImmerRoute
   '/12-two-way-binding': typeof R12TwoWayBindingRoute
+  '/13-event-emission': typeof R13EventEmissionRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -143,6 +152,7 @@ export interface FileRouteTypes {
     | '/10-reference-types'
     | '/11-immer'
     | '/12-two-way-binding'
+    | '/13-event-emission'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -158,6 +168,7 @@ export interface FileRouteTypes {
     | '/10-reference-types'
     | '/11-immer'
     | '/12-two-way-binding'
+    | '/13-event-emission'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -173,6 +184,7 @@ export interface FileRouteTypes {
     | '/10-reference-types'
     | '/11-immer'
     | '/12-two-way-binding'
+    | '/13-event-emission'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -189,6 +201,7 @@ export interface RootRouteChildren {
   R10ReferenceTypesRoute: typeof R10ReferenceTypesRoute
   R11ImmerRoute: typeof R11ImmerRoute
   R12TwoWayBindingRoute: typeof R12TwoWayBindingRoute
+  R13EventEmissionRoute: typeof R13EventEmissionRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
@@ -257,6 +270,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R2ComponentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/13-event-emission': {
+      id: '/13-event-emission'
+      path: '/13-event-emission'
+      fullPath: '/13-event-emission'
+      preLoaderRoute: typeof R13EventEmissionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/12-two-way-binding': {
       id: '/12-two-way-binding'
       path: '/12-two-way-binding'
@@ -301,6 +321,7 @@ const rootRouteChildren: RootRouteChildren = {
   R10ReferenceTypesRoute: R10ReferenceTypesRoute,
   R11ImmerRoute: R11ImmerRoute,
   R12TwoWayBindingRoute: R12TwoWayBindingRoute,
+  R13EventEmissionRoute: R13EventEmissionRoute,
   R2ComponentsRoute: R2ComponentsRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
