@@ -22,6 +22,7 @@ function App() {
         <li><a href="/11-immer" className="underline text-blue-600">11-immer</a></li>
         <li><a href="/12-two-way-binding" className="underline text-blue-600">12-two-way-binding</a></li>
         <li><a href="/13-event-emission" className="underline text-blue-600">13-event-emission</a></li>
+        <li><a href="/14-preserve-reset-state" className="underline text-blue-600">14-preserve-reset-state</a></li>
       </ul>
     </>
   )

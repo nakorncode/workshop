@@ -17,6 +17,7 @@ import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
+import { Route as R14PreserveResetStateRouteImport } from './routes/14-preserve-reset-state'
 import { Route as R13EventEmissionRouteImport } from './routes/13-event-emission'
 import { Route as R12TwoWayBindingRouteImport } from './routes/12-two-way-binding'
 import { Route as R11ImmerRouteImport } from './routes/11-immer'
@@ -64,6 +65,11 @@ const R2ComponentsRoute = R2ComponentsRouteImport.update({
   path: '/2-components',
   getParentRoute: () => rootRouteImport,
 } as any)
+const R14PreserveResetStateRoute = R14PreserveResetStateRouteImport.update({
+  id: '/14-preserve-reset-state',
+  path: '/14-preserve-reset-state',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const R13EventEmissionRoute = R13EventEmissionRouteImport.update({
   id: '/13-event-emission',
   path: '/13-event-emission',
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/11-immer': typeof R11ImmerRoute
   '/12-two-way-binding': typeof R12TwoWayBindingRoute
   '/13-event-emission': typeof R13EventEmissionRoute
+  '/14-preserve-reset-state': typeof R14PreserveResetStateRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/11-immer': typeof R11ImmerRoute
   '/12-two-way-binding': typeof R12TwoWayBindingRoute
   '/13-event-emission': typeof R13EventEmissionRoute
+  '/14-preserve-reset-state': typeof R14PreserveResetStateRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/11-immer': typeof R11ImmerRoute
   '/12-two-way-binding': typeof R12TwoWayBindingRoute
   '/13-event-emission': typeof R13EventEmissionRoute
+  '/14-preserve-reset-state': typeof R14PreserveResetStateRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/11-immer'
     | '/12-two-way-binding'
     | '/13-event-emission'
+    | '/14-preserve-reset-state'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/11-immer'
     | '/12-two-way-binding'
     | '/13-event-emission'
+    | '/14-preserve-reset-state'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/11-immer'
     | '/12-two-way-binding'
     | '/13-event-emission'
+    | '/14-preserve-reset-state'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -202,6 +214,7 @@ export interface RootRouteChildren {
   R11ImmerRoute: typeof R11ImmerRoute
   R12TwoWayBindingRoute: typeof R12TwoWayBindingRoute
   R13EventEmissionRoute: typeof R13EventEmissionRoute
+  R14PreserveResetStateRoute: typeof R14PreserveResetStateRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
@@ -270,6 +283,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof R2ComponentsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/14-preserve-reset-state': {
+      id: '/14-preserve-reset-state'
+      path: '/14-preserve-reset-state'
+      fullPath: '/14-preserve-reset-state'
+      preLoaderRoute: typeof R14PreserveResetStateRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/13-event-emission': {
       id: '/13-event-emission'
       path: '/13-event-emission'
@@ -322,6 +342,7 @@ const rootRouteChildren: RootRouteChildren = {
   R11ImmerRoute: R11ImmerRoute,
   R12TwoWayBindingRoute: R12TwoWayBindingRoute,
   R13EventEmissionRoute: R13EventEmissionRoute,
+  R14PreserveResetStateRoute: R14PreserveResetStateRoute,
   R2ComponentsRoute: R2ComponentsRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
