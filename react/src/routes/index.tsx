@@ -33,6 +33,7 @@ function App() {
         <li><a href="/22-redundant" className="underline text-blue-600">22-redundant</a></li>
         <li><a href="/23-duplication" className="underline text-blue-600">23-duplication</a></li>
         <li><a href="/24-reducer" className="underline text-blue-600">24-reducer</a></li>
+        <li><a href="/25-use-memo" className="underline text-blue-600">25-use-memo</a></li>
       </ul>
     </>
   )
