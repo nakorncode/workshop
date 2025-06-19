@@ -36,6 +36,7 @@ function App() {
         <li><a href="/24-reducer" className={link}>24-reducer</a></li>
         <li><a href="/25-use-memo" className={link}>25-use-memo</a></li>
         <li><a href="/26-context" className={link}>26-context</a></li>
+        <li><a href="/27-ui-component" className={link}>27-ui-component</a></li>
       </ul>
     </>
   )
