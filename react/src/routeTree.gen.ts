@@ -16,6 +16,7 @@ import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
+import { Route as R21ContradictionsRouteImport } from './routes/21-contradictions'
 import { Route as R20GroupStateRouteImport } from './routes/20-group-state'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
 import { Route as R19CleanupRouteImport } from './routes/19-cleanup'
@@ -64,6 +65,11 @@ const R4ChildrenRoute = R4ChildrenRouteImport.update({
 const R3PropsRoute = R3PropsRouteImport.update({
   id: '/3-props',
   path: '/3-props',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R21ContradictionsRoute = R21ContradictionsRouteImport.update({
+  id: '/21-contradictions',
+  path: '/21-contradictions',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R20GroupStateRoute = R20GroupStateRouteImport.update({
@@ -152,6 +158,7 @@ export interface FileRoutesByFullPath {
   '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
   '/20-group-state': typeof R20GroupStateRoute
+  '/21-contradictions': typeof R21ContradictionsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -175,6 +182,7 @@ export interface FileRoutesByTo {
   '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
   '/20-group-state': typeof R20GroupStateRoute
+  '/21-contradictions': typeof R21ContradictionsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -199,6 +207,7 @@ export interface FileRoutesById {
   '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
   '/20-group-state': typeof R20GroupStateRoute
+  '/21-contradictions': typeof R21ContradictionsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -224,6 +233,7 @@ export interface FileRouteTypes {
     | '/19-cleanup'
     | '/2-components'
     | '/20-group-state'
+    | '/21-contradictions'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -247,6 +257,7 @@ export interface FileRouteTypes {
     | '/19-cleanup'
     | '/2-components'
     | '/20-group-state'
+    | '/21-contradictions'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -270,6 +281,7 @@ export interface FileRouteTypes {
     | '/19-cleanup'
     | '/2-components'
     | '/20-group-state'
+    | '/21-contradictions'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -294,6 +306,7 @@ export interface RootRouteChildren {
   R19CleanupRoute: typeof R19CleanupRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
   R20GroupStateRoute: typeof R20GroupStateRoute
+  R21ContradictionsRoute: typeof R21ContradictionsRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
   R5ConditionalRoute: typeof R5ConditionalRoute
@@ -352,6 +365,13 @@ declare module '@tanstack/react-router' {
       path: '/3-props'
       fullPath: '/3-props'
       preLoaderRoute: typeof R3PropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/21-contradictions': {
+      id: '/21-contradictions'
+      path: '/21-contradictions'
+      fullPath: '/21-contradictions'
+      preLoaderRoute: typeof R21ContradictionsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/20-group-state': {
@@ -470,6 +490,7 @@ const rootRouteChildren: RootRouteChildren = {
   R19CleanupRoute: R19CleanupRoute,
   R2ComponentsRoute: R2ComponentsRoute,
   R20GroupStateRoute: R20GroupStateRoute,
+  R21ContradictionsRoute: R21ContradictionsRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
   R5ConditionalRoute: R5ConditionalRoute,
