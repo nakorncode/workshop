@@ -17,6 +17,7 @@ import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
+import { Route as R19CleanupRouteImport } from './routes/19-cleanup'
 import { Route as R18UseEffectArgsRouteImport } from './routes/18-use-effect-args'
 import { Route as R17ReRenderRouteImport } from './routes/17-re-render'
 import { Route as R16ImpureComponentRouteImport } from './routes/16-impure-component'
@@ -67,6 +68,11 @@ const R3PropsRoute = R3PropsRouteImport.update({
 const R2ComponentsRoute = R2ComponentsRouteImport.update({
   id: '/2-components',
   path: '/2-components',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R19CleanupRoute = R19CleanupRouteImport.update({
+  id: '/19-cleanup',
+  path: '/19-cleanup',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R18UseEffectArgsRoute = R18UseEffectArgsRouteImport.update({
@@ -137,6 +143,7 @@ export interface FileRoutesByFullPath {
   '/16-impure-component': typeof R16ImpureComponentRoute
   '/17-re-render': typeof R17ReRenderRoute
   '/18-use-effect-args': typeof R18UseEffectArgsRoute
+  '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -158,6 +165,7 @@ export interface FileRoutesByTo {
   '/16-impure-component': typeof R16ImpureComponentRoute
   '/17-re-render': typeof R17ReRenderRoute
   '/18-use-effect-args': typeof R18UseEffectArgsRoute
+  '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -180,6 +188,7 @@ export interface FileRoutesById {
   '/16-impure-component': typeof R16ImpureComponentRoute
   '/17-re-render': typeof R17ReRenderRoute
   '/18-use-effect-args': typeof R18UseEffectArgsRoute
+  '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -203,6 +212,7 @@ export interface FileRouteTypes {
     | '/16-impure-component'
     | '/17-re-render'
     | '/18-use-effect-args'
+    | '/19-cleanup'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -224,6 +234,7 @@ export interface FileRouteTypes {
     | '/16-impure-component'
     | '/17-re-render'
     | '/18-use-effect-args'
+    | '/19-cleanup'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -245,6 +256,7 @@ export interface FileRouteTypes {
     | '/16-impure-component'
     | '/17-re-render'
     | '/18-use-effect-args'
+    | '/19-cleanup'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -267,6 +279,7 @@ export interface RootRouteChildren {
   R16ImpureComponentRoute: typeof R16ImpureComponentRoute
   R17ReRenderRoute: typeof R17ReRenderRoute
   R18UseEffectArgsRoute: typeof R18UseEffectArgsRoute
+  R19CleanupRoute: typeof R19CleanupRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
@@ -333,6 +346,13 @@ declare module '@tanstack/react-router' {
       path: '/2-components'
       fullPath: '/2-components'
       preLoaderRoute: typeof R2ComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/19-cleanup': {
+      id: '/19-cleanup'
+      path: '/19-cleanup'
+      fullPath: '/19-cleanup'
+      preLoaderRoute: typeof R19CleanupRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/18-use-effect-args': {
@@ -427,6 +447,7 @@ const rootRouteChildren: RootRouteChildren = {
   R16ImpureComponentRoute: R16ImpureComponentRoute,
   R17ReRenderRoute: R17ReRenderRoute,
   R18UseEffectArgsRoute: R18UseEffectArgsRoute,
+  R19CleanupRoute: R19CleanupRoute,
   R2ComponentsRoute: R2ComponentsRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
