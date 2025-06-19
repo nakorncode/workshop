@@ -16,6 +16,7 @@ import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
+import { Route as R20GroupStateRouteImport } from './routes/20-group-state'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
 import { Route as R19CleanupRouteImport } from './routes/19-cleanup'
 import { Route as R18UseEffectArgsRouteImport } from './routes/18-use-effect-args'
@@ -63,6 +64,11 @@ const R4ChildrenRoute = R4ChildrenRouteImport.update({
 const R3PropsRoute = R3PropsRouteImport.update({
   id: '/3-props',
   path: '/3-props',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R20GroupStateRoute = R20GroupStateRouteImport.update({
+  id: '/20-group-state',
+  path: '/20-group-state',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R2ComponentsRoute = R2ComponentsRouteImport.update({
@@ -145,6 +151,7 @@ export interface FileRoutesByFullPath {
   '/18-use-effect-args': typeof R18UseEffectArgsRoute
   '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
+  '/20-group-state': typeof R20GroupStateRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -167,6 +174,7 @@ export interface FileRoutesByTo {
   '/18-use-effect-args': typeof R18UseEffectArgsRoute
   '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
+  '/20-group-state': typeof R20GroupStateRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -190,6 +198,7 @@ export interface FileRoutesById {
   '/18-use-effect-args': typeof R18UseEffectArgsRoute
   '/19-cleanup': typeof R19CleanupRoute
   '/2-components': typeof R2ComponentsRoute
+  '/20-group-state': typeof R20GroupStateRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -214,6 +223,7 @@ export interface FileRouteTypes {
     | '/18-use-effect-args'
     | '/19-cleanup'
     | '/2-components'
+    | '/20-group-state'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -236,6 +246,7 @@ export interface FileRouteTypes {
     | '/18-use-effect-args'
     | '/19-cleanup'
     | '/2-components'
+    | '/20-group-state'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -258,6 +269,7 @@ export interface FileRouteTypes {
     | '/18-use-effect-args'
     | '/19-cleanup'
     | '/2-components'
+    | '/20-group-state'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -281,6 +293,7 @@ export interface RootRouteChildren {
   R18UseEffectArgsRoute: typeof R18UseEffectArgsRoute
   R19CleanupRoute: typeof R19CleanupRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
+  R20GroupStateRoute: typeof R20GroupStateRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
   R5ConditionalRoute: typeof R5ConditionalRoute
@@ -339,6 +352,13 @@ declare module '@tanstack/react-router' {
       path: '/3-props'
       fullPath: '/3-props'
       preLoaderRoute: typeof R3PropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/20-group-state': {
+      id: '/20-group-state'
+      path: '/20-group-state'
+      fullPath: '/20-group-state'
+      preLoaderRoute: typeof R20GroupStateRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/2-components': {
@@ -449,6 +469,7 @@ const rootRouteChildren: RootRouteChildren = {
   R18UseEffectArgsRoute: R18UseEffectArgsRoute,
   R19CleanupRoute: R19CleanupRoute,
   R2ComponentsRoute: R2ComponentsRoute,
+  R20GroupStateRoute: R20GroupStateRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
   R5ConditionalRoute: R5ConditionalRoute,

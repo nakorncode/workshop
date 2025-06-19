@@ -28,6 +28,7 @@ function App() {
         <li><a href="/17-re-render" className="underline text-blue-600">17-re-render</a></li>
         <li><a href="/18-use-effect-args" className="underline text-blue-600">18-use-effect-args</a></li>
         <li><a href="/19-cleanup" className="underline text-blue-600">19-cleanup</a></li>
+        <li><a href="/20-group-state" className="underline text-blue-600">20-group-state</a></li>
       </ul>
     </>
   )
