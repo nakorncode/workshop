@@ -38,6 +38,7 @@ function App() {
         <li><a href="/26-context" className={link}>26-context</a></li>
         <li><a href="/27-ui-component" className={link}>27-ui-component</a></li>
         <li><a href="/28-use-ref" className={link}>28-use-ref</a></li>
+        <li><a href="/29-forward-ref" className={link}>29-forward-ref</a></li>
       </ul>
     </>
   )
