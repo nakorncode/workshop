@@ -24,6 +24,7 @@ function App() {
         <li><a href="/13-event-emission" className="underline text-blue-600">13-event-emission</a></li>
         <li><a href="/14-preserve-reset-state" className="underline text-blue-600">14-preserve-reset-state</a></li>
         <li><a href="/15-side-effect" className="underline text-blue-600">15-side-effect</a></li>
+        <li><a href="/16-impure-component" className="underline text-blue-600">16-impure-component</a></li>
       </ul>
     </>
   )

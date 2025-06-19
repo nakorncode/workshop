@@ -17,6 +17,7 @@ import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
 import { Route as R2ComponentsRouteImport } from './routes/2-components'
+import { Route as R16ImpureComponentRouteImport } from './routes/16-impure-component'
 import { Route as R15SideEffectRouteImport } from './routes/15-side-effect'
 import { Route as R14PreserveResetStateRouteImport } from './routes/14-preserve-reset-state'
 import { Route as R13EventEmissionRouteImport } from './routes/13-event-emission'
@@ -64,6 +65,11 @@ const R3PropsRoute = R3PropsRouteImport.update({
 const R2ComponentsRoute = R2ComponentsRouteImport.update({
   id: '/2-components',
   path: '/2-components',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R16ImpureComponentRoute = R16ImpureComponentRouteImport.update({
+  id: '/16-impure-component',
+  path: '/16-impure-component',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R15SideEffectRoute = R15SideEffectRouteImport.update({
@@ -116,6 +122,7 @@ export interface FileRoutesByFullPath {
   '/13-event-emission': typeof R13EventEmissionRoute
   '/14-preserve-reset-state': typeof R14PreserveResetStateRoute
   '/15-side-effect': typeof R15SideEffectRoute
+  '/16-impure-component': typeof R16ImpureComponentRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -134,6 +141,7 @@ export interface FileRoutesByTo {
   '/13-event-emission': typeof R13EventEmissionRoute
   '/14-preserve-reset-state': typeof R14PreserveResetStateRoute
   '/15-side-effect': typeof R15SideEffectRoute
+  '/16-impure-component': typeof R16ImpureComponentRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -153,6 +161,7 @@ export interface FileRoutesById {
   '/13-event-emission': typeof R13EventEmissionRoute
   '/14-preserve-reset-state': typeof R14PreserveResetStateRoute
   '/15-side-effect': typeof R15SideEffectRoute
+  '/16-impure-component': typeof R16ImpureComponentRoute
   '/2-components': typeof R2ComponentsRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
@@ -173,6 +182,7 @@ export interface FileRouteTypes {
     | '/13-event-emission'
     | '/14-preserve-reset-state'
     | '/15-side-effect'
+    | '/16-impure-component'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -191,6 +201,7 @@ export interface FileRouteTypes {
     | '/13-event-emission'
     | '/14-preserve-reset-state'
     | '/15-side-effect'
+    | '/16-impure-component'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -209,6 +220,7 @@ export interface FileRouteTypes {
     | '/13-event-emission'
     | '/14-preserve-reset-state'
     | '/15-side-effect'
+    | '/16-impure-component'
     | '/2-components'
     | '/3-props'
     | '/4-children'
@@ -228,6 +240,7 @@ export interface RootRouteChildren {
   R13EventEmissionRoute: typeof R13EventEmissionRoute
   R14PreserveResetStateRoute: typeof R14PreserveResetStateRoute
   R15SideEffectRoute: typeof R15SideEffectRoute
+  R16ImpureComponentRoute: typeof R16ImpureComponentRoute
   R2ComponentsRoute: typeof R2ComponentsRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
@@ -294,6 +307,13 @@ declare module '@tanstack/react-router' {
       path: '/2-components'
       fullPath: '/2-components'
       preLoaderRoute: typeof R2ComponentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/16-impure-component': {
+      id: '/16-impure-component'
+      path: '/16-impure-component'
+      fullPath: '/16-impure-component'
+      preLoaderRoute: typeof R16ImpureComponentRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/15-side-effect': {
@@ -364,6 +384,7 @@ const rootRouteChildren: RootRouteChildren = {
   R13EventEmissionRoute: R13EventEmissionRoute,
   R14PreserveResetStateRoute: R14PreserveResetStateRoute,
   R15SideEffectRoute: R15SideEffectRoute,
+  R16ImpureComponentRoute: R16ImpureComponentRoute,
   R2ComponentsRoute: R2ComponentsRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
