@@ -16,6 +16,7 @@ import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
+import { Route as R24ReducerRouteImport } from './routes/24-reducer'
 import { Route as R23DuplicationRouteImport } from './routes/23-duplication'
 import { Route as R22RedundantRouteImport } from './routes/22-redundant'
 import { Route as R21ContradictionsRouteImport } from './routes/21-contradictions'
@@ -67,6 +68,11 @@ const R4ChildrenRoute = R4ChildrenRouteImport.update({
 const R3PropsRoute = R3PropsRouteImport.update({
   id: '/3-props',
   path: '/3-props',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R24ReducerRoute = R24ReducerRouteImport.update({
+  id: '/24-reducer',
+  path: '/24-reducer',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R23DuplicationRoute = R23DuplicationRouteImport.update({
@@ -173,6 +179,7 @@ export interface FileRoutesByFullPath {
   '/21-contradictions': typeof R21ContradictionsRoute
   '/22-redundant': typeof R22RedundantRoute
   '/23-duplication': typeof R23DuplicationRoute
+  '/24-reducer': typeof R24ReducerRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -199,6 +206,7 @@ export interface FileRoutesByTo {
   '/21-contradictions': typeof R21ContradictionsRoute
   '/22-redundant': typeof R22RedundantRoute
   '/23-duplication': typeof R23DuplicationRoute
+  '/24-reducer': typeof R24ReducerRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -226,6 +234,7 @@ export interface FileRoutesById {
   '/21-contradictions': typeof R21ContradictionsRoute
   '/22-redundant': typeof R22RedundantRoute
   '/23-duplication': typeof R23DuplicationRoute
+  '/24-reducer': typeof R24ReducerRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -254,6 +263,7 @@ export interface FileRouteTypes {
     | '/21-contradictions'
     | '/22-redundant'
     | '/23-duplication'
+    | '/24-reducer'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -280,6 +290,7 @@ export interface FileRouteTypes {
     | '/21-contradictions'
     | '/22-redundant'
     | '/23-duplication'
+    | '/24-reducer'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -306,6 +317,7 @@ export interface FileRouteTypes {
     | '/21-contradictions'
     | '/22-redundant'
     | '/23-duplication'
+    | '/24-reducer'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -333,6 +345,7 @@ export interface RootRouteChildren {
   R21ContradictionsRoute: typeof R21ContradictionsRoute
   R22RedundantRoute: typeof R22RedundantRoute
   R23DuplicationRoute: typeof R23DuplicationRoute
+  R24ReducerRoute: typeof R24ReducerRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
   R5ConditionalRoute: typeof R5ConditionalRoute
@@ -391,6 +404,13 @@ declare module '@tanstack/react-router' {
       path: '/3-props'
       fullPath: '/3-props'
       preLoaderRoute: typeof R3PropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/24-reducer': {
+      id: '/24-reducer'
+      path: '/24-reducer'
+      fullPath: '/24-reducer'
+      preLoaderRoute: typeof R24ReducerRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/23-duplication': {
@@ -533,6 +553,7 @@ const rootRouteChildren: RootRouteChildren = {
   R21ContradictionsRoute: R21ContradictionsRoute,
   R22RedundantRoute: R22RedundantRoute,
   R23DuplicationRoute: R23DuplicationRoute,
+  R24ReducerRoute: R24ReducerRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
   R5ConditionalRoute: R5ConditionalRoute,
