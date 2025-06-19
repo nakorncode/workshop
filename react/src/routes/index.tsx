@@ -30,6 +30,7 @@ function App() {
         <li><a href="/19-cleanup" className="underline text-blue-600">19-cleanup</a></li>
         <li><a href="/20-group-state" className="underline text-blue-600">20-group-state</a></li>
         <li><a href="/21-contradictions" className="underline text-blue-600">21-contradictions</a></li>
+        <li><a href="/22-redundant" className="underline text-blue-600">22-redundant</a></li>
       </ul>
     </>
   )
