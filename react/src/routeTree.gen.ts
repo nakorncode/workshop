@@ -16,6 +16,7 @@ import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
+import { Route as R28UseRefRouteImport } from './routes/28-use-ref'
 import { Route as R27UiComponentRouteImport } from './routes/27-ui-component'
 import { Route as R26ContextRouteImport } from './routes/26-context'
 import { Route as R25UseMemoRouteImport } from './routes/25-use-memo'
@@ -71,6 +72,11 @@ const R4ChildrenRoute = R4ChildrenRouteImport.update({
 const R3PropsRoute = R3PropsRouteImport.update({
   id: '/3-props',
   path: '/3-props',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R28UseRefRoute = R28UseRefRouteImport.update({
+  id: '/28-use-ref',
+  path: '/28-use-ref',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R27UiComponentRoute = R27UiComponentRouteImport.update({
@@ -201,6 +207,7 @@ export interface FileRoutesByFullPath {
   '/25-use-memo': typeof R25UseMemoRoute
   '/26-context': typeof R26ContextRoute
   '/27-ui-component': typeof R27UiComponentRoute
+  '/28-use-ref': typeof R28UseRefRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -231,6 +238,7 @@ export interface FileRoutesByTo {
   '/25-use-memo': typeof R25UseMemoRoute
   '/26-context': typeof R26ContextRoute
   '/27-ui-component': typeof R27UiComponentRoute
+  '/28-use-ref': typeof R28UseRefRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -262,6 +270,7 @@ export interface FileRoutesById {
   '/25-use-memo': typeof R25UseMemoRoute
   '/26-context': typeof R26ContextRoute
   '/27-ui-component': typeof R27UiComponentRoute
+  '/28-use-ref': typeof R28UseRefRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -294,6 +303,7 @@ export interface FileRouteTypes {
     | '/25-use-memo'
     | '/26-context'
     | '/27-ui-component'
+    | '/28-use-ref'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -324,6 +334,7 @@ export interface FileRouteTypes {
     | '/25-use-memo'
     | '/26-context'
     | '/27-ui-component'
+    | '/28-use-ref'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -354,6 +365,7 @@ export interface FileRouteTypes {
     | '/25-use-memo'
     | '/26-context'
     | '/27-ui-component'
+    | '/28-use-ref'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -385,6 +397,7 @@ export interface RootRouteChildren {
   R25UseMemoRoute: typeof R25UseMemoRoute
   R26ContextRoute: typeof R26ContextRoute
   R27UiComponentRoute: typeof R27UiComponentRoute
+  R28UseRefRoute: typeof R28UseRefRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
   R5ConditionalRoute: typeof R5ConditionalRoute
@@ -443,6 +456,13 @@ declare module '@tanstack/react-router' {
       path: '/3-props'
       fullPath: '/3-props'
       preLoaderRoute: typeof R3PropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/28-use-ref': {
+      id: '/28-use-ref'
+      path: '/28-use-ref'
+      fullPath: '/28-use-ref'
+      preLoaderRoute: typeof R28UseRefRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/27-ui-component': {
@@ -617,6 +637,7 @@ const rootRouteChildren: RootRouteChildren = {
   R25UseMemoRoute: R25UseMemoRoute,
   R26ContextRoute: R26ContextRoute,
   R27UiComponentRoute: R27UiComponentRoute,
+  R28UseRefRoute: R28UseRefRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
   R5ConditionalRoute: R5ConditionalRoute,
