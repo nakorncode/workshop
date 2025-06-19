@@ -16,6 +16,7 @@ import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
 import { Route as R3PropsRouteImport } from './routes/3-props'
+import { Route as R26ContextRouteImport } from './routes/26-context'
 import { Route as R25UseMemoRouteImport } from './routes/25-use-memo'
 import { Route as R24ReducerRouteImport } from './routes/24-reducer'
 import { Route as R23DuplicationRouteImport } from './routes/23-duplication'
@@ -69,6 +70,11 @@ const R4ChildrenRoute = R4ChildrenRouteImport.update({
 const R3PropsRoute = R3PropsRouteImport.update({
   id: '/3-props',
   path: '/3-props',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R26ContextRoute = R26ContextRouteImport.update({
+  id: '/26-context',
+  path: '/26-context',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R25UseMemoRoute = R25UseMemoRouteImport.update({
@@ -187,6 +193,7 @@ export interface FileRoutesByFullPath {
   '/23-duplication': typeof R23DuplicationRoute
   '/24-reducer': typeof R24ReducerRoute
   '/25-use-memo': typeof R25UseMemoRoute
+  '/26-context': typeof R26ContextRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -215,6 +222,7 @@ export interface FileRoutesByTo {
   '/23-duplication': typeof R23DuplicationRoute
   '/24-reducer': typeof R24ReducerRoute
   '/25-use-memo': typeof R25UseMemoRoute
+  '/26-context': typeof R26ContextRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -244,6 +252,7 @@ export interface FileRoutesById {
   '/23-duplication': typeof R23DuplicationRoute
   '/24-reducer': typeof R24ReducerRoute
   '/25-use-memo': typeof R25UseMemoRoute
+  '/26-context': typeof R26ContextRoute
   '/3-props': typeof R3PropsRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
@@ -274,6 +283,7 @@ export interface FileRouteTypes {
     | '/23-duplication'
     | '/24-reducer'
     | '/25-use-memo'
+    | '/26-context'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -302,6 +312,7 @@ export interface FileRouteTypes {
     | '/23-duplication'
     | '/24-reducer'
     | '/25-use-memo'
+    | '/26-context'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -330,6 +341,7 @@ export interface FileRouteTypes {
     | '/23-duplication'
     | '/24-reducer'
     | '/25-use-memo'
+    | '/26-context'
     | '/3-props'
     | '/4-children'
     | '/5-conditional'
@@ -359,6 +371,7 @@ export interface RootRouteChildren {
   R23DuplicationRoute: typeof R23DuplicationRoute
   R24ReducerRoute: typeof R24ReducerRoute
   R25UseMemoRoute: typeof R25UseMemoRoute
+  R26ContextRoute: typeof R26ContextRoute
   R3PropsRoute: typeof R3PropsRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
   R5ConditionalRoute: typeof R5ConditionalRoute
@@ -417,6 +430,13 @@ declare module '@tanstack/react-router' {
       path: '/3-props'
       fullPath: '/3-props'
       preLoaderRoute: typeof R3PropsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/26-context': {
+      id: '/26-context'
+      path: '/26-context'
+      fullPath: '/26-context'
+      preLoaderRoute: typeof R26ContextRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/25-use-memo': {
@@ -575,6 +595,7 @@ const rootRouteChildren: RootRouteChildren = {
   R23DuplicationRoute: R23DuplicationRoute,
   R24ReducerRoute: R24ReducerRoute,
   R25UseMemoRoute: R25UseMemoRoute,
+  R26ContextRoute: R26ContextRoute,
   R3PropsRoute: R3PropsRoute,
   R4ChildrenRoute: R4ChildrenRoute,
   R5ConditionalRoute: R5ConditionalRoute,
