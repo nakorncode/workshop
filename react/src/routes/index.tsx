@@ -25,6 +25,8 @@ function App() {
         <li><a href="/14-preserve-reset-state" className="underline text-blue-600">14-preserve-reset-state</a></li>
         <li><a href="/15-side-effect" className="underline text-blue-600">15-side-effect</a></li>
         <li><a href="/16-impure-component" className="underline text-blue-600">16-impure-component</a></li>
+        <li><a href="/17-re-render" className="underline text-blue-600">17-re-render</a></li>
+        <li><a href="/18-use-effect-args" className="underline text-blue-600">18-use-effect-args</a></li>
       </ul>
     </>
   )
