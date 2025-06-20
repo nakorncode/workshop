@@ -39,6 +39,7 @@ function App() {
         <li><a href="/27-ui-component" className={link}>27-ui-component</a></li>
         <li><a href="/28-use-ref" className={link}>28-use-ref</a></li>
         <li><a href="/29-forward-ref" className={link}>29-forward-ref</a></li>
+        <li><a href="/30-custom-hooks" className={link}>30-custom-hooks</a></li>
       </ul>
     </>
   )

@@ -15,6 +15,7 @@ import { Route as R7EventRouteImport } from './routes/7-event'
 import { Route as R6ListRouteImport } from './routes/6-list'
 import { Route as R5ConditionalRouteImport } from './routes/5-conditional'
 import { Route as R4ChildrenRouteImport } from './routes/4-children'
+import { Route as R30CustomHooksRouteImport } from './routes/30-custom-hooks'
 import { Route as R3PropsRouteImport } from './routes/3-props'
 import { Route as R29ForwardRefRouteImport } from './routes/29-forward-ref'
 import { Route as R28UseRefRouteImport } from './routes/28-use-ref'
@@ -68,6 +69,11 @@ const R5ConditionalRoute = R5ConditionalRouteImport.update({
 const R4ChildrenRoute = R4ChildrenRouteImport.update({
   id: '/4-children',
   path: '/4-children',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const R30CustomHooksRoute = R30CustomHooksRouteImport.update({
+  id: '/30-custom-hooks',
+  path: '/30-custom-hooks',
   getParentRoute: () => rootRouteImport,
 } as any)
 const R3PropsRoute = R3PropsRouteImport.update({
@@ -216,6 +222,7 @@ export interface FileRoutesByFullPath {
   '/28-use-ref': typeof R28UseRefRoute
   '/29-forward-ref': typeof R29ForwardRefRoute
   '/3-props': typeof R3PropsRoute
+  '/30-custom-hooks': typeof R30CustomHooksRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
   '/6-list': typeof R6ListRoute
@@ -248,6 +255,7 @@ export interface FileRoutesByTo {
   '/28-use-ref': typeof R28UseRefRoute
   '/29-forward-ref': typeof R29ForwardRefRoute
   '/3-props': typeof R3PropsRoute
+  '/30-custom-hooks': typeof R30CustomHooksRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
   '/6-list': typeof R6ListRoute
@@ -281,6 +289,7 @@ export interface FileRoutesById {
   '/28-use-ref': typeof R28UseRefRoute
   '/29-forward-ref': typeof R29ForwardRefRoute
   '/3-props': typeof R3PropsRoute
+  '/30-custom-hooks': typeof R30CustomHooksRoute
   '/4-children': typeof R4ChildrenRoute
   '/5-conditional': typeof R5ConditionalRoute
   '/6-list': typeof R6ListRoute
@@ -315,6 +324,7 @@ export interface FileRouteTypes {
     | '/28-use-ref'
     | '/29-forward-ref'
     | '/3-props'
+    | '/30-custom-hooks'
     | '/4-children'
     | '/5-conditional'
     | '/6-list'
@@ -347,6 +357,7 @@ export interface FileRouteTypes {
     | '/28-use-ref'
     | '/29-forward-ref'
     | '/3-props'
+    | '/30-custom-hooks'
     | '/4-children'
     | '/5-conditional'
     | '/6-list'
@@ -379,6 +390,7 @@ export interface FileRouteTypes {
     | '/28-use-ref'
     | '/29-forward-ref'
     | '/3-props'
+    | '/30-custom-hooks'
     | '/4-children'
     | '/5-conditional'
     | '/6-list'
@@ -412,6 +424,7 @@ export interface RootRouteChildren {
   R28UseRefRoute: typeof R28UseRefRoute
   R29ForwardRefRoute: typeof R29ForwardRefRoute
   R3PropsRoute: typeof R3PropsRoute
+  R30CustomHooksRoute: typeof R30CustomHooksRoute
   R4ChildrenRoute: typeof R4ChildrenRoute
   R5ConditionalRoute: typeof R5ConditionalRoute
   R6ListRoute: typeof R6ListRoute
@@ -462,6 +475,13 @@ declare module '@tanstack/react-router' {
       path: '/4-children'
       fullPath: '/4-children'
       preLoaderRoute: typeof R4ChildrenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/30-custom-hooks': {
+      id: '/30-custom-hooks'
+      path: '/30-custom-hooks'
+      fullPath: '/30-custom-hooks'
+      preLoaderRoute: typeof R30CustomHooksRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/3-props': {
@@ -660,6 +680,7 @@ const rootRouteChildren: RootRouteChildren = {
   R28UseRefRoute: R28UseRefRoute,
   R29ForwardRefRoute: R29ForwardRefRoute,
   R3PropsRoute: R3PropsRoute,
+  R30CustomHooksRoute: R30CustomHooksRoute,
   R4ChildrenRoute: R4ChildrenRoute,
   R5ConditionalRoute: R5ConditionalRoute,
   R6ListRoute: R6ListRoute,
