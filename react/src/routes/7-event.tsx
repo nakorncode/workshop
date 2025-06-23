@@ -1,5 +1,4 @@
 import { createFileRoute } from '@tanstack/react-router'
-import type { FormEventHandler, KeyboardEventHandler } from 'react'
 
 export const Route = createFileRoute('/7-event')({
   component: RouteComponent,
