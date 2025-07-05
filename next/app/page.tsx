@@ -4,6 +4,8 @@ const links = [
   '/workshops/1-hydration-failed',
   '/workshops/2-server-component',
   '/workshops/3-client-component',
+  '/workshops/4-static',
+  '/workshops/5-dynamic',
 ]
 
 export default function Page() {
