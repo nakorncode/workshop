@@ -8,6 +8,7 @@ const links = [
   '/workshops/5-dynamic',
   '/workshops/6-server-functions',
   '/workshops/7-server-actions',
+  '/workshops/8-use-action-state',
 ]
 
 export default function Page() {
