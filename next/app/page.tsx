@@ -7,6 +7,7 @@ const links = [
   '/workshops/4-static',
   '/workshops/5-dynamic',
   '/workshops/6-server-functions',
+  '/workshops/7-server-actions',
 ]
 
 export default function Page() {
