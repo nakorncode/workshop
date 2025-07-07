@@ -6,9 +6,7 @@ const links = [
   '/workshops/3-client-component',
   '/workshops/4-static',
   '/workshops/5-dynamic',
-  '/workshops/6-server-functions',
-  '/workshops/7-server-actions',
-  '/workshops/8-use-action-state',
+  '/workshops/6-dynamic-route-segment/posts/hello-world',
 ]
 
 export default function Page() {
