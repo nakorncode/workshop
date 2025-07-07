@@ -10,6 +10,7 @@ const links = [
   '/workshops/7-env',
   '/workshops/8-api-endpoints',
   '/workshops/9-request-memoization',
+  '/workshops/10-data-cache',
 ]
 
 export default function Page() {

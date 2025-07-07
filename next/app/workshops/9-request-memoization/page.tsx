@@ -4,7 +4,7 @@ import RefreshAbleLeaderboardUI from './RefreshAbleLeaderboardUI'
 
 export default async function Page() {
   // เนื่องจาก fetch() หากรันบน Server จะไม่ได้ Base URL จาก Origin จึงต้องกำหนด Base URL ด้วยตนเอง
-  const url = new URL('/workshops/9-request-memoization/api/leaderboard', process.env.NEXT_PUBLIC_BASE_URL)
+  const url = new URL('/api/leaderboard', process.env.NEXT_PUBLIC_BASE_URL)
   const user = await fetch(url)
     .then((res) => res.json())
     .then((data) => data.user)

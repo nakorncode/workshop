@@ -1,4 +1,4 @@
-import { getProduct, removeProduct, updateProduct, validateProduct } from '../../../ProductManagement'
+import { getProduct, removeProduct, updateProduct, validateProduct } from '../ProductManagement'
 
 export async function GET(request: Request, context: { params: Promise<{ id: string }> }) {
   const params = await context.params

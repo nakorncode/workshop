@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server'
-import { addProduct, getProducts, Product, validateProduct } from '../../ProductManagement'
+import { addProduct, getProducts, Product, validateProduct } from './ProductManagement'
 
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams

@@ -1,4 +1,4 @@
-import { toggleActiveProduct } from '@/app/workshops/8-api-endpoints/ProductManagement'
+import { toggleActiveProduct } from '../../ProductManagement'
 
 export async function PATCH(request: Request, context: { params: Promise<{ id: string }> }) {
   const params = await context.params
