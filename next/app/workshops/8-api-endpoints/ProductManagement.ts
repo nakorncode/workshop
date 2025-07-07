@@ -2,7 +2,7 @@
 
 import { z } from 'zod'
 
-interface Product {
+export interface Product {
   id: number;
   name: string;
   price: number;
@@ -16,27 +16,20 @@ const products: Product[] = [
 ]
 
 export async function getProducts() {
+  console.log(products)
   return products
 }
 
-export async function getProduct(byId: number) {
-  return products.find(product => product.id === byId)
-}
-
-export async function searchProduct(byName: string) {
-  return products.find(product => product.name === byName)
-}
-
-export async function searchPriceRange(min: number, max: number) {
-  return products.filter(product => product.price >= min && product.price <= max)
+export async function getProduct(id: number) {
+  return products.find(product => product.id === id)
 }
 
 export async function addProduct(product: Omit<Product, 'id'>) {
-  products.push({ ...product, id: products.length + 1 })
+  products.push({ ...product, id: products[products.length - 1].id + 1 })
 }
 
 export async function updateProduct(id: number, product: Omit<Product, 'id'>) {
-  const index = products.findIndex(product => product.id === id)
+  const index = products.findIndex(product => product.id == id)
   products[index] = { ...product, id }
 }
 

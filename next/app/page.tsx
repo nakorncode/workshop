@@ -7,6 +7,8 @@ const links = [
   '/workshops/4-static',
   '/workshops/5-dynamic',
   '/workshops/6-dynamic-route-segment/posts/hello-world',
+  '/workshops/7-env',
+  '/workshops/8-api-endpoints',
 ]
 
 export default function Page() {
