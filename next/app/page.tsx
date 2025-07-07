@@ -9,6 +9,7 @@ const links = [
   '/workshops/6-dynamic-route-segment/posts/hello-world',
   '/workshops/7-env',
   '/workshops/8-api-endpoints',
+  '/workshops/9-request-memoization',
 ]
 
 export default function Page() {
