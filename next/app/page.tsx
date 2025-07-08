@@ -14,7 +14,7 @@ const links = [
   '/workshops/11-server-functions',
   '/workshops/12-server-actions',
   '/workshops/13-use-action-state',
-  '/workshops/14-bind-server-functions',
+  '/workshops/14-transition',
 ]
 
 export default function Page() {

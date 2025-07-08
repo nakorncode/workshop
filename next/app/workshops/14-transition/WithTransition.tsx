@@ -1,0 +1,51 @@
+'use client'
+
+import { startTransition, useActionState, useEffect } from 'react'
+import * as UserAction from './actions'
+
+export default function WithTransition() {
+  async function listUser(state: UserAction.User[]) {
+    const users = await UserAction.listUser()
+    return users
+  }
+  const [users, listUserAction, isListUserPending] = useActionState(listUser, [])
+  useEffect(() => {
+    startTransition(() => { // ✅ แก้ไขโดยการแทรก startTransition() ลงไป
+      listUserAction()
+    })
+  }, [])
+
+  const [state, addUserAction, isAddUserPending] = useActionState(addUser, null)
+  async function addUser(previousState: any, formData: FormData) {
+    const user = {
+      name: formData.get('name') as string,
+      birthDate: new Date(formData.get('birthDate') as string)
+    }
+    await UserAction.addUser(user)
+    startTransition(() => { // ✅ แก้ไขโดยการแทรก startTransition() ลงไป
+      listUserAction()
+    })
+  }
+  return (
+    <>
+      <h1 className="text-xl font-bold mb-2">With Transition</h1>
+
+      {isListUserPending && <p>Loading...</p>}
+      {users.length > 0 && (
+        <ul className="list-disc pl-5 space-y-1">
+          {users.map((user) => (
+            <li key={user.name}>{user.name} ({user.birthDate.toLocaleDateString()})</li>
+          ))}
+        </ul>
+      )}
+
+      <form action={addUserAction} className="mt-2">
+        <input type="text" name="name" required placeholder="Name" className="border border-gray-300 px-2 py-1 rounded" />
+        <input type="date" name="birthDate" required className="ml-2 border border-gray-300 px-2 py-1 rounded" />
+        <button type="submit" className="ml-2 bg-blue-600 hover:bg-blue-700 text-white py-1 px-3 rounded cursor-pointer disabled:opacity-50" disabled={isAddUserPending}>
+          {isAddUserPending ? 'Adding...' : 'Add'}
+        </button>
+      </form>
+    </>
+  )
+}
