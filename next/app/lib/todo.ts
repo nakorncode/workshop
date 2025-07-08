@@ -1,5 +1,6 @@
 'use server'
 
+import { revalidatePath } from 'next/cache'
 // ตามปกติการเรียก Node.js API จะไม่สามารถทำบน Client โดยตรงได้
 // ดังนั้นส่วนนี้คือการรันระบบหลังบ้านเท่านั้น (Server Functions)
 // แต่ก็สามารถนำไปใช้กับ Client Component ได้ด้วย
@@ -24,6 +25,7 @@ export async function getTodoList() {
 export async function addTodo(title: string) {
   const todo = { id: randomUUID(), title, done: false }
   todoList.push(todo)
+  // revalidatePath('/workshops/12-server-actions')
   return todo
 }
 
@@ -38,6 +40,7 @@ export async function toggleStatusTodoItem(id: string) {
   const todo = todoList.find((todo) => todo.id === id)
   if (!todo) throw new Error('Todo not found')
   todo.done = !todo.done
+  // revalidatePath('/workshops/12-server-actions')
   return todo
 }
 

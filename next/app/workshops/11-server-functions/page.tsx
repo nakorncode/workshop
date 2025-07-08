@@ -63,7 +63,7 @@ function TodoCreator(props: { onTodoAdded: () => void }) {
     <>
       <form onSubmit={onSubmit}>
         <input value={title} onChange={(e) => setTitle(e.target.value)} type="text" name="title" className="border border-gray-300 px-1 rounded" required />
-        <button type="submit" className="ml-2 text-blue-600 underline cursor-pointer">Create</button>
+        <button type="submit" className="ml-2 text-blue-600 underline cursor-pointer">Add</button>
       </form>
     </>
   )
@@ -80,7 +80,7 @@ export default function Page() {
   }
   return (
     <>
-      <h1 className="text-xl font-bold mb-2">Server Actions</h1>
+      <h1 className="text-xl font-bold mb-2">Server Functions</h1>
       <ul className="list-disc pl-5 space-y-1">
         {todoList.map((todo) => <TodoItem key={todo.id} todo={todo} onTodoChanged={loadTodo} />)}
       </ul>

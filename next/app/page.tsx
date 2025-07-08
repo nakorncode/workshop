@@ -12,6 +12,7 @@ const links = [
   '/workshops/9-request-memoization',
   '/workshops/10-data-cache',
   '/workshops/11-server-functions',
+  '/workshops/12-server-actions',
 ]
 
 export default function Page() {
