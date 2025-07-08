@@ -22,6 +22,10 @@ export async function getTodoList() {
   return todoList
 }
 
+export async function getTodoFromId(id: string) {
+  return todoList.find((todo) => todo.id === id)
+}
+
 export async function addTodo(title: string) {
   const todo = { id: randomUUID(), title, done: false }
   todoList.push(todo)

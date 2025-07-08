@@ -13,6 +13,8 @@ const links = [
   '/workshops/10-data-cache',
   '/workshops/11-server-functions',
   '/workshops/12-server-actions',
+  '/workshops/13-use-action-state',
+  '/workshops/14-bind-server-functions',
 ]
 
 export default function Page() {
