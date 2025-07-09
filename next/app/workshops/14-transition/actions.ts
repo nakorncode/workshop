@@ -15,11 +15,11 @@ async function simulateDelay(ms: number) {
 }
 
 export async function listUser() {
-  await simulateDelay(3000)
+  await simulateDelay(1000)
   return users
 }
 
 export async function addUser(user: User) {
-  await simulateDelay(3000)
+  await simulateDelay(1000)
   users.push(user)
 }
