@@ -1,6 +1,7 @@
 // Dynamic Route Segment
 
 import { notFound } from 'next/navigation'
+import ShowUserInfo from './ShowUserInfo'
 
 export const users = [
   { id: 1, name: 'John Doe' },
@@ -27,9 +28,6 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
     return notFound() // ส่งไปยังหน้า not-found.tsx เพราะไม่พบผู้ใช้งาน
   }
   return (
-    <div>
-      <p>User ID: {params.id}</p>
-      <p>Name: {user.name}</p>
-    </div>
+    <ShowUserInfo username={user.name}></ShowUserInfo>
   )
 }
