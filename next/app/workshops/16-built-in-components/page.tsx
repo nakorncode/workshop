@@ -3,7 +3,7 @@
 import Form from 'next/form'
 import { Kanit } from 'next/font/google'
 import Image from 'next/image'
-import productSearchImg from '@/public/Improve-Product-Search-in-WooCommerce.png'
+import productSearchImg from '@/assets/Improve-Product-Search-in-WooCommerce.png'
 
 const kanit = Kanit({
   weight: ['400', '700'],
