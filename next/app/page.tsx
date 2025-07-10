@@ -19,7 +19,8 @@ const links = [
   '/workshops/14-use-action-state',
   '/workshops/15-transition',
   '/workshops/16-built-in-components',
-  '/workshops/17-functions/user/john?show=name&version=1'
+  '/workshops/17-functions/user/john?show=name&version=1',
+  '/workshops/18-jwt-auth',
 ]
 
 export default function Page() {
