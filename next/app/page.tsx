@@ -1,12 +1,14 @@
 import Link from 'next/link'
 
 const links = [
-  '/workshops/1-hydration-failed',
-  '/workshops/2-server-component',
-  '/workshops/3-client-component',
-  '/workshops/4-static',
-  '/workshops/5-dynamic',
-  '/workshops/6-dynamic-route-segment/posts/hello-world',
+  '/workshops/1-routing/page',
+  '/workshops/1-routing/route',
+  '/workshops/1-routing/user',
+  '/workshops/2-hydration-failed',
+  '/workshops/3-server-component',
+  '/workshops/4-client-component',
+  '/workshops/5-static',
+  '/workshops/6-dynamic',
   '/workshops/7-env',
   '/workshops/8-api-endpoints',
   '/workshops/9-request-memoization',
@@ -15,6 +17,7 @@ const links = [
   '/workshops/12-server-actions',
   '/workshops/13-use-action-state',
   '/workshops/14-transition',
+  '/workshops/15-built-in-components',
 ]
 
 export default function Page() {
