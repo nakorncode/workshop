@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "argon2": "^0.43.0",
+    "better-auth": "^1.2.12",
+    "better-sqlite3": "^12.2.0",
     "clsx": "^2.1.1",
     "jose": "^6.0.11",
     "next": "15.3.5",
@@ -20,6 +22,7 @@
   "devDependencies": {
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/better-sqlite3": "^7.6.13",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
@@ -27,5 +30,14 @@
     "eslint-config-next": "15.3.5",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "argon2",
+      "better-sqlite3",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
