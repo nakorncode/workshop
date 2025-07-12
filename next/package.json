@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "ahooks": "^3.9.0",
     "argon2": "^0.43.0",
     "better-auth": "^1.2.12",
     "better-sqlite3": "^12.2.0",
@@ -17,6 +18,8 @@
     "next": "15.3.5",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
+    "swr": "^2.3.4",
+    "uuid": "^11.1.0",
     "zod": "^3.25.74"
   },
   "devDependencies": {
