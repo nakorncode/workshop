@@ -1,8 +1,7 @@
 export default async function NoStore() {
-  const url = new URL('/api/leaderboard', process.env.NEXT_PUBLIC_BASE_URL)
-  const user = await fetch(url, { cache: 'no-store' })
+  const user = await fetch('https://randomuser.me/api?nat=us', { cache: 'no-store' })
     .then((res) => res.json())
-    .then((data) => data.user)
+    .then((data) => `${data.results[0].name.first} ${data.results[0].name.last}`)
   return (
     <div>
       <p>Current leaderboard (no-store): {user}</p>

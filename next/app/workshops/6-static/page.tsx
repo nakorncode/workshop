@@ -16,7 +16,7 @@ export default async function Page() {
   // เนื่องจากการใช้ fetch() ตามปกติบน Next.js จะมีการ Cache ให้ทันที จึงเป็น Static
   // จึงเป็นเรื่องนึงที่จะไม่แนะนำให้ใช้ Axios หรือ HTTP Client อื่นๆแทน
   // เพราะจะขาดคุณสมบัติการตรวจสอบ Static, Dynamic Page โดยอัตโนมัติ
-  const author = await fetch('https://randomuser.me/api/')
+  const author = await fetch('https://randomuser.me/api?nat=us')
     .then(res => res.json())
     .then(data => data.results[0] as Author)
   return (

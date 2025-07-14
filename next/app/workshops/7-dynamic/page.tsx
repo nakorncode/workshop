@@ -14,7 +14,7 @@ export default async function Page() {
   // หากมีการกำหนด cache: 'no-store' จะไม่มีการ cache ข้อมูล
   // ทำให้ Next.js จะมองว่าเพจนี้เป็น Dynamic ในขั้นตอน Build
   // แต่บน Dev Tools อาจจะยังมองว่าเป็น Static
-  const author = await fetch('https://randomuser.me/api/', { cache: 'no-store' })
+  const author = await fetch('https://randomuser.me/api?nat=us', { cache: 'no-store' })
     .then(res => res.json())
     .then(data => data.results[0] as Author)
   return (
