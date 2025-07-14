@@ -7,7 +7,8 @@ import productSearchImg from '@/assets/Improve-Product-Search-in-WooCommerce.png
 
 const kanit = Kanit({
   weight: ['400', '700'],
-  display: 'swap'
+  display: 'swap',
+  subsets: ['latin', 'thai']
 })
 
 export default function Page() {
