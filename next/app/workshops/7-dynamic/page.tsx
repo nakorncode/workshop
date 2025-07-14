@@ -19,7 +19,7 @@ export default async function Page() {
     .then(data => data.results[0] as Author)
   return (
     <>
-      <h1 className="text-xl font-bold mb-2">Static Page</h1>
+      <h1 className="text-xl font-bold mb-2">Dynamic Page</h1>
       <img src={author.picture.medium} alt={author.name.first} className="rounded-full mb-2" />
       <p>Name: {author.name.title} {author.name.first} {author.name.last}</p>
       <p>Email: {author.email}</p>
