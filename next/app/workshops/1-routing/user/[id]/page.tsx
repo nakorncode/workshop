@@ -2,11 +2,21 @@
 
 import { notFound } from 'next/navigation'
 import ShowUserInfo from './ShowUserInfo'
+import { Metadata } from 'next'
+import { siteName } from '../lib/siteName'
 
 export const users = [
   { id: 1, name: 'John Doe' },
   { id: 2, name: 'Bob Smith' },
 ]
+
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
+  const params = await props.params
+  const user = users.find((user) => user.id.toString() === params.id)
+  return {
+    title: `${user?.name || `User ID: ${params.id}`} | ${siteName}`
+  }
+}
 
 export async function generateStaticParams() {
   return users.map((user) => ({ id: user.id.toString() }))
@@ -25,7 +35,7 @@ export default async function Page(props: { params: Promise<{ id: string }> }) {
   }
   const user = users.find((user) => user.id.toString() === params.id)
   if (!user) {
-    return notFound() // ส่งไปยังหน้า not-found.tsx เพราะไม่พบผู้ใช้งาน
+    return notFound()
   }
   return (
     <ShowUserInfo username={user.name}></ShowUserInfo>

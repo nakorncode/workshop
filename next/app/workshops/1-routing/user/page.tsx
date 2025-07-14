@@ -1,5 +1,11 @@
 import Link from 'next/link'
 import { users } from './[id]/page'
+import { Metadata } from 'next'
+import { siteName } from './lib/siteName'
+
+export const metadata: Metadata = {
+  title: `List | ${siteName}`,
+}
 
 export default function Page() {
   return (
