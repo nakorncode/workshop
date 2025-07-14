@@ -13,7 +13,7 @@ export default function WithTransition() {
     startTransition(() => { // ✅ แก้ไขโดยการแทรก startTransition() ลงไป
       listUserAction()
     })
-  }, [])
+  }, [listUserAction])
 
   const [state, addUserAction, isAddUserPending] = useActionState(addUser, null)
   async function addUser(previousState: any, formData: FormData) {

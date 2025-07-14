@@ -4,11 +4,7 @@ import { notFound } from 'next/navigation'
 import ShowUserInfo from './ShowUserInfo'
 import { Metadata } from 'next'
 import { siteName } from '../lib/siteName'
-
-export const users = [
-  { id: 1, name: 'John Doe' },
-  { id: 2, name: 'Bob Smith' },
-]
+import { users } from '../lib/users'
 
 export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const params = await props.params

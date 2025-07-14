@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Hello new title',
     description: 'Hello new description',
-    images: '/branding5.webp',
+    images: 'http://localhost:3000/branding5.webp',
   }
 }
 

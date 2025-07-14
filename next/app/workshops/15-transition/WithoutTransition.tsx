@@ -11,7 +11,7 @@ export default function WithoutTransition() {
   const [users, listUserAction, isListUserPending] = useActionState(listUser, [])
   useEffect(() => {
     listUserAction() // ⚠️ ใช้งานได้ แต่ UI ค้าง
-  }, [])
+  }, [listUserAction])
 
   const [state, addUserAction, isAddUserPending] = useActionState(addUser, null)
   async function addUser(previousState: any, formData: FormData) {
