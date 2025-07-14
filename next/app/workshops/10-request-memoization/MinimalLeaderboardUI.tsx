@@ -1,12 +1,11 @@
+import getRandomName from '@/app/lib/getRandomName'
+
 export default async function MinimalLeaderboardUI() {
-  const url = new URL('/api/leaderboard', process.env.NEXT_PUBLIC_BASE_URL)
-  const user = await fetch(url)
-    .then((res) => res.json())
-    .then((data) => data.user)
+  const name = await getRandomName()
   return (
     <div>
       <div className="p-4 rounded-md border border-gray-200 shadow inline-block">
-        <p>Current leaderboard: {user}</p>
+        <p>Current leaderboard: {name}</p>
       </div>
     </div>
   )
