@@ -1,0 +1,21 @@
+import { useLocalStorageState } from "ahooks"
+
+export interface NoteData {
+  title: string
+  content: string
+}
+
+const noteStoreKey = 'notes'
+
+export default function useNotes() {
+  const [notes, setNotes] = useLocalStorageState<(NoteData & { id: string })[] | undefined>(noteStoreKey)
+  function addNote(note: NoteData) {
+    const newNote = { ...note, id: Date.now().toString() }
+    setNotes([...(notes || []), newNote])
+  }
+  return {
+    notes,
+    setNotes,
+    addNote
+  }
+}

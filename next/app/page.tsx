@@ -21,7 +21,8 @@ const links = [
   '/workshops/16-built-in-components',
   '/workshops/17-functions/user/john?show=name&version=1',
   '/workshops/18-jwt-auth',
-  '/workshops/19-better-auth'
+  '/workshops/19-better-auth',
+  '/workshops/20-spa/notes',
 ]
 
 export default function Page() {
