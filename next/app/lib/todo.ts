@@ -29,7 +29,7 @@ export async function getTodoFromId(id: string) {
 export async function addTodo(title: string) {
   const todo = { id: randomUUID(), title, done: false }
   todoList.push(todo)
-  // revalidatePath('/workshops/12-server-actions')
+  // revalidatePath('/workshops/13-server-actions')
   return todo
 }
 
@@ -44,7 +44,7 @@ export async function toggleStatusTodoItem(id: string) {
   const todo = todoList.find((todo) => todo.id === id)
   if (!todo) throw new Error('Todo not found')
   todo.done = !todo.done
-  // revalidatePath('/workshops/12-server-actions')
+  // revalidatePath('/workshops/13-server-actions')
   return todo
 }
 
