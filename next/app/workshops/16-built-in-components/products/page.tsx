@@ -21,7 +21,7 @@ export default async function Page(props: { searchParams: Promise<{ [key: string
           <li key={product.id}>{product.title}</li>
         ))}
       </ul>
-      <Link href="/workshops/15-built-in-components" className="text-blue-600 underline">Back to search</Link>
+      <Link href="/workshops/16-built-in-components" className="text-blue-600 underline">Back to search</Link>
     </>
   )
 }
