@@ -23,11 +23,16 @@ export default function useNotes() {
     setNotes(notes?.map((n) => n.id === id ? { ...n, ...note } : n))
   }
 
+  function deleteNote(id: string) {
+    setNotes(notes?.filter((n) => n.id !== id))
+  }
+
   return {
     notes,
     setNotes,
     addNote,
     getNote,
-    updateNote
+    updateNote,
+    deleteNote
   }
 }
