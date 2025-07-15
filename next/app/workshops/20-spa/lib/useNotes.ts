@@ -19,10 +19,15 @@ export default function useNotes() {
     return notes?.find((note) => note.id === id)
   }
 
+  function updateNote(id: string, note: NoteData) {
+    setNotes(notes?.map((n) => n.id === id ? { ...n, ...note } : n))
+  }
+
   return {
     notes,
     setNotes,
     addNote,
-    getNote
+    getNote,
+    updateNote
   }
 }
