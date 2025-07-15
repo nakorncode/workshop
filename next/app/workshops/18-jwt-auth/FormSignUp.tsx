@@ -29,7 +29,7 @@ export default function FormSignUp() {
             <Input name="password" type="password" />
           </label>
         </div>
-        <Button type="submit" disabled={pending}>Sign In</Button>
+        <Button type="submit" disabled={pending}>Sign Up</Button>
       </form>
     </div>
   )

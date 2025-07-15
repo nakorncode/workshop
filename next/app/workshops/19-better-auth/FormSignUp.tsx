@@ -14,7 +14,7 @@ export default function FormSignUp() {
   })
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  async function handleLogin(event: React.FormEvent<HTMLFormElement>) {
+  async function handleSignUp(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault()
     setState({ ...state, pending: true })
     const result = await authClient.signUp.email({
@@ -45,7 +45,7 @@ export default function FormSignUp() {
       <h2 className="text-lg font-bold mb-2">Sign Up</h2>
       {state.success && <p className="text-green-600">{state.success}</p>}
       {state.error && <p className="text-red-600">{state.error}</p>}
-      <form onSubmit={handleLogin} className="space-y-3">
+      <form onSubmit={handleSignUp} className="space-y-3">
         <div>
           <Label htmlFor="email">Email</Label>
           <Input value={email} onChange={(e) => setEmail(e.target.value)} id="email" type="email"></Input>
