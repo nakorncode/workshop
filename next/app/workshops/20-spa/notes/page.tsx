@@ -2,23 +2,30 @@
 
 import Link from "next/link"
 import useNotes from "../lib/useNotes"
+import Button from "../components/Button"
+import { useEffect, useState } from "react"
 
 export default function Page() {
   const { notes } = useNotes()
+  const [isClient, setIsClient] = useState(false)
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+  if (!isClient) return <>Loading...</>
   return (
     <>
       <h1 className="text-xl font-bold mb-2">Notes</h1>
+      <div className="mb-3">
+        <Button>
+          <Link href="/workshops/20-spa/notes/create">Create new note</Link>
+        </Button>
+      </div>
       <ul className="list-disc pl-5">
-        {(!notes || notes.length === 0) ? (<li className="text-gray-500 italic">No notes</li>) : notes?.map((note) => (
-          <>
-            <li key={note.id}>
-              <Link href={`/workshops/20-spa/notes/${note.id}`} className="text-blue-600 underline">{note.title}</Link>
-            </li>
-          </>
+        {notes?.map((note) => (
+          <li key={note.id}>
+            <Link href={`/workshops/20-spa/notes/${note.id}`} className="text-blue-600 underline">{note.title}</Link>
+          </li>
         ))}
-        <li key="create">
-          <Link className="text-blue-600 underline" href="/workshops/20-spa/notes/create">Create new note</Link>
-        </li>
       </ul>
     </>
   )
