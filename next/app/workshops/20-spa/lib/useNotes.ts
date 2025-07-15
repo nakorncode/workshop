@@ -9,13 +9,20 @@ const noteStoreKey = 'notes'
 
 export default function useNotes() {
   const [notes, setNotes] = useLocalStorageState<(NoteData & { id: string })[] | undefined>(noteStoreKey)
+
   function addNote(note: NoteData) {
     const newNote = { ...note, id: Date.now().toString() }
     setNotes([...(notes || []), newNote])
   }
+
+  function getNote(id: string) {
+    return notes?.find((note) => note.id === id)
+  }
+
   return {
     notes,
     setNotes,
-    addNote
+    addNote,
+    getNote
   }
 }
