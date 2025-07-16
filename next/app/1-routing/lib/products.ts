@@ -20,7 +20,7 @@ export async function getProducts() {
 export async function getProduct(id: number) {
   const res = await fetch(`https://dummyjson.com/products/${id}?` + selects)
   if (!res.ok) {
-    throw new Error('Product not found')
+    return null
   }
   const data = await res.json()
   return data as Product

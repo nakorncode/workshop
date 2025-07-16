@@ -1,8 +1,17 @@
+import { notFound } from "next/navigation"
 import { getProduct } from "../../lib/products"
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
-  const { id } = await props.params
-  const product = await getProduct(parseInt(id))
+  const params = await props.params
+  const id = parseInt(params.id)
+  if (isNaN(id)) {
+    throw new Error("Invalid product ID")
+  }
+  const product = await getProduct(id)
+  if (!product) {
+    // เรียกเพื่อเปลี่ยนไปยังหน้า not-found.tsx
+    return notFound()
+  }
   return (
     <div>
       <h1 className="text-xl font-bold mb-2">Product Details</h1>
