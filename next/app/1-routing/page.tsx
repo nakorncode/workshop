@@ -1,3 +1,10 @@
+import { Metadata } from "next"
+
+export const metadata: Metadata = {
+  title: "Routing",
+  description: "Explore the routing features of Next.js"
+}
+
 export default function Page() {
   return (
     <div>

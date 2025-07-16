@@ -1,5 +1,31 @@
 import { notFound } from "next/navigation"
 import { getProduct } from "../../lib/products"
+import { Metadata } from "next"
+
+// คล้ายกับ export const metadata = {} แต่ไว้ใช้สำหรับ async function สำหรับ Dynamic Route โดยเฉพาะ
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Metadata {
+  const params = await props.params
+  const id = parseInt(params.id)
+  if (isNaN(id)) {
+    return {
+      title: "Invalid Product ID",
+      description: "The product ID provided is not valid."
+    }
+  }
+
+  const product = await getProduct(id)
+  if (!product) {
+    return {
+      title: "Product Not Found",
+      description: "The requested product does not exist."
+    }
+  }
+
+  return {
+    title: product.title,
+    description: product.description
+  }
+}
 
 export default async function Page(props: { params: Promise<{ id: string }> }) {
   const params = await props.params

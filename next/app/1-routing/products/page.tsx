@@ -1,7 +1,13 @@
 // เป็นส่วนหนึ่งของ Server Components จึงสามารถใช้ Component async function ได้
 // เพราะตามปกติของ React เราจะไม่นสามารถใช้ Component async function ได้
 
+import { Metadata } from "next"
 import { getProducts } from "../lib/products"
+
+export const metadata: Metadata = {
+  title: "Products",
+  description: "Explore the products available in our store"
+}
 
 export default async function Page() {
   const products = await getProducts()
