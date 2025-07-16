@@ -1,6 +1,6 @@
 // ใช้ API จาก https://dummyjson.com สำหรับการดึงข้อมูลจำลองสินค้า
 
-const selects = 'select=id,title,description,category,price,thumbnail'
+const selects = "select=id,title,description,category,price,thumbnail"
 
 export interface Product {
   id: number
@@ -12,7 +12,7 @@ export interface Product {
 }
 
 export async function getProducts() {
-  const res = await fetch('https://dummyjson.com/products?limit=0&' + selects)
+  const res = await fetch("https://dummyjson.com/products?limit=0&" + selects)
   const data = await res.json()
   return data.products as Product[]
 }
