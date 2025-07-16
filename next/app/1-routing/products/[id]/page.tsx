@@ -3,7 +3,7 @@ import { getProduct } from "../../lib/products"
 import { Metadata } from "next"
 
 // คล้ายกับ export const metadata = {} แต่ไว้ใช้สำหรับ async function สำหรับ Dynamic Route โดยเฉพาะ
-export async function generateMetadata(props: { params: Promise<{ id: string }> }): Metadata {
+export async function generateMetadata(props: { params: Promise<{ id: string }> }): Promise<Metadata> {
   const params = await props.params
   const id = parseInt(params.id)
   if (isNaN(id)) {
