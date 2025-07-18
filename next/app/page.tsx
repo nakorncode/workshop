@@ -5,6 +5,7 @@ const links: string[] = [
   "/4-functions",
   "/5-built-in-components",
   "/6-route-handler",
+  "/7-server-function"
 ]
 
 export default function Page() {
