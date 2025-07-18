@@ -35,7 +35,7 @@ export default function Page() {
       ) : (
         <ul className="list-disc pl-5 space-y-1">
           {products.map(product => (
-            <li key={product.id} className="mb-2">
+            <li key={product.id}>
               <Link href={`/6-route-handler/${product.id}`} className="text-blue-600 underline">
                 (ID: {product.id}) {product.title}
               </Link>
