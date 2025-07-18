@@ -3,6 +3,7 @@ import { getProducts } from "./actions"
 import CreateProductFormUseActionState from "./components/CreateProductFormUseActionState"
 import CreateProductForm from "./components/CreateProductForm"
 import CreateProductFormUseTransition from "./components/CreateProductFormUseTransition"
+import CreateProductFormUseActionStateWithUseFormStatus from "./components/CreateProductFormUseActionStateWithUseFormStatus"
 
 export default async function Page() {
   return (
@@ -37,6 +38,7 @@ export default async function Page() {
         <CreateProductForm />
         <CreateProductFormUseTransition />
         <CreateProductFormUseActionState />
+        <CreateProductFormUseActionStateWithUseFormStatus />
       </div>
     </div>
   )
