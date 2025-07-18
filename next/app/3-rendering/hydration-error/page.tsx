@@ -3,6 +3,7 @@
 
 "use client"
 
+import Button from "@/components/Button"
 import { useState } from "react"
 
 export default function Page() {
@@ -14,7 +15,7 @@ export default function Page() {
     <div>
       <h1 className="text-xl font-bold mb-4">Hydration Error</h1>
       <p className="mb-4">Current Date and Time: {date}</p>
-      <button onClick={updateDate} className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded cursor-pointer">Update Date</button>
+      <Button onClick={updateDate} className="mb-4">Update Date</Button>
     </div>
   )
 }

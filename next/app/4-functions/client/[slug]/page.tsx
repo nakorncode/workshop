@@ -1,7 +1,7 @@
 "use client"
 
 import { useParams, usePathname, useRouter, useSearchParams } from "next/navigation"
-import Code from "../../components/Code"
+import Code from "@/components/Code"
 
 export default function Page() {
   const router = useRouter()

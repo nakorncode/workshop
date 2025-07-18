@@ -1,5 +1,6 @@
 "use client" // ประกาศให้ Page เป็น Client Component เพื่อให้สามารถใช้ useState, useEffect (Interactive UI) ได้
 
+import Button from "@/components/Button"
 import { useEffect, useState } from "react"
 
 interface User {
@@ -29,12 +30,7 @@ export default function Page() {
       <p className="mb-4"><b>User:</b> {user ? `${user.firstName} ${user.lastName} (${user.email})` : "Loading..."}</p>
       <hr className="my-4"/>
       <p className="mb-2">Current Count: {count}</p>
-      <button
-        onClick={increment}
-        className="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 cursor-pointer"
-      >
-        Increment
-      </button>
+      <Button onClick={increment} className="mb-4">Increment Count</Button>
     </div>
   )
 }

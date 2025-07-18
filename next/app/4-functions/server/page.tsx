@@ -1,10 +1,10 @@
 import { cookies, headers } from "next/headers"
-import Code from "../components/Code"
 import stringify from "json-stringify-pretty-compact"
-import Pre from "../components/Pre"
+import Code from "@/components/Code"
+import Pre from "@/components/Pre"
 import { redirect } from "next/navigation"
 
-// เนื่องจาก Set Cookies จะสามารรถใช้ได้เฉพาะ Server Action, Route Handler เท่านั้น
+// เนื่องจาก Set Cookies จะสามารถใช้ได้เฉพาะ Server Action, Route Handler เท่านั้น
 // ส่วนของการใช้งาน Server Action จะได้เรียนรู้ในภายหลัง
 // อ่านเพิ่มเติม: https://nextjs.org/docs/app/api-reference/functions/cookies#good-to-know
 export async function setCookieRedirectAction() {

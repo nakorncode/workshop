@@ -3,6 +3,7 @@ const links: string[] = [
   "/2-components",
   "/3-rendering",
   "/4-functions",
+  "/5-built-in-components",
 ]
 
 export default function Page() {
