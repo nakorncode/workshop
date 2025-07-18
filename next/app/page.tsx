@@ -2,6 +2,7 @@ const links: string[] = [
   "/1-routing",
   "/2-components",
   "/3-rendering",
+  "/4-functions",
 ]
 
 export default function Page() {
