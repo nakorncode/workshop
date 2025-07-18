@@ -8,6 +8,7 @@ const links: string[] = [
   "/7-server-function",
   "/8-server-action",
   "/9-server-action-hooks",
+  "/10-request-memoization",
 ]
 
 export default function Page() {

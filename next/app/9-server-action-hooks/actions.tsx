@@ -2,7 +2,6 @@
 
 import { products } from "@/db/schema"
 import db from "@/lib/db"
-import { eq } from "drizzle-orm"
 import { revalidatePath } from "next/cache"
 import z from "zod"
 
