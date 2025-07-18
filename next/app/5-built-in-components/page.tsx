@@ -5,6 +5,7 @@ import Image from "next/image"
 import Form from "next/form"
 import Input from "@/components/Input"
 import Button from "@/components/Button"
+import Radio from "@/components/Radio"
 
 const sarabun = Sarabun({
   subsets: ["thai", "latin"],
@@ -62,23 +63,17 @@ export default function Page() {
 
       <hr className="my-4"/>
 
-      <div>
+      <div className="max-w-xs">
         <Code>&lt;form&gt;</Code>
         <form action="/5-built-in-components/search" className="mt-2 space-y-2">
-          <Input placeholder="Keyword" name="keyword" />
-          <div className="space-x-3">
-            <label>
-              <input type="radio" name="category" value="toys" className="mr-2" />
-              <span>Toys</span>
-            </label>
-            <label>
-              <input type="radio" name="category" value="books" className="mr-2" />
-              <span>Books</span>
-            </label>
-            <label>
-              <input type="radio" name="category" value="electronics" className="mr-2" />
-              <span>Electronics</span>
-            </label>
+          <Input id="keyword" label="Keyword" placeholder="Keyword" name="keyword" />
+          <div>
+            <p className="text-sm text-gray-500 mb-1">Select a category for products</p>
+            <div className="space-x-4">
+              <Radio id="category-toys" label="Toys" name="category" value="toys" />
+              <Radio id="category-books" label="Books" name="category" value="books" />
+              <Radio id="category-electronics" label="Electronics" name="category" value="electronics" />
+            </div>
           </div>
           <Button type="submit">Search</Button>
         </form>
@@ -86,23 +81,17 @@ export default function Page() {
 
       <hr className="my-4"/>
 
-      <div>
+      <div className="max-w-xs">
         <Code>&lt;Form&gt;</Code>
         <Form action="/5-built-in-components/search" className="space-y-2 mt-2">
-          <Input placeholder="Keyword" name="keyword" />
-          <div className="space-x-3">
-            <label>
-              <input type="radio" name="category" value="toys" className="mr-2" />
-              <span>Toys</span>
-            </label>
-            <label>
-              <input type="radio" name="category" value="books" className="mr-2" />
-              <span>Books</span>
-            </label>
-            <label>
-              <input type="radio" name="category" value="electronics" className="mr-2" />
-              <span>Electronics</span>
-            </label>
+          <Input id="keyword" label="Keyword" placeholder="Keyword" name="keyword" />
+          <div>
+            <p className="text-sm text-gray-500 mb-1">Select a category for products</p>
+            <div className="space-x-4">
+              <Radio id="category-toys" label="Toys" name="category" value="toys" />
+              <Radio id="category-books" label="Books" name="category" value="books" />
+              <Radio id="category-electronics" label="Electronics" name="category" value="electronics" />
+            </div>
           </div>
           <Button type="submit">Search</Button>
         </Form>

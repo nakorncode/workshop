@@ -9,10 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@libsql/client": "^0.15.10",
+    "dotenv": "^17.2.0",
+    "drizzle-orm": "^0.44.3",
     "json-stringify-pretty-compact": "^4.0.0",
     "next": "15.4.1",
     "react": "19.1.0",
-    "react-dom": "19.1.0"
+    "react-dom": "19.1.0",
+    "use-immer": "^0.11.0",
+    "zod": "^4.0.5"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
@@ -20,9 +25,11 @@
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "drizzle-kit": "^0.31.4",
     "eslint": "^9",
     "eslint-config-next": "15.4.1",
     "tailwindcss": "^4",
+    "tsx": "^4.20.3",
     "typescript": "^5"
   }
 }

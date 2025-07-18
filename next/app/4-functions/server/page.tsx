@@ -3,6 +3,7 @@ import stringify from "json-stringify-pretty-compact"
 import Code from "@/components/Code"
 import Pre from "@/components/Pre"
 import { redirect } from "next/navigation"
+import Button from "@/components/Button"
 
 // เนื่องจาก Set Cookies จะสามารถใช้ได้เฉพาะ Server Action, Route Handler เท่านั้น
 // ส่วนของการใช้งาน Server Action จะได้เรียนรู้ในภายหลัง
@@ -33,7 +34,7 @@ export default async function Page() {
         </li>
         <li>
           <form action={setCookieRedirectAction}>
-            <button type="submit" className="text-blue-600 underline cursor-pointer">Set Cookie and Redirect</button>
+            <Button type="submit" className="text-blue-600 underline cursor-pointer">Set Cookie and Redirect</Button>
           </form>
         </li>
         <li>
