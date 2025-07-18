@@ -7,6 +7,7 @@ const links: string[] = [
   "/6-route-handler",
   "/7-server-function",
   "/8-server-action",
+  "/9-server-action-hooks",
 ]
 
 export default function Page() {

@@ -33,5 +33,13 @@
     "tailwindcss": "^4",
     "tsx": "^4.20.3",
     "typescript": "^5"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide",
+      "esbuild",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
