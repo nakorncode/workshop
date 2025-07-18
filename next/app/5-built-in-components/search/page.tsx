@@ -1,8 +1,11 @@
 "use client"
 
 import { useSearchParams } from "next/navigation"
+import { Suspense } from "react"
 
-export default function Page() {
+// เนื่องจากปัญหาของ CSR Bailout เลยต้องอยู่ใน Suspense
+// https://nextjs.org/docs/messages/missing-suspense-with-csr-bailout
+function Search() {
   const searchParams = useSearchParams()
   const keyword = searchParams.get("keyword")
   const category = searchParams.get("category")
@@ -14,5 +17,13 @@ export default function Page() {
         <li>Category: {category}</li>
       </ul>
     </div>
+  )
+}
+
+export default function Page() {
+  return (
+    <Suspense>
+      <Search />
+    </Suspense>
   )
 }

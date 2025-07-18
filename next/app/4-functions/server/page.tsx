@@ -2,18 +2,8 @@ import { cookies, headers } from "next/headers"
 import stringify from "json-stringify-pretty-compact"
 import Code from "@/components/Code"
 import Pre from "@/components/Pre"
-import { redirect } from "next/navigation"
 import Button from "@/components/Button"
-
-// เนื่องจาก Set Cookies จะสามารถใช้ได้เฉพาะ Server Action, Route Handler เท่านั้น
-// ส่วนของการใช้งาน Server Action จะได้เรียนรู้ในภายหลัง
-// อ่านเพิ่มเติม: https://nextjs.org/docs/app/api-reference/functions/cookies#good-to-know
-export async function setCookieRedirectAction() {
-  "use server"
-  const cookiesList = await cookies()
-  cookiesList.set("redirected", "yes, and it will expire in 5 seconds", { maxAge: 5 })
-  return redirect("/4-functions/server")
-}
+import { setCookieRedirectAction } from "./actions"
 
 export default async function Page() {
   return (
@@ -29,7 +19,7 @@ export default async function Page() {
           <Pre>{stringify(await cookies())}</Pre>
         </li>
         <li>
-          <Code>cookies().get("redirected")</Code>
+          <Code>cookies().get(&quot;redirected&quot;)</Code>
           <Pre>{stringify((await cookies()).get("redirected"))}</Pre>
         </li>
         <li>

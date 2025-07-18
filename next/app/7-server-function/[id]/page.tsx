@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { notFound } from "next/navigation"
 import { getProductById } from "../lib/products"
 
 export default async function Page({ params }: { params: Promise<{ id: string }> }) {

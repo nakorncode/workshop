@@ -24,7 +24,7 @@ export default function Page() {
       setLoading(false)
     }
     fetchProduct()
-  }, [])
+  }, [id])
 
   return (
     <div>

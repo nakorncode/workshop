@@ -27,7 +27,7 @@ export default function Page() {
     <div>
       <h1 className="text-xl font-bold mb-4">Built-in Components</h1>
 
-      <p className="font-bold mb-1"><Code>&lt;a href=""&gt;</Code></p>
+      <p className="font-bold mb-1"><Code>&lt;a href=&quot;&quot;&gt;</Code></p>
       <ul className="list-disc pl-5 space-y-1">
         <li><a href="/5-built-in-components/page-a" className="underline text-blue-600">Page A</a></li>
         <li><a href="/5-built-in-components/page-b" className="underline text-blue-600">Page B</a></li>
@@ -35,7 +35,7 @@ export default function Page() {
         <li><a href="/5-built-in-components/hydrate-error" className="underline text-blue-600">Hydrate Error</a></li>
       </ul>
 
-      <p className="font-bold mb-1 mt-4"><Code>&lt;Link href=""&gt;</Code></p>
+      <p className="font-bold mb-1 mt-4"><Code>&lt;Link href=&quot;&quot;&gt;</Code></p>
       <ul className="list-disc pl-5 space-y-1">
         <li><Link href="/5-built-in-components/page-a" className="underline text-blue-600">Page A</Link></li>
         <li><Link href="/5-built-in-components/page-b" className="underline text-blue-600">Page B</Link></li>
