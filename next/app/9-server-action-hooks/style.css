@@ -1,9 +1,0 @@
-@reference "tailwindcss";
-
-table {
-  @apply w-full border-collapse bg-white shadow-md;
-}
-
-td, th {
-  @apply border border-gray-300 p-2 text-left;
-}

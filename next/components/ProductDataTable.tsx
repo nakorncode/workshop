@@ -1,5 +1,6 @@
 import { products } from "@/db/schema"
 import { InferSelectModel } from "drizzle-orm"
+import "./ProductDataTable.css"
 
 interface Props {
   products: InferSelectModel<typeof products>[]

@@ -10,6 +10,7 @@ const links: string[] = [
   "/9-server-action-hooks",
   "/10-request-memoization",
   "/11-data-cache",
+  "/12-use-cache",
 ]
 
 export default function Page() {

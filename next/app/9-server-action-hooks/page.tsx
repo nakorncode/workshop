@@ -1,4 +1,3 @@
-import "./style.css"
 import { getProducts } from "./actions"
 import CreateProductFormUseActionState from "./components/CreateProductFormUseActionState"
 import CreateProductForm from "./components/CreateProductForm"

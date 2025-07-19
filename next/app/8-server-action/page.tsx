@@ -1,6 +1,5 @@
 import { products } from "@/db/schema"
 import db from "@/lib/db"
-import "./style.css"
 import z from "zod"
 import Input from "@/components/Input"
 import Button from "@/components/Button"

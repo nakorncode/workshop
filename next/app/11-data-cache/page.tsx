@@ -1,4 +1,21 @@
-import CurrentLeaderboard from "./components/CurrentLeaderboard"
+interface Props {
+  label: string
+  user: {
+    name: {
+      first: string
+      last: string
+    }
+  }
+}
+
+function CurrentLeaderboard(props: Props) {
+  return (
+    <div className="max-w-md">
+      <h1 className="font-bold">Current Leaderboard ({props.label})</h1>
+      <p>User: {props.user.name.first} {props.user.name.last}</p>
+    </div>
+  )
+}
 
 export default async function Page() {
   const defaultData = await fetch("https://randomuser.me/api?nat=us")
