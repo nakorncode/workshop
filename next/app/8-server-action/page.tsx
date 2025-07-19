@@ -6,6 +6,7 @@ import Input from "@/components/Input"
 import Button from "@/components/Button"
 import { revalidatePath } from "next/cache"
 import { eq } from "drizzle-orm"
+import ProductDataTable from "@/components/ProductDataTable"
 
 export default async function Page() {
   async function getProducts() {
@@ -42,35 +43,7 @@ export default async function Page() {
   return (
     <div>
       <h1 className="text-xl font-bold mb-3">Server Action</h1>
-      <table className="min-w-full border-collapse border border-gray-300">
-        <thead>
-          <tr>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Describe</th>
-            <th>Price</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {await getProducts().then(products =>
-            products.map(product => (
-              <tr key={product.id}>
-                <td>{product.id}</td>
-                <td>{product.title}</td>
-                <td>{product.description}</td>
-                <td>${product.price}</td>
-                <td>
-                  <form action={deleteProduct} className="inline">
-                    <input type="hidden" name="id" value={product.id} />
-                    <button type="submit" className="cursor-pointer text-blue-600 underline">Delete</button>
-                  </form>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
+      <ProductDataTable products={await getProducts()} onDeleteProduct={deleteProduct} />
 
       <hr className="my-4" />
 
