@@ -1,2 +1,17 @@
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<script lang="ts">
+  interface Link {
+    href: string;
+    label: string;
+  }
+  const links: Link[] = [
+    { href: '/1-state', label: '$state' },
+  ]
+</script>
+
+<ol class="list-decimal pl-6 space-y-2 text-lg">
+  {#each links as link, index (index)}
+    <li>
+      <a href={link.href} class="text-blue-600 underline">{link.label}</a>
+    </li>
+  {/each}
+</ol>
