@@ -9,7 +9,7 @@ import { createProduct } from "../actions"
 async function getProducts() {
   "use cache"
   cacheTag("products")
-  console.log(new Date().toISOString(), "Fetching products")
+  console.log(new Date().toISOString(), "Fetching products (cache tag)")
   const data = await db.select().from(products)
   return data
 }

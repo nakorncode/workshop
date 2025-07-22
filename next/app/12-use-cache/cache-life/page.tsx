@@ -9,7 +9,7 @@ import { createProduct } from "../actions"
 async function getProducts() {
   "use cache"
   cacheLife("minutes") // ค่าเริ่มต้นคือ default https://nextjs.org/docs/app/api-reference/functions/cacheLife#default-cache-profiles
-  console.log(new Date().toISOString(), "Fetching products")
+  console.log(new Date().toISOString(), "Fetching products (cache life)")
   const data = await db.select().from(products)
   return data
 }
