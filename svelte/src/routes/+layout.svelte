@@ -1,3 +1,7 @@
+<svelte:head>
+  <title>Svelte Workshop by NakornCode</title>
+</svelte:head>
+
 <script lang="ts">
 	import '../app.css'
 
