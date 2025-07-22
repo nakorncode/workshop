@@ -25,7 +25,7 @@
   }
 </script>
 
-<h2 class="text-lg font-semibold mb-2">Todos</h2>
+<h2 class="text-xl font-bold mb-2">Todos</h2>
 <div class="space-x-2">
   <button type="button" class="underline text-blue-600 cursor-pointer mb-2" onclick={() => markAllCompleted()}>Mark all as completed</button>
   <button type="button" class="underline text-blue-600 cursor-pointer mb-2" onclick={() => resetTodos()}>Reset Todos</button>

@@ -6,10 +6,14 @@
   $inspect('Count: ($inspect)', countState)       // log ทุกครั้งที่ countState เปลี่ยนแปลง
 </script>
 
-<p>Count: {count}</p>
-<button class="mt-1 btn" onclick={() => count++}>Increment</button>
+<h2 class="text-xl font-bold mb-2">Counter</h2>
 
-<hr class="my-4">
+<div>
+  <p>Count: {count}</p>
+  <button class="mt-1 btn" onclick={() => count++}>Increment</button>
+</div>
 
-<p>Count ($state): {countState}</p>
-<button class="mt-1 btn" onclick={() => countState++}>Increment</button>
+<div class="mt-4">
+  <p>Count ($state): {countState}</p>
+  <button class="mt-1 btn" onclick={() => countState++}>Increment</button>
+</div>
