@@ -34,7 +34,7 @@
   {#each todos as todo, index (index)}
     <li class={{ 'line-through': todo.completed }}>
       <label>
-        <input type="checkbox" checked={todo.completed} onchange={() => toggleTodo(index)}>
+        <input type="checkbox" checked={todo.completed} oninput={() => toggleTodo(index)}>
         {todo.text}
       </label>
     </li>

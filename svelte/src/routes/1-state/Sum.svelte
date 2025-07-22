@@ -10,8 +10,8 @@
 
 <div class="flex gap-1 max-w-xs">
   <!-- สามารถใช้ <input bind:value={a} /> แทนได้ แต่เราจะใช้วิธีก่อนจนกว่าจะเรียนรู้เรื่อง bind: -->
-  <input class="input" type="number" value={a} onchange={e => a = Number((e.target as HTMLInputElement).value)} />
-  <input class="input" type="number" value={b} onchange={e => b = Number((e.target as HTMLInputElement).value)} />
+  <input class="input" type="number" value={a} oninput={e => a = Number((e.target as HTMLInputElement).value)} />
+  <input class="input" type="number" value={b} oninput={e => b = Number((e.target as HTMLInputElement).value)} />
   <button class="btn btn-primary" onclick={() => result = sum(a, b)}>Sum</button>
 </div>
 
