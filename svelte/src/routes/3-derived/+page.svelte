@@ -1,7 +1,7 @@
 <script lang="ts">
-  import Age from "./Age.svelte";
-  import Counter from "./Counter.svelte";
-  import Todo from "./Todo.svelte";
+  import Age from "./Age.svelte"
+  import Counter from "./Counter.svelte"
+  import Todo from "./Todo.svelte"
 </script>
 
 <Counter></Counter>

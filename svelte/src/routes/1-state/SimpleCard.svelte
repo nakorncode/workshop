@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { theme } from './theme.svelte';
+  import { theme } from './theme.svelte'
 </script>
 
 <div class={[{ 'dark': theme.value === 'dark' }, 'max-w-xs']}>

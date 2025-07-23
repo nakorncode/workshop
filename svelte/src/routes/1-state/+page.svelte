@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Counter from "./Counter.svelte";
-  import Note from "./Note.svelte";
-  import SimpleCard from "./SimpleCard.svelte";
-  import Sum from "./Sum.svelte";
-  import ThemeSwitcher from "./ThemeSwitcher.svelte";
-  import ThemeToggler from "./ThemeToggler.svelte";
-  import Todo from "./Todo.svelte";
+  import Counter from "./Counter.svelte"
+  import Note from "./Note.svelte"
+  import SimpleCard from "./SimpleCard.svelte"
+  import Sum from "./Sum.svelte"
+  import ThemeSwitcher from "./ThemeSwitcher.svelte"
+  import ThemeToggler from "./ThemeToggler.svelte"
+  import Todo from "./Todo.svelte"
 </script>
 
 <Counter></Counter>

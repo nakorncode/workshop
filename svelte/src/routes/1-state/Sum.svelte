@@ -1,5 +1,5 @@
 <script lang="ts">
-  import sum from "./sum";
+  import sum from "./sum"
 
   let a = $state(0)
   let b = $state(0)

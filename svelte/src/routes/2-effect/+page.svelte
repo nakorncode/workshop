@@ -1,6 +1,6 @@
 <script>
-  import SalesData from "./SalesData.svelte";
-  import Note from "./Note.svelte";
+  import SalesData from "./SalesData.svelte"
+  import Note from "./Note.svelte"
 </script>
 
 <Note></Note>

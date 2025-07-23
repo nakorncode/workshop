@@ -1,7 +1,7 @@
 <script lang="ts">
   interface Link {
-    href: string;
-    label: string;
+    href: string
+    label: string
   }
   const links: Link[] = [
     { href: '/1-state', label: '$state()' },

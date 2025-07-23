@@ -1,6 +1,6 @@
 <script lang="ts">
-  import * as echarts from 'echarts';
-  import { onMount } from 'svelte';
+  import * as echarts from 'echarts'
+  import { onMount } from 'svelte'
 
   let saleData = $state({
     shirts: 5,
@@ -9,9 +9,9 @@
     pants: 10,
     heels: 10,
     socks: 20
-  });
+  })
 
-  let myChart: echarts.ECharts | null = null;
+  let myChart: echarts.ECharts | null = null
 
   function updateSaleData() {
     if (myChart) {
@@ -19,14 +19,14 @@
         series: [{
           data: [saleData.shirts, saleData.cardigans, saleData.chiffons, saleData.pants, saleData.heels, saleData.socks]
         }]
-      });
+      })
     }
   }
 
   // เมื่อ Component เริ่มใช้งาน และเรนเดอร์ HTML ครบหมดแล้ว
   onMount(() => {
-    const chartDom = document.getElementById('chart')!;
-    myChart = echarts.init(chartDom);
+    const chartDom = document.getElementById('chart')!
+    myChart = echarts.init(chartDom)
     const option = {
       title: {
         text: 'Sales Data'
@@ -41,14 +41,14 @@
         type: 'bar',
         data: [saleData.shirts, saleData.cardigans, saleData.chiffons, saleData.pants, saleData.heels, saleData.socks]
       }]
-    };
-    myChart.setOption(option);
-    updateSaleData();
+    }
+    myChart.setOption(option)
+    updateSaleData()
   })
 
   // เมื่อ $state() ภายในมีการเปลี่ยนแปลง จะมีการรัน $effect() ใหม่อีกครั้ง
   $effect(() => {
-    updateSaleData();
+    updateSaleData()
   })
 </script>
 
