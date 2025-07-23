@@ -4,6 +4,7 @@
     birthDate: Date
     gender: 'male' | 'female'
   }
+
   let props: Props = $props() // สามารถตั้ง Interface สำหรับการรับ Props ได้
 </script>
 
