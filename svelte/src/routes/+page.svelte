@@ -7,6 +7,7 @@
     { href: '/1-state', label: '$state()' },
     { href: '/2-effect', label: '$effect()' },
     { href: '/3-derived', label: '$derived()' },
+    { href: '/4-props', label: '$props()' },
   ]
 </script>
 
