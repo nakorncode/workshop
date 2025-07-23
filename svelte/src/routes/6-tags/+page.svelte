@@ -27,7 +27,9 @@
   </div>
 </div>
 
-<div class="mt-8 flex gap-4">
+<hr class="my-4">
+
+<div class="flex gap-4">
   {#each boxes as [width, height], i (i)}
     {@const area = width * height}
     <div class="p-4 rounded-lg bg-gray-200" style="width: {width}px; height: {height}px;">
@@ -35,6 +37,8 @@
     </div>
   {/each}
 </div>
+
+<hr class="my-4">
 
 {#snippet userInfo(name: string, age: number, email: string)}
   <div class="p-4 rounded-lg bg-gray-200">
@@ -45,18 +49,22 @@
   </div>
 {/snippet}
 
-<div class="mt-8 grid grid-cols-2 gap-4">
+<div class="grid grid-cols-2 gap-4">
   {@render userInfo('John Doe', 30, 'john.doe@example.com')}
   {@render userInfo('Jane Smith', 25, 'jane.smith@example.com')}
 </div>
 
-<div class="flex gap-4 mt-8">
+<hr class="my-4">
+
+<div class="flex gap-4">
   <abbr {@attach tooltip('HyperText Markup Language')} class="text-blue-500 underline decoration-dotted cursor-default">HTML</abbr>
   <abbr {@attach tooltip('Cascading Style Sheets')} class="text-blue-500 underline decoration-dotted cursor-default">CSS</abbr>
   <abbr {@attach tooltip('JavaScript', { arrow: false })} class="text-blue-500 underline decoration-dotted cursor-default">JS</abbr>
 </div>
 
-<div class="mt-8">
+<hr class="my-4">
+
+<div>
   <table {@attach simpleSortable()}>
     <thead>
       <tr>

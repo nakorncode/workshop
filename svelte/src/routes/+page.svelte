@@ -10,6 +10,7 @@
     { href: '/4-props', label: '$props()' },
     { href: '/5-blocks', label: 'Blocks {#...}' },
     { href: '/6-tags', label: 'Tags {@...}' },
+    { href: '/7-directives', label: 'Directives ...:' }
   ]
 </script>
 
