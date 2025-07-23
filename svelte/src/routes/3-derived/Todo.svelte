@@ -26,22 +26,31 @@
     todos = todos.filter((_, i) => i !== index)
   }
 
-  let completedCount = $derived(todos.filter(todo => todo.completed).length)
-  let remainingCount = $derived(todos.filter(todo => !todo.completed).length)
-  let totalCount = $derived(todos.length)
-
+  // Functions
   function completedCountFn() {
-    console.log('Calculating completed count...')
     return todos.filter(todo => todo.completed).length
   }
   function remainingCountFn() {
-    console.log('Calculating remaining count...')
     return todos.filter(todo => !todo.completed).length
   }
   function totalCountFn() {
-    console.log('Calculating total count...')
     return todos.length
   }
+
+  // $effect()
+  let completedCountEffect = $state(0)
+  let remainingCountEffect = $state(0)
+  let totalCountEffect = $state(0)
+  $effect(() => {
+    completedCountEffect = todos.filter(todo => todo.completed).length
+    remainingCountEffect = todos.filter(todo => !todo.completed).length
+    totalCountEffect = todos.length
+  })
+
+  // $derived()
+  let completedCount = $derived(todos.filter(todo => todo.completed).length)
+  let remainingCount = $derived(todos.filter(todo => !todo.completed).length)
+  let totalCount = $derived(todos.length)
 </script>
 
 <div class="max-w-xs">
@@ -83,6 +92,13 @@
     <li>Completed: {completedCountFn()}</li>
     <li>Remaining: {remainingCountFn()}</li>
     <li>Total: {totalCountFn()}</li>
+  </ul>
+
+  <h3 class="mt-2 font-bold">Status (Effect)</h3>
+  <ul class="list-disc pl-6">
+    <li>Completed: {completedCountEffect}</li>
+    <li>Remaining: {remainingCountEffect}</li>
+    <li>Total: {totalCountEffect}</li>
   </ul>
 
   <h3 class="mt-2 font-bold">Status (Derived)</h3>

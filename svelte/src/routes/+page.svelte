@@ -4,8 +4,9 @@
     label: string;
   }
   const links: Link[] = [
-    { href: '/1-state', label: '$state' },
-    { href: '/2-derived', label: '$derived' }
+    { href: '/1-state', label: '$state()' },
+    { href: '/2-effect', label: '$effect()' },
+    { href: '/3-derived', label: '$derived()' },
   ]
 </script>
 
