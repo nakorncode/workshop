@@ -27,6 +27,7 @@ import MyInput from "./MyInput.svelte"
   let modal2Open = $state(false)
 </script>
 
+<!-- Extends Props -->
 <form onsubmit={onLogin}>
   <div class="space-y-4 max-w-xs">
     <MyInput
@@ -51,6 +52,7 @@ import MyInput from "./MyInput.svelte"
 
 <hr class="my-4">
 
+<!-- $binding (Two-way Binding) -->
 <ul class="list-disc pl-8 mb-3">
   <li>Switch Data 1: {switchData1 ? '✅' : '❌'}</li>
   <li>Switch Data 2: {switchData2 ? '✅' : '❌'}</li>
@@ -88,14 +90,17 @@ import MyInput from "./MyInput.svelte"
 
 <hr class="my-4">
 
-{#snippet button1({ toggle })}
+<!-- Snippet with Props -->
+
+<!-- Explicit -->
+{#snippet button1({ toggle }: { toggle: () => void })}
   <button class="btn" onclick={toggle}>Toggle Modal</button>
 {/snippet}
-
 <MyModal button={button1} isOpen={modal1Open}>
   Content of the first modal.
 </MyModal>
 
+<!-- Implicit (แนะนำวิธีนี้) -->
 <MyModal isOpen={modal2Open} duration={1000}>
   {#snippet button({ toggle })}
     <button
