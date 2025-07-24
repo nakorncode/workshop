@@ -1,3 +1,9 @@
+<!-- https://svelte.dev/docs/svelte/svelte-head -->
+<svelte:head>
+  <title>Advanced Components</title>
+  <meta name="description" content="Explore advanced components in Svelte, including custom switches and modals.">
+</svelte:head>
+
 <script lang="ts">
   import BadSwitch from "./BadSwitch.svelte";
   import GoodSwitch from "./GoodSwitch.svelte";
@@ -7,7 +13,7 @@ import MyInput from "./MyInput.svelte"
 
   function onLogin(event: Event) {
     event.preventDefault()
-    const formData = new FormData(event.target)
+    const formData = new FormData(event.target as HTMLFormElement)
     const username = formData.get("username")
     const password = formData.get("password")
     alert(`Username: ${username}, Password: ${password}`)
@@ -29,8 +35,8 @@ import MyInput from "./MyInput.svelte"
       type="text"
       placeholder="Enter your username..."
       required
-      minlength="3"
-      maxlength="20"
+      minlength={3}
+      maxlength={20}
     />
     <MyInput
       label="Password"
@@ -65,6 +71,7 @@ import MyInput from "./MyInput.svelte"
     switchData3 = false
   }}>
     Set All Switches to False
+  </button>
 </div>
 
 <div class="flex flex-col gap-2">
