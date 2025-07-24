@@ -14,6 +14,7 @@
   }
 </script>
 
+<!-- if, else if, else -->
 {#if age >= 18}
   <p>You are an adult.</p>
 {:else if age >= 13}
@@ -24,6 +25,7 @@
 
 <hr class="my-4">
 
+<!-- each -->
 {#each fruits as fruit, index (index)}
   <p>Fruit {index + 1}: {fruit}</p>
 {/each}
@@ -38,6 +40,7 @@
 
 <hr class="my-4">
 
+<!-- await -->
 {#await fetchProduct()}
   <p class="text-gray-400 italic">Loading product...</p>
 {:then product}

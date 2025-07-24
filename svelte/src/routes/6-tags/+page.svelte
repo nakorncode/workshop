@@ -18,6 +18,7 @@
   ]
 </script>
 
+<!-- @html -->
 <div class="space-y-3">
   <div class="p-4 rounded-lg bg-gray-200">
     {htmlText}
@@ -29,6 +30,7 @@
 
 <hr class="my-4">
 
+<!-- @const -->
 <div class="flex gap-4">
   {#each boxes as [width, height], i (i)}
     {@const area = width * height}
@@ -40,6 +42,7 @@
 
 <hr class="my-4">
 
+<!-- #snippet + @render -->
 {#snippet userInfo(name: string, age: number, email: string)}
   <div class="p-4 rounded-lg bg-gray-200">
     <h2 class="text-lg font-bold">User Information</h2>
@@ -56,6 +59,7 @@
 
 <hr class="my-4">
 
+<!-- @attach -->
 <div class="flex gap-4">
   <abbr {@attach tooltip('HyperText Markup Language')} class="text-blue-500 underline decoration-dotted cursor-default">HTML</abbr>
   <abbr {@attach tooltip('Cascading Style Sheets')} class="text-blue-500 underline decoration-dotted cursor-default">CSS</abbr>

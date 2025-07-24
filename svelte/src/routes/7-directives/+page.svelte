@@ -1,6 +1,8 @@
 <script lang="ts">
+  import { fade, blur, slide, scale, fly } from "svelte/transition";
   import ShowProfile from "./ShowProfile.svelte";
 import type { Props as Profile } from "./ShowProfile.svelte";
+  import { tooltip } from "./tooltip.svelte";
 
   const color = 'red'
   const isTextGreen = true
@@ -15,8 +17,11 @@ import type { Props as Profile } from "./ShowProfile.svelte";
     country: '',
     avatar: null
   })
+
+  let visible = $state(true)
 </script>
 
+<!-- style: -->
 <div class="space-y-2 font-bold">
   <p style="color: red;">Red text</p>
   <p style:color="red">Red text</p>
@@ -28,6 +33,7 @@ import type { Props as Profile } from "./ShowProfile.svelte";
 
 <hr class="my-4">
 
+<!-- class: -->
 <div class="space-y-2 font-bold">
   <p class="text-green-800 bg-green-100">Green text; Green background</p>
   <p class={isTextGreen && 'text-green-800'}>Green text</p>
@@ -39,6 +45,7 @@ import type { Props as Profile } from "./ShowProfile.svelte";
 
 <hr class="my-4">
 
+<!-- bind: -->
 <div class="mb-3">
   <ShowProfile {...profile} />
 </div>
@@ -105,14 +112,28 @@ import type { Props as Profile } from "./ShowProfile.svelte";
   </div>
 </form>
 
-<!--
-text name
-number salary
-radio gender
-checkbox married
-select country
-file avatar
--->
+<hr class="my-4">
 
-<!-- this -->
-<!-- $bindable -->
+<!-- use: -->
+<!-- * อย่างไรก็ตาม แนะนำให้ใช้ @attach แทน เพราะสามารถควบคุมเนื้อหาได้ดีกว่ามาก -->
+<div class="flex gap-4">
+  <abbr use:tooltip={{ content: 'Hypertext Markup Language' }} class="text-blue-500 underline decoration-dotted cursor-default">HTML</abbr>
+  <abbr use:tooltip={{ content: 'Cascading Style Sheets' }} class="text-blue-500 underline decoration-dotted cursor-default">CSS</abbr>
+  <abbr use:tooltip={{ content: 'JavaScript', arrow: false }} class="text-blue-500 underline decoration-dotted cursor-default">JS</abbr>
+</div>
+
+<hr class="my-4">
+
+<!-- transition: -->
+<label>
+  <input type="checkbox" bind:checked={visible} />
+  <span>Visible</span>
+</label>
+
+{#if visible}
+  <div transition:fade class="mt-3 p-3 bg-gray-300 rounded">Hello (Fade)</div>
+  <div transition:blur class="mt-3 p-3 bg-gray-300 rounded">Hello (Blur)</div>
+  <div transition:slide class="mt-3 p-3 bg-gray-300 rounded">Hello (Slide)</div>
+  <div transition:scale class="mt-3 p-3 bg-gray-300 rounded">Hello (Scale)</div>
+  <div transition:fly class="mt-3 p-3 bg-gray-300 rounded">Hello (Fly)</div>
+{/if}
