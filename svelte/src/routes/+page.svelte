@@ -12,6 +12,7 @@
     { href: '/6-tags', label: 'Tags {@...}' },
     { href: '/7-directives', label: 'Directives ...:' },
     { href: '/8-advanced-components', label: 'Advanced Components' },
+    { href: '/9-routing', label: 'Routing' },
   ]
 </script>
 
