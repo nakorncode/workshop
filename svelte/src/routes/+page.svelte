@@ -11,8 +11,7 @@
     { href: '/5-blocks', label: 'Blocks {#...}' },
     { href: '/6-tags', label: 'Tags {@...}' },
     { href: '/7-directives', label: 'Directives ...:' },
-    { href: '/8-advanced-components', label: 'Advanced Components ($props.children(), $bindable, {#snippet}, {@render})' },
-    { href: '/9-context', label: 'setContext(), getContext()' },
+    { href: '/8-advanced-components', label: 'Advanced Components' },
   ]
 </script>
 

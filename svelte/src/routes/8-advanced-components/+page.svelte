@@ -8,7 +8,7 @@
   import BadSwitch from "./BadSwitch.svelte";
   import GoodSwitch from "./GoodSwitch.svelte";
   import IncorrectSwitch from "./IncorrectSwitch.svelte";
-import MyInput from "./MyInput.svelte"
+  import MyInput from "./MyInput.svelte"
   import MyModal from "./MyModal.svelte"
 
   function onLogin(event: Event) {
