@@ -15,6 +15,7 @@
     { href: '/9-routing', label: 'Routing' },
     { href: '/10-layouts', label: 'Layouts' },
     { href: '/11-env', label: 'Environment Variables' },
+    { href: '/12-form-actions', label: 'Form Actions' },
   ]
 </script>
 
