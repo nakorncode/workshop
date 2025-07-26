@@ -17,6 +17,7 @@
     { href: '/11-env', label: 'Environment Variables' },
     { href: '/12-form-actions', label: 'Form Actions' },
     { href: '/13-progressive-enhancement', label: 'Progressive Enhancement' },
+    { href: '/14-global-state', label: 'Global State' },
   ]
 </script>
 
