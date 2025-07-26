@@ -14,6 +14,7 @@
     { href: '/8-advanced-components', label: 'Advanced Components' },
     { href: '/9-routing', label: 'Routing' },
     { href: '/10-layouts', label: 'Layouts' },
+    { href: '/11-env', label: 'Environment Variables' },
   ]
 </script>
 
