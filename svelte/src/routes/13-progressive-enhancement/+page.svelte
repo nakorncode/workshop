@@ -32,13 +32,11 @@
   <!-- https://svelte.dev/docs/kit/form-actions#Progressive-enhancement-Customising-use:enhance -->
   <form method="POST" action="?/slowResponse" class="space-y-2" use:enhance={() => {
     loading = true
-    return async () => {
+    return async ({ result }) => {
       loading = false
+      alert((result as any)?.data?.message)
     }
   }}>
-    {#if props.form?.message}
-      <p class="text-gray-600 italic">{props.form.message}</p>
-    {/if}
     <button type="submit" class="btn" disabled={loading}>{loading ? 'Loading...' : 'Get Slow Response'}</button>
   </form>
 </div>
