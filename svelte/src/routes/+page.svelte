@@ -19,7 +19,6 @@
     { href: '/13-progressive-enhancement', label: 'Progressive Enhancement' },
     { href: '/14-global-state', label: 'Global State' },
     { href: '/15-hooks', label: 'Hooks' },
-    { href: '/16-page-options', label: 'Page Options' }
   ]
 </script>
 
