@@ -1,7 +1,7 @@
 <script lang="ts">
   import { fade, blur, slide, scale, fly } from "svelte/transition";
   import ShowProfile from "./ShowProfile.svelte";
-import type { Props as Profile } from "./ShowProfile.svelte";
+  import type { Props as Profile } from "./ShowProfile.svelte";
   import { tooltip } from "./tooltip.svelte";
 
   const color = 'red'
@@ -26,6 +26,7 @@ import type { Props as Profile } from "./ShowProfile.svelte";
   <p style="color: red;">Red text</p>
   <p style:color="red">Red text</p>
   <p style:color={color}>Red text</p>
+  <p style="color: {color};">Red text</p>
   <p style:color>Red text</p>
   <p style:color="white" style:background-color="black">White text; Black background</p>
   <p class="text-red-700" style:color|important="green">Should be green</p>
@@ -70,7 +71,7 @@ import type { Props as Profile } from "./ShowProfile.svelte";
       (value: string) => {
         // set
         const [year, month, day] = value.split('-').map(Number);
-        profile.birthDate = new Date(year, month - 1, day);
+        profile.birthDate = new Date(Date.UTC(year, month - 1, day));
       }
     } class="input" />
   </label>
