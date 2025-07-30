@@ -1,9 +1,19 @@
 import { error } from "console"
 import type { Actions } from "./$types"
+import type { PageServerLoad } from "./$types"
 import db from "$lib/db"
 import { productsTable } from "../../../../db/schema"
 import { eq } from "drizzle-orm"
 import { redirect } from "@sveltejs/kit"
+
+export const load: PageServerLoad = async ({ params }) => {
+  const id = Number(params.id)
+  const product = await db.select().from(productsTable).where(eq(productsTable.id, id)).get()
+  if (!product) {
+    return error(404, "Product not found")
+  }
+  return { product }
+}
 
 export const actions = {
   default: async ({ request }) => {
