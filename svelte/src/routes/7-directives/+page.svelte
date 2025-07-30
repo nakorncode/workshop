@@ -138,3 +138,7 @@
   <div transition:scale class="mt-3 p-3 bg-gray-300 rounded">Hello (Scale)</div>
   <div transition:fly class="mt-3 p-3 bg-gray-300 rounded">Hello (Fly)</div>
 {/if}
+
+{#each { length: 30 } as i}
+  <br>
+{/each}
