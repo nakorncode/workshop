@@ -52,7 +52,7 @@
 
 <hr class="my-4">
 
-<!-- $binding (Two-way Binding) -->
+<!-- $bindable (Two-way Binding) -->
 <ul class="list-disc pl-8 mb-3">
   <li>Switch Data 1: {switchData1 ? '✅' : '❌'}</li>
   <li>Switch Data 2: {switchData2 ? '✅' : '❌'}</li>
